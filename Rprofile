@@ -3,6 +3,13 @@
 qn <- function() quit('no')
 cd <- function(dir="~") setwd(dir)
 
+pdflatex <- function(file, ...) tools::texi2pdf(file, clean=TRUE, ...)
+sweavepdf <- function(file, ...) {
+    utils::Sweave(file, ...)
+    texfile <- tools::file_path_sans_ext(file)
+    pdflatex(paste0(texfile, ".tex"))
+}
+
 # some handy aliases
 cwd <- getwd
 pwd <- getwd
@@ -77,7 +84,7 @@ if (interactive()) {
     # Some packages I use very commonly
     invisible(library(compiler))
     invisible(enableJIT(3))
-    invisible(library(data.table)) # Apparently this broke because of Rcpp!
+    invisible(library(data.table))
     
     invisible(library(xtable))
     invisible(library(Matrix))
