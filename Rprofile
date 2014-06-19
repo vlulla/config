@@ -1,9 +1,3 @@
-# Some packages I use very commonly
-invisible(library(compiler))
-invisible(enableJIT(3))
-# invisible(library(data.table)) # Apparently this broke because of Rcpp!
-
-invisible(library(xtable))
 
 
 qn <- function() quit('no')
@@ -79,5 +73,13 @@ if (interactive()) {
     local_pkgs <- names(utils::installed.packages()[, "Package"])
     if ("fortunes" %in% local_pkgs)
         fortunes::fortune()
+
+    # Some packages I use very commonly
+    invisible(library(compiler))
+    invisible(enableJIT(3))
+    invisible(library(data.table)) # Apparently this broke because of Rcpp!
+    
+    invisible(library(xtable))
+    invisible(library(Matrix))
 }
 
