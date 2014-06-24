@@ -10,6 +10,10 @@ sweavepdf <- function(file, ...) {
     pdflatex(paste0(texfile, ".tex"))
 }
 
+ispkginstalled <- function(pkgname) {
+    pkgname %in% names(installed.packages()[,"Package"])
+}
+
 # some handy aliases
 cwd <- getwd
 pwd <- getwd
