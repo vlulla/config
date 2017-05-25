@@ -1,0 +1,320 @@
+(require 'cl)
+;; (require 'anything)
+(add-to-list 'load-path "~/elisp")
+(let ((default-directory "~/elisp"))
+  (normal-top-level-add-subdirs-to-load-path))
+
+(setq backup-inhibited t)
+(setq-default
+ mode-line-format
+ '(""
+   mode-line-modified
+   "[%b]"
+   global-mode-string
+   "%[("
+   mode-name
+   mode-line-process
+   minor-mode-alist
+   "%n" ")%]--"
+   (line-number-mode "L%l--")
+   (column-number-mode "C%c--")
+   (-3 . "%p") ;; position
+   " -- "
+   (:eval buffer-file-truename)
+   " %-"
+))
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(defun toolbars-off ()
+  ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+  ;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+)
+
+(defun insert-date ()
+  "Inserts date (formatted: %Y-%m-%d) at the current location"
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d"))
+)
+
+(defun insert-timestamp ()
+  "Inserts timestamp (formatted: %Y-%m-%dT%H:%M:%S) at current cursor location.
+See ISO 8601 timestamp standard for more details."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S"))
+)
+
+(defun setup-keys ()
+  (global-set-key "\C-x\C-m" 'execute-extended-command)
+  (global-set-key "\C-c\C-m" 'execute-extended-command)
+  (global-set-key "\C-w" 'backward-kill-word)
+  (global-set-key "\C-x\C-k" 'kill-region)
+  (global-set-key "\C-c\C-k" 'kill-region)
+  (global-set-key (kbd "<f9>") 'insert-date)
+  (global-set-key (kbd "<f10>") 'insert-timestamp)
+  (global-set-key (kbd "<f5>") 'call-last-kbd-macro)
+)
+
+(defun setup-aliases ()
+  (defalias 'qrr 'query-replace-regexp)
+  (defalias 'tt 'toggle-truncate-lines)
+)
+
+(defun setup-ESS ()
+  (require 'ess-site)
+  (add-to-list 'auto-mode-alist '("\\.rd\\'" . Rd-mode))
+  (if (not (getenv "TERM_PROGRAM"))
+      (setenv "PATH" (shell-command-to-string "source $HOME/.profile && printf $PATH")))
+  (setq inferior-R-args "--no-save --no-restore ")
+  (setq inferior-R-program-name "/usr/local/bin/R") ;; Emacs on MacOSX doesn't read environment from .zshrc!!  It stopped working on 2015-10-01!!
+  (require 'julia-mode)
+  (setq inferior-julia-program-name "/Applications/Julia-0.5.app/Contents/Resources/julia/bin/julia")
+
+  (setq ess-S-assign-key (kbd "C-=")) ;; https://statbandit.wordpress.com/2010/05/14/a-small-customization-of-ess/
+  ;; (setq ess-S-assign-key (kbd "C--"))
+  (ess-toggle-S-assign-key t) ;; enable above key definitions
+  (ess-toggle-underscore nil) ; leave underscore alone
+  )
+
+(defun setup-org-mode ()
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)
+     (ditaa . t)
+     (org . t)
+     (latex . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (sh . t)
+     ;; (shell . t)  ;; some issue with ob-shell??
+     (sql . nil)
+     (sqlite . t))
+   )
+  ;; See Activation section in the Org manual
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cc" 'org-capture)
+  (global-set-key "\C-cb" 'org-iswitchb)
+  ;; (setq debug-on-error t
+  ;;       debug-on-signal nil
+  ;;       debug-on-quit nil)
+  (message "org-mode setup done")
+  )
+
+(defun setup-js ()
+  (autoload 'js2-mode "js2-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+)
+
+;;; This is taken from
+;;;   http://www.emacswiki.org/emacs-fr/JorgenSchaefersEmacsConfig
+;;; on 2010-09-01
+(defun fc-insert-latex-skeleton ()
+  "Insert a LaTeX skeleton in an empty file."
+  (when (and (eq major-mode 'latex-mode)
+	     (= (point-min)
+		(point-max)))
+    (insert
+     "\\documentclass[letterpaper,11pt]{article}\n"
+     ;; "%% \\input{macros}\n"
+     "\\usepackage[margin=1in]{geometry}\n"
+     "\\usepackage[english]{babel}\n"
+     "\\usepackage{graphicx}\n"
+     "%%\\usepacakage{Sweave}\n\n"
+     "%%\\usepackage[utf8]{inputenc}\n"
+     "%%\\usepackage{fontspec}%% and use xetex to compile pdf\n"
+     "\\usepackage{url}\n"
+     "\\usepackage{microtype}\n\n"
+     "\\usepackage{amsmath}\n"
+     "\\usepackage{amssymb}\n\n"
+     "%%\\usepackage[draft,allpages,grayness=0.9]{draftmark}\n"
+     "%%\\usepackage{fancyhdr}\n"
+     "%%\\pagestyle{fancy}\n"
+     ;; "%%\\fancypagestyle{plain}{%\n"
+     ;; "%%\\fancyhf{} % clear headers and footers\n"
+     ;; "%%\\fancyfoot[C]{\\bfseries \\thepage} % This is the default\n"
+     ;; "%%\\renewcommand{\\headrulewidth}{0pt}\n"
+     ;; "%%\\renewcommand{\\footrulewidth}{0pt}}\n\n"
+     "\n"
+     "%%\\usepackage[backend=biber,natbib=true]{biblatex}\n"
+     "%%\\addbibresource{bibfile.bib}% .bib extension is needed!!\n"
+     "%%\\addbibresource{bibfile2.bib}% Require for multiple bibs\n\n"
+     "%%\\usepackage{apacite}\n"
+     "%%\\usepackage{natbib}\n\n"
+     "\\usepackage{array}\n"
+     "\\usepackage{verbatim}\n"
+     "%%\\usepackage{listings}\n\n"
+     "%%\\usepackage[T1]{fontenc}%% use fontspec instead!\n"
+     "%%\\usepackage{fouriernc}\n"
+     "%%\\usepackage{tgschola}\n\n"
+     "%%\\usepackage{booktabs}\n"
+     "%%\\usepackage[normalem]{ulem}%For underlining\n"
+     "%%\\usepackage{setspace}\n"
+     "%%\\usepackage{paralist}\n\n"
+     "%%\\usepackage{tikz}\n"
+     "%%\\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}\n"
+     "%%\\usepackage{hyperref}\n"
+     "%%\\hypersetup{%\n"
+     "%%  raiselinks = false\n"
+     "%%  , breaklinks = true\n"
+     "%%  %% , backref = true\n"
+     "%%  , colorlinks = true\n"
+     "%%  , linkcolor = blue\n"
+     "%%  ,  urlcolor = blue\n"
+     "%%  , citecolor = green\n"
+     "%%  %% , hidelinks = true\n"
+     "%%  pdfinfo={\n"
+     "%%    Title = {}\n"
+     "%%    , Subject = {}\n"
+     "%%  }\n"
+     "%%}\n\n"
+     "\\title{}\n"
+     "\\author{Vijay~Lulla\\\\\n"
+     "    Department of Geography\\\\\n"
+     "    Indiana University-Purdue University Indianapolis}\n"
+     "\\date{}\n\n"
+     "\\begin{document}\n"
+     "\\maketitle\n"
+     "%%For R + Sweave files.\n"
+     "%%\\DefineVerbatimEnvironment{Sinput}{Verbatim}{xleftmargin=2em}\n"
+     "%%\\DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=2em}\n"
+     "%%\\DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=2em}\n"
+     "%%\\fvset{listparameters={\\setlength{\\topsep}{0pt}}}\n"
+     "%%\\renewenvironment{Schunk}{\\vspace{\\topsep}}{\\vspace{\\topsep}}\n"
+     "%%<<echo=false,results=hide>>=\n"
+     "%% options(width=60, continue=\"  \",\n"
+     "%%  SweaveHooks=list(fig=function() par(mar=c(5.1,4.1,1.1,2.1))))\n"
+     "%% library(xtable)\n"
+     "%%@\n\n"
+     "\\begin{abstract}\n"
+     "\n\n"
+     "%%\\printbibliography% for biblatex!!\n"
+     "%%\\bibliographystyle{apacite}\n"
+     "%%\\bibliography{ }\n"
+     "\\end{document}\n")
+    (forward-line -5))
+)
+
+;; Idea from http://www.hakank.org/emacs/index.html
+(defun make-html-page ()
+  (interactive)
+  (goto-line 1)
+  (insert "<html>\n<head>\n"
+          "<script language=\"Javascript\">\n\n\n</script>\n"
+          "<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" />\n"
+          "<title>\n</title>\n"
+          "<body>\n\n"
+          "<hr />\n"
+          "Back to homepage <a href=\"/\">homepage</a><br />\n"
+          "<address>created by Vijay Lulla</address>\n"
+          "</body>\n</html>\n"))
+
+(defun setup-auctex ()
+  (load "auctex.el" nil t t)
+  (load "preview-latex.el" nil t t)
+  (require 'tex-mik) ;; For use with MikTeX only
+
+  (autoload 'LaTeX-mode "tex-site" "AucTeX mode." t)
+  (add-to-list 'auto-mode-alist '("\\.tex$" . LaTeX-mode))
+
+  ;; (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+  ;; (add-hook 'find-file-hook 'fc-insert-latex-skeleton)
+  ;; Using auto-insert-mode now! 2014-11-05
+  ;; See http://www.emacswiki.org/emacs/AutoInsertMode
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode) ;; use ` in math mode
+
+
+  (setq TeX-parse-self t ; Enable parse on load
+        ; TeX-auto-save t ; Enable parse on save
+	TeX-quote-after-quote nil
+	LaTeX-german-quote-after-quote nil
+        TeX-electric-sub-and-superscript t
+	LaTeX-babel-hyphen nil)
+  ;; (setq TeX-master nil)
+  (message "AUCTeX stuff setup...")
+  )
+
+(defun setup-lua-mode ()
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+  (message "Lua stuff setup...")
+  )
+
+(defun setup-yaml-mode ()
+  (require 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+  (message "YAML stuff setup...")
+  )
+
+(defun setup-ocaml-mode ()
+  ;; (add-to-list 'auto-mode-alist '("\\.ml[iylp]?$" . caml-mode))
+  ;; (autoload 'caml-mode "caml" "Major mode for editing Caml code." t)
+  ;; (autoload 'run-caml "inf-caml" "Run an inferior Caml process." t)
+  ;; (if window-system (require 'caml-font))
+
+  ;; Now using tuareg mode
+  (add-to-list 'auto-mode-alist '("\\.ml[iylp]?" . tuareg-mode))
+  (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code." t)
+  (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+  (message "OCaml stuff setup...")
+  )
+
+(defun setup-auto-insert-mode ()
+  (auto-insert-mode)
+  (setq auto-insert-directory "~/.templates/")
+  (setq auto-insert-query nil) ;; disable insertion prompt
+  (define-auto-insert "\.tex" "latextemplate.tex")
+  (define-auto-insert "\.Rnw" "latextemplate.Rnw")
+)
+
+(progn
+  (toolbars-off)
+  (setup-keys)
+  (setup-ESS)
+  (setup-js)
+  (setup-auctex)
+  (setup-lua-mode)
+  (setup-ocaml-mode)
+  (setup-yaml-mode)
+  (setup-aliases)
+  (setup-org-mode)
+  (setup-auto-insert-mode)
+  (display-time)
+
+  (add-to-list 'auto-mode-alist '("\\.nw" . tex-mode))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (column-number-mode 1)
+)
+
+;; (if (string-equal "darwin" (symbol-name system-type))
+;;     (setenv "PATH" (getenv "PATH")))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(default-frame-alist (quote ((height . 50) (left . 630))))
+ '(display-time-24hr-format t)
+ '(display-time-day-and-date t)
+ '(display-time-format "[ %m-%d %H:%M ]")
+ '(global-hl-line-mode 1)
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(ns-command-modifier (quote meta))
+ '(org-confirm-babel-evaluate nil)
+ '(org-table-export-default-format "orgtbl-to-csv")
+ '(require-final-newline t)
+ '(scroll-step 15)
+ '(show-paren-mode t)
+ '(show-trailing-whitespace t)
+ '(track-eol t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "Blue"))))
+ '(trailing-whitespace ((t (:background "gray")))))
