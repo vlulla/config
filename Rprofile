@@ -23,7 +23,7 @@ day.abb <- substr(day.name,1,3)
 
 qn <- function() quit('no')
 cd <- function(dir="~") setwd(dir)
-print.data.frame <- data.table:::print.data.table ## data.table *is* data.frame so we use its print method which, IMO, is much more useful for printing data.frame too!!
+## print.data.frame <- data.table:::print.data.table ## data.table *is* data.frame so we use its print method which, IMO, is much more useful for printing data.frame too!!
 
 ## saner printing of sf objects!
 print.sf <- function(x, ..., n = ifelse(options("max.print")[[1]] == 99999, 20, options("max.print")[[1]])) {
@@ -175,6 +175,9 @@ fixcolnames <- normalize_string <- function(x,lowercase=FALSE) {
 }
 
 num_unique <- function(x) length(unique(x))
+showpaths <- pathcomponents <- function(path=Sys.getenv("PATH")) {
+  unlist(strsplit(path, .Platform$path.sep))
+}
 
 totitle <- function(x,USE.NAMES=FALSE) {
   s <- sapply(x, function(x) strsplit(x,"\\s",perl=TRUE,fixed=FALSE))

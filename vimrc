@@ -107,7 +107,7 @@ autocmd WinEnter * set cursorline cursorcolumn
 autocmd FileType c,cs,cpp,java set cindent expandtab fo=tcrq tw=78 cinoptions=(0 tabstop=4
 autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType j set tw=0
-autocmd FileType java set makeprg=java\ \"%\"
+autocmd FileType java set makeprg=javac\ \"%\"
 autocmd FileType lilypond set makeprg=~/Applications/Lilypond.app/Contents/Resources/bin/lilypond\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
 autocmd FileType make set noexpandtab sw=8 ts=8 sts=8
@@ -268,4 +268,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.06.06 16:41:02-0400
+" Last modified: 2017.06.10 21:25:34-0400
