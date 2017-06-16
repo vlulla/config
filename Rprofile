@@ -50,7 +50,7 @@ sweavepdf <- function(file, ...) {
 ####     ## See http://adv-r.had.co.nz/Computing-on-the-language.html#calling-from-another-function
 ####     ##
 ####     ## Still don't know how to fix this!  2016.06.10
-####     
+####
 ####     ischar <- tryCatch(is.character(pkg) && length(pkg) == 1L, error=identity)
 ####     pkg <- substitute(pkgname)
 ####     if (inherits(ischar, "error")) ischar <- FALSE
@@ -179,6 +179,18 @@ showpaths <- pathcomponents <- function(path=Sys.getenv("PATH")) {
   unlist(strsplit(path, .Platform$path.sep))
 }
 
+functions_to_learn_this_session <- local({
+  last_seen <- NA ; fns_to_learn <- c()
+  function() {
+    if(is.na(last_seen) | Sys.Date() > last_seen) {
+      fns_to_learn <<- sample(c(ls("package:base"), ls("package:utils")), 5)
+    }
+    last_seen <<- Sys.Date()
+    cat("R-Trivia: Do you know these following functions?\n")
+    invisible(sapply(fns_to_learn, function(x) cat(paste(x, "\n"))))
+  }
+})
+
 totitle <- function(x,USE.NAMES=FALSE) {
   s <- sapply(x, function(x) strsplit(x,"\\s",perl=TRUE,fixed=FALSE))
   s <- sapply(s, function(s) paste(gsub("(.)(.*)","\\U\\1\\E\\2",s,perl=TRUE), collapse=" "))
@@ -218,6 +230,7 @@ if (interactive()) {
     ## suppressPackageStartupMessages(require(knitr))
     ## suppressPackageStartupMessage(require(ff))
     ## invisible(enableJIT(3))  ## ?compiler::compile ## causes problems!  2015.11.14
+    functions_to_learn_this_session()
 }
 }, env=.vl_env)
 attach(.vl_env)
