@@ -187,7 +187,7 @@ functions_to_learn_this_session <- local({
     }
     last_seen <<- Sys.Date()
     cat("R-Trivia: Do you know these following functions?\n")
-    invisible(sapply(fns_to_learn, function(x) cat(paste(x, "\n"))))
+    invisible(cat(paste(seq_along(fns_to_learn), fns_to_learn, sep=". "), sep="\n"))
   }
 })
 
