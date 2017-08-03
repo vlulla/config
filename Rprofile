@@ -83,7 +83,7 @@ options(datatable.print.class=TRUE
       ## , digits=3
       , digits.secs=2
       , editor="vi"
-      , error=utils::recover
+      , error=quote(dump.frames("Rerrordump", TRUE, TRUE))
       , expressions=2000
       , help.try.all.packages=TRUE
       , locatorBell=FALSE
@@ -231,6 +231,7 @@ if (interactive()) {
     ## suppressPackageStartupMessage(require(ff))
     ## invisible(enableJIT(3))  ## ?compiler::compile ## causes problems!  2015.11.14
     functions_to_learn_this_session()
+    options(error=utils::recover)
 }
 }, env=.vl_env)
 attach(.vl_env)
