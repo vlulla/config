@@ -83,7 +83,7 @@ options(datatable.print.class=TRUE
       ## , digits=3
       , digits.secs=2
       , editor="vi"
-      , error=quote(dump.frames("Rerrordump", TRUE, TRUE))
+      , error=quote({dump.frames(to.file=TRUE, include.GlobalEnv=TRUE); q(save="yes", status=1); })
       , expressions=2000
       , help.try.all.packages=TRUE
       , locatorBell=FALSE
