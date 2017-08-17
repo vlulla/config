@@ -83,7 +83,8 @@ options(datatable.print.class=TRUE
       ## , digits=3
       , digits.secs=2
       , editor="vi"
-      , error=quote({dump.frames(to.file=TRUE, include.GlobalEnv=TRUE); q(save="yes", status=1); })
+      ## , error=quote({dump.frames(to.file=TRUE, include.GlobalEnv=TRUE); q(save="yes", status=1); })
+      , error=utils::recover
       , expressions=2000
       , help.try.all.packages=TRUE
       , locatorBell=FALSE
@@ -183,7 +184,8 @@ functions_to_learn_this_session <- local({
   last_seen <- NA ; fns_to_learn <- c()
   function() {
     if(is.na(last_seen) | Sys.Date() > last_seen) {
-      fns_to_learn <<- sample(c(ls("package:base"), ls("package:utils")), 5)
+      fns_to_learn <<- sample(c(ls("package:base"), ls("package:utils"),
+                                ls("package:stats"), ls("package:MASS")), 5)
     }
     last_seen <<- Sys.Date()
     cat("R-Trivia: Do you know these following functions?\n")
