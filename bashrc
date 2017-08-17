@@ -5,7 +5,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 gitinfo() {
-  BRANCH=`git branch 2>/dev/null | sed -s -e 's/^* //g'`
+  BRANCH=`git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/^* \(.*\)/\1/'`
   if [ "${BRANCH}" = "" ]
   ## if [ -z $BRANCH ]  ## This also works.
   then
