@@ -6,7 +6,7 @@ set autoread
 set autowrite
 " set background=light
 
-set backspace=eol,start,indent 
+set backspace=eol,start,indent
 set cinoptions=(0
 set cmdheight=2
 set colorcolumn=80
@@ -28,7 +28,7 @@ set incsearch
 set laststatus=2
 set lazyredraw " Don't display macro steps
 set listchars=tab:>-,trail:.,eol:$
-set matchtime=2 
+set matchtime=2
 set modelines=5 " Mac's default vim sets it to 0??
 set more
 set nobackup
@@ -74,7 +74,8 @@ set wildmode=list:longest,full
 set statusline=%t%H-%m-%R-%Y-%=%{&fileformat}-[d:%03b\ h:0x%02B]-[L:%l,C:%v]\ [%p%%]
 
 set swapsync=sync
-set vb t_vb= " silence the bell
+autocmd GUIEnter * set vb t_vb= " silence the bell
+autocmd VimEnter * set vb t_vb= " silence the bell
 
 if has("syntax")
   " syntax on
@@ -117,12 +118,12 @@ autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
 autocmd FileType scala set makeprg=scala\ \"%\"
 autocmd FileType sql set syntax=OFF
 
-let mapleader="," 
-" let mapleader="\<Space>" 
+let mapleader=","
+" let mapleader="\<Space>"
 " Saw the above on http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 
 " Allow normal use of "," by pressing it twice  from https://github.com/begriffs/vimrc/blob/master/.vimrc
-noremap ,, , 
+noremap ,, ,
 
 map <silent> <leader><CR> :nohls<CR>
 nnoremap <leader>t yyPVr=jpVr=j
@@ -153,7 +154,7 @@ map <leader>so :so %<CR>
 
 nnoremap <leader>z ^i/* A */
 " imap <leader>z <Esc>,z i
-nnoremap <leader>// ^i// 
+nnoremap <leader>// ^i//
 " imap <leader>// <Esc>,// <Esc>
 
 " Some more useful ideas from Markus Motl's vimrc
@@ -268,4 +269,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.06.10 21:25:34-0400
+" Last modified: 2017.09.08 14:23:12-0400
