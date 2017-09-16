@@ -182,6 +182,13 @@ map <C-p> :cprev<CR>
 imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 
+" Excellent ew/es/ev/et mappings from http://vimcasts.org/episodes/the-edit-command/
+cnoremap %% <C-R>=fnameescape(expand('%:p:h'))<cr>
+map <leader>ew :edit %%
+map <leader>es :split %%
+map <leader>ev :vsplit %%
+map <leader>et :tabedit %%
+
 " map <CR> <ESC>:nohls<CR>
 
 " Good idea from http://amix.dk/vim/vimrc.txt
@@ -269,4 +276,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.09.08 14:23:12-0400
+" Last modified: 2017.09.16 09:19:49-0400
