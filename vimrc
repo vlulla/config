@@ -203,6 +203,7 @@ inoremap <F8> <nop>
 set pastetoggle=<F8>
 " set pastetoggle=<F2> " From Markus Motl's vimrc file!
 
+" AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
 nnoremap <F10> "=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>P
 inoremap <F9> <C-R>=strftime("%Y.%m.%d")<CR>
@@ -276,4 +277,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.09.16 09:19:49-0400
+" Last modified: 2017.09.21 17:27:36-0400
