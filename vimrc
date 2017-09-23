@@ -91,7 +91,9 @@ runtime! synmenu.vim
 " let loaded_matchparen=1
 
 " Change diretories automatically " From Markus Motl's vimrc
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
+" Above interferes with :find and path variable.  Just stay in top directory
+" and use :find to look for files.
 
 " autocmd BufWritePost * mkview
 " autocmd BufRead * silent loadview
@@ -278,4 +280,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.09.23 00:45:00-0400
+" Last modified: 2017.09.23 00:58:13-0400
