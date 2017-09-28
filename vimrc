@@ -192,6 +192,14 @@ map <leader>es :split %%
 map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
+" Great idea from http://howivim.com/2016/damian-conway/
+nmap <expr> M ':%s@' . @/ . '@@g<LEFT><LEFT>'
+nmap <silent> ;v :next $MYVIMRC<CR>
+augroup VimReload
+  autocmd!
+  autocmd BufWritePost  $MYVIMRC source $MYVIMRC
+augroup END
+
 " map <CR> <ESC>:nohls<CR>
 
 " Good idea from http://amix.dk/vim/vimrc.txt
@@ -280,4 +288,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.09.23 00:58:13-0400
+" Last modified: 2017.09.28 18:05:26-0400
