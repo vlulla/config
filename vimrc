@@ -104,6 +104,7 @@ autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent 
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
+autocmd BufWinEnter * call ClearSynatx()
 
 autocmd WinLeave * set nocursorline nocursorcolumn
 autocmd WinEnter * set cursorline cursorcolumn
@@ -119,7 +120,7 @@ autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
 autocmd FileType scala set makeprg=scala\ \"%\"
-autocmd FileType sql set syntax=OFF
+" autocmd FileType sql set syntax=OFF
 
 let mapleader=","
 " let mapleader="\<Space>"
@@ -262,6 +263,22 @@ function! VisualSelection(direction) range
   let @" = l:saved_reg
 endfunction
 
+" Idea from https://vi.stackexchange.com/a/10456
+function ClearSyntax()
+  syntax on
+  let syn = split(execute('syntax lis'), "\n")[1:]
+  call filter(syn, {k,v -> match(v, '^\w') > -1})
+  call map(syn, {k,v -> split(v)[0]})
+  for i in syn
+    if match(i, '\c\mcomment') == -1
+      try
+        exe 'syntax clear ' i
+      catch /^Vim\%((\a\+\)\=:E28/
+      endtry
+    endif
+  endfor
+endfunction
+
 
 " Some abbreviations
 iab #d #define
@@ -288,4 +305,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.09.28 18:05:26-0400
+" Last modified: 2017.10.12 12:42:13-0400
