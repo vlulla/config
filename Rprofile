@@ -92,6 +92,7 @@ options(datatable.print.class=TRUE
       ## , max.print=800
       , mc.cores = parallel::detectCores()
       # , prompt="R=> "  # Causes problems with ESS
+      , Ncpus = parallel::detectCores() - 2
       , repos=structure(c(CRAN="https://ftp.ussg.iu.edu/CRAN/"))
       , useFancyQuotes=FALSE # causes problems with LaTeX
       ## , warnPartialMatchArgs=TRUE  ## Causes lots of warnings!
@@ -125,7 +126,7 @@ setHook(packageEvent("tuneR", "onLoad"), function(...) options(WavPlayer="/Users
     names <- ls(pos=pos, pattern=pattern)
     if (length(names)==0) return(character(0))
     obj.class <- napply(names, function(x) as.character(class(x))[1])
-    obj.mode <- napply(names, mode)
+    obj.mode <- napply(names, base::mode)
     obj.type <- ifelse(is.na(obj.class), obj.mode, obj.class)
     obj.size <- napply(names, function(x) {
                         l <- capture.output(print(object.size(x), units="auto"))
