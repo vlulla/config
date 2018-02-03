@@ -266,7 +266,7 @@ endfunction
 " Idea from https://vi.stackexchange.com/a/10456
 function ClearSyntax()
   syntax on
-  let syn = split(execute('syntax lis'), "\n")[1:]
+  let syn = split(execute('syntax list'), "\n")[1:]
   call filter(syn, {k,v -> match(v, '^\w') > -1})
   call map(syn, {k,v -> split(v)[0]})
   for i in syn
@@ -304,5 +304,3 @@ filetype off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
-" ---------------------------------------
-" Last modified: 2018.02.02 19:40:30-0400
