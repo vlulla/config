@@ -34,9 +34,9 @@ set more
 set nobackup
 set nostartofline
 set nowritebackup
-set number
+" set number
 set path+=**
-set relativenumber
+" set relativenumber
 set ruler
 set noscrollbind " Buffers scroll independently....need this!
 set wrap
@@ -305,4 +305,4 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
 " ---------------------------------------
-" Last modified: 2017.10.12 12:42:13-0400
+" Last modified: 2018.02.02 19:40:30-0400
