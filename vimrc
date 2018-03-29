@@ -209,16 +209,21 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
 " Line numbers are useful for debugging.  Enable toggling line numbers.
-nnoremap <F6> :set invnumber<CR>
-inoremap <F6> <C-O>:set invnumber<CR>
+nnoremap <F6> :set invnumber number?<CR>
+imap <F6> <C-O><F6>
 
 " From :help pastetoggle
-nnoremap <F7> :set paste<CR>
-nnoremap <F8> :set nopaste<CR>
-inoremap <F7> <C-O>:set paste<CR>
-inoremap <F8> <nop>
-set pastetoggle=<F8>
+" nnoremap <F7> :set paste<CR>
+" nnoremap <F8> :set nopaste<CR>
+" inoremap <F7> <C-O>:set paste<CR>
+" inoremap <F8> <nop>
+" set pastetoggle=<F8>
 " set pastetoggle=<F2> " From Markus Motl's vimrc file!
+
+" Neat idea from https://www.ukuug.org/events/linux2004/programme/paper-SMyers/Linux_2004_slides/vim_tips/
+nnoremap <F7> :set invpaste paste?<CR>
+imap <F7> <C-O><F7>
+set pastetoggle=<F5>
 
 " AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
