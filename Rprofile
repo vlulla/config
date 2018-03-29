@@ -200,6 +200,34 @@ totitle <- function(x,USE.NAMES=FALSE) {
   s
 }
 
+theme_vl <- function(base_size=12) {
+  bg_color="#f0f0f0"
+  bg_rect=element_rect(fill=bg_color, color=bg_color)
+
+  theme_bw(base_size=base_size) +
+    theme(
+      plot.title=element_text(hjust=0.5,size=rel(1.5),face="bold"), # family=title_font_family),
+      plot.subtitle=element_text(size=rel(1.1), lineheight=1.1, hjust=0.5),
+      plot.caption=element_text(size=rel(0.7), margin=unit(c(1,0,0,0), "lines"), lineheight=1.1, color="#555555"),
+      ## plot.background=element_rect(color="black",size=1),
+      plot.margin=margin(1,1,0.2,0.2,'cm'),
+      ## axis.ticks=element_blank(),
+      axis.text.x=element_text(size=rel(1), color="black"),
+      axis.title.x=element_text(size=rel(1)),
+      axis.text.y=element_text(size=rel(1),color="black"),
+      axis.title.y=element_text(size=rel(1)),
+      ## panel.background=bg_rect,
+      panel.border=element_rect(fill=NA,color="black"),
+      panel.grid.major=element_line(color="grey80", size=0.10),
+      panel.grid.minor=element_line(color="grey80", size=0.05),
+      panel.spacing=unit(1.25,"lines"),
+      legend.background=bg_rect,
+      legend.key.width=unit(1.5,"line"),
+      ## legend.key=element_blank(),
+      strip.background=element_blank()
+    )
+}
+
 withOptions <- function(optlist, expr) {
   ## See the subsection ``Deep End'' on http://www.burns-stat.com/the-options-mechanism-in-r/
   oldopt <- options(optlist)
