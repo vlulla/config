@@ -39,6 +39,7 @@ set path+=**
 " set relativenumber
 set ruler
 set noscrollbind " Buffers scroll independently....need this!
+set nrformats+=alpha " :help CTRL-A  OR :help nrformats
 set wrap
 set scrolloff=2
 set sidescrolloff=3
@@ -206,6 +207,10 @@ augroup END
 " Good idea from http://amix.dk/vim/vimrc.txt
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+
+" Line numbers are useful for debugging.  Enable toggling line numbers.
+nnoremap <F6> :set invnumber<CR>
+inoremap <F6> <C-O>:set invnumber<CR>
 
 " From :help pastetoggle
 nnoremap <F7> :set paste<CR>
