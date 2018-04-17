@@ -223,7 +223,7 @@ imap <F6> <C-O><F6>
 " Neat idea from https://www.ukuug.org/events/linux2004/programme/paper-SMyers/Linux_2004_slides/vim_tips/
 nnoremap <F7> :set invpaste paste?<CR>
 imap <F7> <C-O><F7>
-set pastetoggle=<F5>
+set pastetoggle=<F7>
 
 " AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
