@@ -202,6 +202,12 @@ augroup VimReload
   autocmd BufWritePost  $MYVIMRC source $MYVIMRC
 augroup END
 
+" highlight trailing white space!
+highlight TrailingWhiteSpace ctermbg=Grey guibg=LightRed
+match TrailingWhiteSPace /\s\+$/
+" Delete trailing white space before writing
+autcomd BufWritePre * :%s@\s\+$@@e
+
 " map <CR> <ESC>:nohls<CR>
 
 " Good idea from http://amix.dk/vim/vimrc.txt
