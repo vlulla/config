@@ -148,6 +148,7 @@ lsos <- .ls.objects <- function(pos=1, pattern, order.by , decreasing=FALSE, hea
         out <- out[order(sizes, decreasing=decreasing),]
       } else {
         out <- out[order(out[[order.by]], decreasing=decreasing),]
+      }
     }
     if (head) out <- head(out, n)
     out
