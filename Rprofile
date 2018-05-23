@@ -121,7 +121,7 @@ setHook(packageEvent("tuneR", "onLoad"), function(...) options(WavPlayer="/Users
 ##
 ## See http://stackoverflow.com/questions/1358003/tricks-to-manage-the-available-memory-in-an-r-session
 ##
-.ls.objects <- function(pos=1, pattern, order.by , decreasing=FALSE, head=FALSE, n=5) {
+lsos <- .ls.objects <- function(pos=1, pattern, order.by , decreasing=FALSE, head=FALSE, n=5) {
     napply <- function(names, fn) sapply(names, function(x) fn(get(x, pos=pos)))
     names <- ls(pos=pos, pattern=pattern)
     if (length(names)==0) return(character(0))
@@ -139,13 +139,22 @@ setHook(packageEvent("tuneR", "onLoad"), function(...) options(WavPlayer="/Users
     out <- data.frame(obj.type, obj.size, obj.dim)
     names(out) <- c("Type", "Size", "Rows", "Columns")
 
-    if (!missing(order.by)) out <- out[order(out[[order.by]], decreasing=decreasing),]
+    if (!missing(order.by)) {
+      if (order.by=="Size") {
+        ## This is to fix the obj.size issues!
+        ## Try eh following to see the issue:
+        ## m <- mtcars; m2 <- rbind(m,m); x <- 1:3; lsos(order.by="Size")
+        sizes <- napply(names, sizes)
+        out <- out[order(sizes, decreasing=decreasing),]
+      } else {
+        out <- out[order(out[[order.by]], decreasing=decreasing),]
+    }
     if (head) out <- head(out, n)
     out
 }
 
 # lsos <- function(..., n=10) .ls.objects(..., order.by="Size", decreasing=TRUE, head=TRUE, n=n)
-lsos <- function(..., n=10) .ls.objects(..., order.by="Size", decreasing=TRUE, n=n)
+# lsos <- function(..., n=10) .ls.objects(..., order.by="Size", decreasing=TRUE, n=n)
 
 updatepkgs <- my.update.packages <- function(...) {
     ## local({r <- getOption("repos");
