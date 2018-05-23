@@ -144,7 +144,7 @@ lsos <- .ls.objects <- function(pos=1, pattern, order.by , decreasing=FALSE, hea
         ## This is to fix the obj.size issues!
         ## Try eh following to see the issue:
         ## m <- mtcars; m2 <- rbind(m,m); x <- 1:3; lsos(order.by="Size")
-        sizes <- napply(names, sizes)
+        sizes <- napply(names, object.size)
         out <- out[order(sizes, decreasing=decreasing),]
       } else {
         out <- out[order(out[[order.by]], decreasing=decreasing),]
