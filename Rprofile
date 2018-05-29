@@ -154,6 +154,17 @@ lsos <- .ls.objects <- function(pos=1, pattern, order.by , decreasing=FALSE, hea
     out
 }
 
+## Column Details of a Data Frame
+## ^^^    ^^^^^^^      ^    ^
+colDetails <- function(DF) {
+  colclasses <- function(x) paste(class(x), collapse=", ")
+  columnnames <- colnames(DF)
+  columnclasses <- sapply(DF, colclasses)
+  columnidx <- seq_along(DF)
+
+  data.frame(ColumnName=columnnames, ColumnClass=columnclasses, ColumnIndex=columnidx)
+}
+
 # lsos <- function(..., n=10) .ls.objects(..., order.by="Size", decreasing=TRUE, head=TRUE, n=n)
 # lsos <- function(..., n=10) .ls.objects(..., order.by="Size", decreasing=TRUE, n=n)
 
