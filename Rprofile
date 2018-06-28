@@ -287,6 +287,7 @@ if (interactive()) {
     options(error=utils::recover)
 }
 }, env=.vl_env)
+## local(source("~/code/R/utils.R", local=.vl_env), envir=.vl_env)  ## Super useful!!
 attach(.vl_env)
 Sys.setenv(MAKEFLAGS = "-j4")
 
