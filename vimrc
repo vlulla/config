@@ -142,17 +142,18 @@ let mapleader=","
 noremap ,, ,
 
 map <silent> <leader><CR> :nohls<CR>
-nnoremap <leader>t yyPVr=jpVr=j
+" Don't use it as much as I thought I would! 2019.01.13
+" nnoremap <leader>t yyPVr=jpVr=j
 " inoremap <leader>t <Esc>kyyPVr=jpVr=o
 " <leader>N where N is the heading level
 " Below are for setting section decorators for reStructuredText
-nnoremap <leader>1 yypVr=j
-nnoremap <leader>2 yypVr-j
-nnoremap <leader>3 yypVr`j
-nnoremap <leader>4 yypVr'j
-nnoremap <leader>5 yypVr.j
-nnoremap <leader>6 yypVr~j
-nnoremap <leader>7 yypVr*j
+" nnoremap <leader>1 yypVr=j
+" nnoremap <leader>2 yypVr-j
+" nnoremap <leader>3 yypVr`j
+" nnoremap <leader>4 yypVr'j
+" nnoremap <leader>5 yypVr.j
+" nnoremap <leader>6 yypVr~j
+" nnoremap <leader>7 yypVr*j
 " Only used below if you're doing markdown!  Everywhere else it is annoying!
 " inoremap <leader>1 <Esc>kyypVr=j
 " inoremap <leader>2 <Esc>yypVr-j
@@ -162,10 +163,13 @@ nnoremap <leader>7 yypVr*j
 " inoremap <leader>6 <Esc>yypVr~j
 " inoremap <leader>7 <Esc>yypVr*j
 
+" From http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
+inoremap jk <esc>
+
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>h :split<CR>
 
-map <leader>so :so %<CR>
+" map <leader>so :so %<CR>
 " imap <leader>so <Esc>,so i
 
 nnoremap <leader>z ^i/* A */
@@ -180,7 +184,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>st :st<CR>
-nnoremap <leader>p :exec '!python' shellescape(@%,1)<cr>
+" nnoremap <leader>p :exec '!python' shellescape(@%,1)<cr>
 
 
 " From http://rayninfo.co.uk/vimtips.html
@@ -199,25 +203,26 @@ imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 
 " Excellent ew/es/ev/et mappings from http://vimcasts.org/episodes/the-edit-command/
-cnoremap %% <C-R>=fnameescape(expand('%:p:h'))<cr>
+cnoremap %% <C-R>=fnameescape(expand('%:p:h')).'/'<cr>
 map <leader>ew :edit %%
 map <leader>es :split %%
 map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
 " Great idea from http://howivim.com/2016/damian-conway/
-nmap <expr> M ':%s@' . @/ . '@@g<LEFT><LEFT>'
+nmap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
 nmap <silent> ;v :next $MYVIMRC<CR>
 augroup VimReload
   autocmd!
-  autocmd BufWritePost  $MYVIMRC source $MYVIMRC
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-" highlight trailing white space!
-highlight TrailingWhiteSpace ctermbg=Grey guibg=LightRed
-match TrailingWhiteSPace /\s\+$/
+""" Don't need these since I delete trailing whitespaces before writing!
+""" " highlight trailing white space!
+""" highlight TrailingWhiteSpace ctermbg=Grey guibg=LightRed
+""" match TrailingWhiteSpace /\s\+$/
 " Delete trailing white space before writing
-autcomd BufWritePre * :%s@\s\+$@@e
+autocmd BufWritePre * :%s@\s\+$@@e
 
 " map <CR> <ESC>:nohls<CR>
 
@@ -227,9 +232,12 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 
 " Line numbers are useful for debugging.  Enable toggling line numbers.
 nnoremap <F6> :set invnumber number?<CR>
-imap <F6> <C-O><F6>
+inoremap <F6> <C-O>:set invnumber number?<CR>
 nnoremap <F3> :set invwrap wrap?<CR>
-inoremap <F3> <C-O>:set invwrap wrap?<CR>
+" inoremap <F3> <C-O>:set invwrap wrap?<CR>
+imap <F3> <C-O><F3>
+nnoremap <F5> :set invhls hls?<CR>
+imap <F5> <C-O><F5>
 
 " From :help pastetoggle
 " nnoremap <F7> :set paste<CR>
@@ -293,16 +301,16 @@ function! VisualSelection(direction) range
 endfunction
 
 " Idea from https://vi.stackexchange.com/a/10456
-function ClearSyntax()
+function! ClearSyntax()
   syntax on
   let syn = split(execute('syntax list'), "\n")[1:]
-  call filter(syn, {k,v -> match(v, '^\w') > -1})
+  call filter(syn, {k,v -> match(v, '^\v') > -1})
   call map(syn, {k,v -> split(v)[0]})
   for i in syn
     if match(i, '\c\mcomment') == -1
       try
         exe 'syntax clear ' i
-      catch /^Vim\%((\a\+\)\=:E28/
+      catch /E28/
       endtry
     endif
   endfor
