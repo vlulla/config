@@ -9,11 +9,11 @@ set autowrite
 set backspace=eol,start,indent
 set cinoptions=(0
 set cmdheight=2
-set colorcolumn=80
+" set colorcolumn=80
 set complete-=t     " no tag search
 set cpoptions+=JW
-set cursorcolumn
-set cursorline
+" set cursorcolumn
+" set cursorline
 " set display=lastline,uhex
 set display=lastline
 set esckeys
@@ -23,11 +23,11 @@ set foldmethod=marker
 set formatoptions=tcroqn1j
 set history=10000
 set hlsearch
-set ignorecase
+" set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw " Don't display macro steps
-set listchars=tab:>-,trail:.,eol:$
+set listchars=tab:>-,trail:.,eol:$,precedes:<,extends:>
 set matchtime=2
 set modelines=5 " Mac's default vim sets it to 0??
 set more
@@ -40,14 +40,15 @@ set path+=**
 set ruler
 set noscrollbind " Buffers scroll independently....need this!
 set nrformats+=alpha " :help CTRL-A  OR :help nrformats
-set wrap
+set nowrap
 set scrolloff=2
 set sidescrolloff=3
 set shiftwidth=2
-set showcmd
+" set showcmd
 set showmatch
 set showmode
 set sidescrolloff=3
+set smartcase
 " set smartindent
 set smarttab
 " set softtabstop=4
@@ -69,11 +70,12 @@ set wildmode=list:longest,full
 " set fileencoding=utf-8
 
 "" if exists("*strftime")
-""   set statusline=%t%H-%m-%R-%y-%{strftime('%Y.%m.%d-%H:%M')\ }-%=\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
+""   set statusline=%t-%m-%R-%y-%{strftime('%Y.%m.%d-%H:%M')\ }-%=\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
 "" else
-""   set statusline=%t%H-%m-%R-%Y-%=-\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
+""   set statusline=%t-%m-%R-%Y-%=-\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
 "" endif
-set statusline=%t%H-%m-%R-%Y-%=%{&fileformat}-[d:%03b\ h:0x%02B]-[L:%l,C:%v]\ [%p%%]
+set statusline=%t-%m-%R-%Y-%=[%{&fileformat}]-[d:%03b\ h:0x%02B]-[L:%3l,C:%3v]-[%3p%%]
+highlight StatusLine cterm=bold
 
 set swapsync=sync
 autocmd GUIEnter * set vb t_vb= " silence the bell
@@ -105,10 +107,19 @@ autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent 
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
-autocmd BufWinEnter * call ClearSynatx()
+" autocmd BufWinEnter * call ClearSyntax()
 
-autocmd WinLeave * set nocursorline nocursorcolumn
-autocmd WinEnter * set cursorline cursorcolumn
+" See :help template
+autocmd BufNewFile *.tex  0r ~/code/vim_emacs/vim_templates/latextemplate.tex
+autocmd BufNewFile *.Rnw  0r ~/code/vim_emacs/vim_templates/sweavetemplate.Rnw
+autocmd BufNewFile *.ly  0r ~/code/vim_emacs/vim_templates/lilypondtemplate.ly
+autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
+autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
+autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
+autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
+
+""" autocmd WinLeave * set nocursorline nocursorcolumn
+""" autocmd WinEnter * set cursorline cursorcolumn
 
 autocmd FileType c,cs,cpp,java set cindent expandtab fo=tcrq tw=78 cinoptions=(0 tabstop=4
 autocmd FileType gitcommit setlocal spell tw=72
@@ -239,12 +250,12 @@ nnoremap <F10> "=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>P
 inoremap <F9> <C-R>=strftime("%Y.%m.%d")<CR>
 inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
-hi Search term=bold ctermfg=white ctermbg=red
+" hi Search term=bold ctermfg=white ctermbg=red
 " hi Visual term=reverse cterm=reverse
-hi StatusLine term=bold cterm=bold gui=bold
+" hi StatusLine term=bold cterm=bold gui=bold
 " hi LineNr ctermfg=lightgray cterm=reverse
-hi CursorLine term=reverse ctermbg=15 ctermfg=0 cterm=NONE
-hi CursorColumn term=reverse ctermbg=15 ctermfg=0 cterm=NONE
+" hi CursorLine term=reverse ctermbg=15 ctermfg=0 cterm=NONE
+" hi CursorColumn term=reverse ctermbg=15 ctermfg=0 cterm=NONE
 " hi MatchParen ctermbg=none cterm=reverse
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
