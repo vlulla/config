@@ -1,0 +1,16 @@
+-- Comments start with --
+--
+-- File location:
+--     Linux: ~/.psqlrc
+--     Windows: %AppData%/postgresql/psqlrc.conf
+
+\timing on
+
+-- Find the variables you can set in documentation of `psql` under PostgreSQL Client Applications
+-- in the manual (part VI. Reference)
+\set COMP_KEYWORD_CASE 'upper'
+\set ECHO 'errors'
+\set ECHO_HIDDEN 'on'
+\set HISTCONTROL 'ignoreboth'
+
+
