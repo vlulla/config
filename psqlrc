@@ -13,4 +13,5 @@
 \set ECHO_HIDDEN 'on'
 \set HISTCONTROL 'ignoreboth'
 
-
+SET DateStyle='ISO, MDY';
+SET IntervalStyle='iso_8601';
