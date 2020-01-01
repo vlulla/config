@@ -66,6 +66,7 @@ default_options <- options()
 options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       , datatable.print.nrows=30
       , datatable.print.topn=5
+      , datatable.print.trunc.cols = TRUE
       ## , datatable.verbose=TRUE
       , defaultPackages=c(options()$defaultPackages, "tools")
       ## , digits=3
