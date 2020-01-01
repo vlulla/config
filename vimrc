@@ -109,14 +109,19 @@ autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
-" See :help template
-autocmd BufNewFile *.tex  0r ~/code/vim_emacs/vim_templates/latextemplate.tex
-autocmd BufNewFile *.Rnw  0r ~/code/vim_emacs/vim_templates/sweavetemplate.Rnw
-autocmd BufNewFile *.ly  0r ~/code/vim_emacs/vim_templates/lilypondtemplate.ly
-autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
-autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
-autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
-autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
+augroup Skeleton
+    autocmd!
+    " See :help template
+    autocmd BufNewFile *.tex  0r ~/code/vim_emacs/vim_templates/latextemplate.tex
+    autocmd BufNewFile *.Rnw  0r ~/code/vim_emacs/vim_templates/sweavetemplate.Rnw
+    autocmd BufNewFile *.ly  0r ~/code/vim_emacs/vim_templates/lilypondtemplate.ly
+    autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
+    autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
+    autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
+    autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
+    autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
+    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.py,*.go set modified
+augroup END
 
 """ autocmd WinLeave * set nocursorline nocursorcolumn
 """ autocmd WinEnter * set cursorline cursorcolumn
