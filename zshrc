@@ -132,8 +132,8 @@ fi
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-setopt histignorealldups sharehistory
-
+## use setopt all by itself to see what zshoptions are different from default
+setopt histignorealldups sharehistory histreduceblanks
 
 ## Zsh options
 ### Completion
