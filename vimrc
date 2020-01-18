@@ -11,6 +11,7 @@ set cinoptions=(0
 set cmdheight=2
 " set colorcolumn=80
 set complete-=t     " no tag search
+set completeopt=longest,menuone
 set cpoptions+=JW
 " set cursorcolumn
 " set cursorline
@@ -33,6 +34,7 @@ set modelines=5 " Mac's default vim sets it to 0??
 set more
 set nobackup
 set nostartofline
+set noswapfile
 set nowritebackup
 " set number
 set path+=**
@@ -44,7 +46,7 @@ set nowrap
 set scrolloff=2
 set sidescrolloff=3
 set shiftwidth=2
-" set showcmd
+set showcmd
 set showmatch
 set showmode
 set sidescrolloff=3
@@ -53,6 +55,8 @@ set smartcase
 set smarttab
 " set softtabstop=4
 set softtabstop=2
+set splitright
+set splitbelow
 set textwidth=0
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
 " set nowrapscan
@@ -62,6 +66,17 @@ set viminfo='200,f1,<100,h,/50,:50
 
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=.git,.svn,.hg
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.jpg,*.bmp,*.png,*.tif,*.jpeg
+set wildignore+=*.o,*.obj,*.a,*.exe,*.dll,*.manifest
+set wildignore+=*.spl
+set wildignore+=*.sw?
+set wildignore+=*.DS_Store
+set wildignore+=*.luac
+set wildignore+=*.pyc
+set wildignore+=*.orig
+
 
 " Doesn't work on my Mac OSX
 " Use UTF-8
@@ -109,6 +124,14 @@ autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
+autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4 spell
+autocmd BufRead,BufNewFile *.md setlocal noet ts=4 sw=4 sts=4 spell
+autocmd BufRead,BufNewFile *.Rmd setlocal noet ts=4 sw=4 sts=4 spell
+
+" Cursorcolumn is helpful with yml files!
+autocmd FileType yaml set cursorcolumn
+autocmd BufWinLeave,BufLeave *.yml,*.yaml set nocursorcolumn
+
 augroup Skeleton
     autocmd!
     " See :help template
@@ -126,13 +149,13 @@ augroup END
 """ autocmd WinLeave * set nocursorline nocursorcolumn
 """ autocmd WinEnter * set cursorline cursorcolumn
 
-autocmd FileType c,cs,cpp,java set cindent expandtab fo=tcrq tw=78 cinoptions=(0 tabstop=4
+autocmd FileType c,cs,cpp,java set cindent et fo=tcrq tw=78 ts=4 cinoptions=(0
 autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType j set tw=0
 autocmd FileType java set makeprg=javac\ \"%\"
 autocmd FileType lilypond set makeprg=~/Applications/Lilypond.app/Contents/Resources/bin/lilypond\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
-autocmd FileType make set noexpandtab sw=8 ts=8 sts=8
+autocmd FileType make set noet sw=8 ts=8 sts=8
 autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
