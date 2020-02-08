@@ -1,3 +1,5 @@
+" set verbose=9  " uncomment this to see all the stuff that vim is doing
+
 set nocompatible
 syntax off
 
@@ -53,8 +55,7 @@ set sidescrolloff=3
 set smartcase
 " set smartindent
 set smarttab
-" set softtabstop=4
-set softtabstop=2
+set softtabstop=4
 set splitright
 set splitbelow
 set textwidth=0
@@ -124,9 +125,9 @@ autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
-autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4 spell
-autocmd BufRead,BufNewFile *.md setlocal noet ts=4 sw=4 sts=4 spell
-autocmd BufRead,BufNewFile *.Rmd setlocal noet ts=4 sw=4 sts=4 spell
+autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.md setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.Rmd setlocal noet ts=4 sw=4 sts=4
 
 " Cursorcolumn is helpful with yml files!
 autocmd FileType yaml set cursorcolumn
