@@ -268,6 +268,8 @@ nnoremap <F3> :set invwrap wrap?<CR>
 imap <F3> <C-O><F3>
 nnoremap <F5> :set invhls hls?<CR>
 imap <F5> <C-O><F5>
+nnoremap <F4> :set invspell spell?<CR>
+imap <F4> <C-O><F4>
 
 " From :help pastetoggle
 " nnoremap <F7> :set paste<CR>
