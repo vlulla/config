@@ -126,7 +126,11 @@ functions_to_learn_this_session <- local({
 
 
 }, env=.vl_env)
-local(source("~/code/R/utils.R", local=.vl_env), envir=.vl_env)
+if( .Platform$OS.type == "unix" & !Sys.getenv("USER") == "root") {
+  if (file.exists("~/code/R/utils.R")) {
+    local(source("~/code/R/utils.R", local=.vl_env), envir=.vl_env)
+  }
+}
 attach(.vl_env)
 Sys.setenv(MAKEFLAGS = "-j4")
 
