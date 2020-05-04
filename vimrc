@@ -264,6 +264,8 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " Line numbers are useful for debugging.  Enable toggling line numbers.
 nnoremap <F6> :set invnumber number?<CR>
 inoremap <F6> <C-O>:set invnumber number?<CR>
+nnoremap <F2> :set invcursorcolumn cursorcolumn?<CR>
+inoremap <F2> <C-O><F2>
 nnoremap <F3> :set invwrap wrap?<CR>
 " inoremap <F3> <C-O>:set invwrap wrap?<CR>
 imap <F3> <C-O><F3>
