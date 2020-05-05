@@ -142,6 +142,7 @@ augroup Skeleton
     autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
     autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
     autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
+    autocmd BufNewFile *.md 0r ~/code/vim_emacs/vim_templates/mdtemplate.md
     autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
     autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
@@ -150,7 +151,7 @@ augroup Skeleton
 augroup END
 
 """ autocmd WinLeave * set nocursorline nocursorcolumn
-""" autocmd WinEnter * set cursorline cursorcolumn
+""" " autocmd WinEnter * set cursorline cursorcolumn
 
 autocmd FileType c,cs,cpp,java set cindent et fo=tcrq tw=78 ts=4 cinoptions=(0
 autocmd FileType gitcommit setlocal spell tw=72
@@ -163,7 +164,7 @@ autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
 autocmd FileType scala set makeprg=scala\ \"%\"
-" autocmd FileType sql set syntax=OFF
+autocmd FileType sql set syntax=OFF
 
 let mapleader=","
 " let mapleader="\<Space>"
@@ -253,7 +254,9 @@ augroup END
 """ highlight TrailingWhiteSpace ctermbg=Grey guibg=LightRed
 """ match TrailingWhiteSpace /\s\+$/
 " Delete trailing white space before writing
-autocmd BufWritePre * :%s@\s\+$@@e
+" autocmd BufWritePre * :%s@\s\+$@@e
+" """ Need below to accomodate "hard line breaks" in markdown (pandoc)
+autocmd BufWritePre * :%s@\s\{3,}$@@e
 
 " map <CR> <ESC>:nohls<CR>
 
@@ -356,12 +359,22 @@ endfunction
 iab #d #define
 iab #i #include
 iab THe The
+iab THat That
 iab THis This
 iab VL Vijay Lulla
 iab appl applications
 iab fo of
+iab fucntion function
 iab htat that
 iab hte the
+iab Iatm It appears to me
+iab Iirc If I remember correctly
+iab Iiuc If I understand correctly
+iab Istm It seems to me
+iab iatm it appears to me
+iab iirc if I remember correctly
+iab iiuc if I understand correctly
+iab istm it seems to me
 iab nto not
 iab ofr for
 iab ot to
