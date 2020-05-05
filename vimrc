@@ -142,12 +142,13 @@ augroup Skeleton
     autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
     autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
     autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
+    autocmd BufNewFile *.sh 0r ~/code/vim_emacs/vim_templates/shell-template.sh
     autocmd BufNewFile *.md 0r ~/code/vim_emacs/vim_templates/mdtemplate.md
     autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
     autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
     autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
-    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.py,*.go,.gitignore,.dockerignore set modified
+    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.sh,*.py,*.go,.gitignore,.dockerignore set modified
 augroup END
 
 """ autocmd WinLeave * set nocursorline nocursorcolumn
