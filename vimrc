@@ -90,7 +90,7 @@ set wildignore+=*.orig
 "" else
 ""   set statusline=%t-%m-%R-%Y-%=-\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
 "" endif
-set statusline=%t-%m-%R-%Y-%=[%{&fileformat}]-[d:%03b\ h:0x%02B]-[L:%3l,C:%3v]-[%3p%%]
+set statusline=%t-%m-%R-%Y-%=[%{&fileformat}]-[d:%03b\ h:0x%02B]-[L:%l/%L(%p%%),\ C:%2v]
 highlight StatusLine cterm=bold
 
 set swapsync=sync
