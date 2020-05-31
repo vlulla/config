@@ -4,14 +4,23 @@
 --     Linux: ~/.psqlrc
 --     Windows: %AppData%/postgresql/psqlrc.conf
 
-\timing on
+\set QUIET 1
 
 -- Find the variables you can set in documentation of `psql` under PostgreSQL Client Applications
 -- in the manual (part VI. Reference)
 \set COMP_KEYWORD_CASE 'upper'
 \set ECHO 'errors'
 \set ECHO_HIDDEN 'on'
+\set ON_ERROR_STOP 'on'
+\set ON_ERROR_ROLLBACK 'interactive'
+\set VERBOSITY 'verbose'
 \set HISTCONTROL 'ignoreboth'
+\set HISTSIZE 20000
+\pset null ¤
+\pset linestyle 'unicode'
 
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
+
+\timing on
+\unset QUIET
