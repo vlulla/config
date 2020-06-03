@@ -18,6 +18,7 @@
 \set HISTSIZE 20000
 \pset null ¤
 \pset linestyle 'unicode'
+\pset border 2
 
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
