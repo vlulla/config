@@ -1,0 +1,5 @@
+Host *.amazonaws.com
+  StrictHostKeyChecking accept-new
+
+Host *
+  VisualHostKey yes

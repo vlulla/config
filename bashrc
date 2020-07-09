@@ -4,18 +4,12 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 
-gitinfo() {
-  BRANCH=`git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/^* \(.*\)/\1/'`
-  if [ "${BRANCH}" = "" ]
-  ## if [ -z $BRANCH ]  ## This also works.
-  then
-    echo ""
-  else
-    echo "[branch: $BRANCH]"
-  fi
+git-branch-info() {
+  git symbolic-ref "HEAD" 2>/dev/null | sed -e 's@^refs/heads/@(@g' -e 's@$@)@g'
 }
 
-export PS1='\u@\h [jobs: \j]$(gitinfo): \w\n\$ '
+export PS1='\u@\h [jobs: \j]$(git-branch-info): \w\n\$ '
+export EDITOR="vi"
 export VROOT=$HOME/VROOT
 export PATH=$PATH:$VROOT/bin
 

@@ -115,8 +115,8 @@ functions_to_learn_this_session <- local({
   last_seen <- NA ; fns_to_learn <- c()
   function() {
     if(is.na(last_seen) | Sys.Date() > last_seen) {
-      fns_to_learn <<- sample(c(ls("package:base"), ls("package:utils"),
-                                ls("package:stats"), ls("package:MASS")), 5)
+      fns_to_learn <<- sample(c(lsf.str("package:base"), lsf.str("package:utils"),
+                                lsf.str("package:stats"), lsf.str("package:MASS")), 5)
     }
     last_seen <<- Sys.Date()
     cat("R-Trivia: Do you know the following?\n")
@@ -157,7 +157,7 @@ if (interactive()) {
     functions_to_learn_this_session()
 }
 
-if(ispkginstalled("rstan")) rstan::rstan_options(auto_write=TRUE)
+## if(ispkginstalled("rstan")) rstan::rstan_options(auto_write=TRUE)
 
 # http://reasoniamhere.com/2013/09/23/7-r-tips-rescued-from-the-vault/
 makeActiveBinding(".", function() .Last.value, .GlobalEnv) # ?makeActiveBinding
