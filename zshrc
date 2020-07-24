@@ -258,3 +258,8 @@ alias v='vim '
 
 export PATH=$(removeduplicates ${PATH} :)
 ## export MANPATH=$(removeduplicates ${MANPATH} :)
+export PAGER=less
+export LESS='-eiMFXsSx4r'
+export EDITOR='vi'
+export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
+

@@ -244,7 +244,7 @@ map <leader>et :tabedit %%
 
 " Great idea from http://howivim.com/2016/damian-conway/
 nmap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
-nmap <silent> ;v :next $MYVIMRC<CR>
+nmap <silent> ;v :split $MYVIMRC<CR>
 augroup VimReload
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -359,6 +359,9 @@ endfunction
 " Some abbreviations
 iab #d #define
 iab #i #include
+iab #f ## FIXME: 
+iab #t ## TODO: 
+iab dt. <Space><C-O><F9>
 iab THe The
 iab THat That
 iab THis This
