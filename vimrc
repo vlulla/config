@@ -90,7 +90,10 @@ set wildignore+=*.orig
 "" else
 ""   set statusline=%t-%m-%R-%Y-%=-\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
 "" endif
-set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=[d:%3b\ h:0x%2B]-[L:%3l/%3L(%3p%%),\ C:%2v]
+function GitBranch()
+  return system("git symbolic-ref --short HEAD 2>/dev/null | tr -d '\n' | sed -e 's@^@(@g' -e 's@$@)@g'")
+endfunction
+set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=-«%{GitBranch()}»-[d:%3b\ h:0x%2B]-[L:%3l/%3L(%3p%%),\ C:%2v]
 highlight StatusLine cterm=bold
 
 set swapsync=sync

@@ -5,7 +5,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 git-branch-info() {
-  git symbolic-ref "HEAD" 2>/dev/null | sed -e 's@^refs/heads/@(@g' -e 's@$@)@g'
+  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'
 }
 
 export PS1='\u@\h [jobs: \j]$(git-branch-info): \w\n\$ '
