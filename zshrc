@@ -1,6 +1,6 @@
 
 git_branch_info() {
-  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'
+  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@«@g' -e 's@$@»@g'
 }
 ## precmd() { RPROMPT="$(git_branch_info)" } ## For right prompt!!
 

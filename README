@@ -4,6 +4,7 @@ Locations and names for these files:
    bashrc         ${HOME}/.bashrc
    emacs          ${HOME}/.emacs
    emacs_mac      ${HOME}/.emacs
+   gitconfig      ${HOME}/.gitconfig
    psqlrc         ${HOME}/.psqlrc
    Rprofile       ${HOME}/.Rprofile
    ssh_config     ${HOME}/.ssh/config   # Alson needs: chmod og-rwx ${HOME}/.ssh

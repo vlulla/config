@@ -1,0 +1,14 @@
+[core]
+	editor = vim
+	autocrlf = input
+[user]
+	email = vijaylulla@gmail.com
+	name = Vijay Lulla
+	signingkey = f0b6836f
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	r = log --pretty=format:\"%C(yellow bold)%h%Creset %C(green bold)(%as)%Creset %s\"
+        ## new = !git init && git symbolic-ref HEAD refs/heads/main
