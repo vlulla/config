@@ -24,5 +24,14 @@
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
 
+-- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
+\echo 'Some custom extra commands:\n'
+\echo '   :dbsize      --  Database size'
+\echo '   :settings    --  Server settings'
+\echo '   :sp          --  SHOW search_path;\n\n'
+\set dbsize 'select datname,pg_size_pretty(pg_database_size(datname)) db_size from pg_database ORDER BY db_size;'
+\set settings 'select name,setting,source from pg_settings;'
+\set sp 'SHOW search_path;'
+
 \timing on
 \unset QUIET
