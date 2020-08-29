@@ -119,7 +119,7 @@ export EDITOR='vi'
 
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
-export PS1=$'\n%n@%m [shlvl: $SHLVL] %~\n[jobs: %j]\$(git_branch_info) %# '
+export PS1=$'\n\033[1;37;44m%n@%m [shlvl: $SHLVL] %~\033[0m\n[jobs: %j]\$(git_branch_info) %# '
 # if [[ -d "${HOME}/VROOT" && $SHLVL == 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
     export VROOT="${HOME}/VROOT"
