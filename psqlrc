@@ -23,6 +23,7 @@
 
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
+SET statement_timeout=5000;
 
 -- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
 \echo 'Some custom extra commands:\n'
@@ -34,4 +35,5 @@ SET IntervalStyle='iso_8601';
 \set sp 'SHOW search_path;'
 
 \timing on
+\x auto
 \unset QUIET
