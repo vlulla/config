@@ -11,6 +11,7 @@
 	ci = commit
 	st = status
 	r = log --pretty=format:\"%C(yellow bold)%h%Creset %C(green bold)(%as)%Creset %s\"
-        ## new = !git init && git symbolic-ref HEAD refs/heads/main
+	## new = !git init && git symbolic-ref HEAD refs/heads/main
+	graph = log --all --graph --decorate --oneline
 [init]
 	defaultBranch = main
