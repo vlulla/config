@@ -15,8 +15,6 @@ set cmdheight=2
 set complete-=t     " no tag search
 set completeopt=longest,menuone
 set cpoptions+=JW
-" set cursorcolumn
-" set cursorline
 " set display=lastline,uhex
 set display=lastline
 set esckeys
@@ -38,9 +36,7 @@ set nobackup
 set nostartofline
 set noswapfile
 set nowritebackup
-" set number
 set path+=**
-" set relativenumber
 set ruler
 set noscrollbind " Buffers scroll independently....need this!
 set nrformats+=alpha " :help CTRL-A  OR :help nrformats
@@ -154,8 +150,6 @@ augroup Skeleton
     autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.sh,*.py,*.go,.gitignore,.dockerignore set modified
 augroup END
 
-""" autocmd WinLeave * set nocursorline nocursorcolumn
-""" " autocmd WinEnter * set cursorline cursorcolumn
 
 autocmd FileType c,cs,cpp,java set cindent et fo=tcrq tw=78 ts=4 cinoptions=(0
 autocmd FileType gitcommit setlocal spell tw=72
@@ -178,26 +172,6 @@ let mapleader=","
 noremap ,, ,
 
 map <silent> <leader><CR> :nohls<CR>
-" Don't use it as much as I thought I would! 2019.01.13
-" nnoremap <leader>t yyPVr=jpVr=j
-" inoremap <leader>t <Esc>kyyPVr=jpVr=o
-" <leader>N where N is the heading level
-" Below are for setting section decorators for reStructuredText
-" nnoremap <leader>1 yypVr=j
-" nnoremap <leader>2 yypVr-j
-" nnoremap <leader>3 yypVr`j
-" nnoremap <leader>4 yypVr'j
-" nnoremap <leader>5 yypVr.j
-" nnoremap <leader>6 yypVr~j
-" nnoremap <leader>7 yypVr*j
-" Only used below if you're doing markdown!  Everywhere else it is annoying!
-" inoremap <leader>1 <Esc>kyypVr=j
-" inoremap <leader>2 <Esc>yypVr-j
-" inoremap <leader>3 <Esc>yypVr`j
-" inoremap <leader>4 <Esc>yypVr'j
-" inoremap <leader>5 <Esc>yypVr.j
-" inoremap <leader>6 <Esc>yypVr~j
-" inoremap <leader>7 <Esc>yypVr*j
 
 " From http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <esc>
@@ -229,10 +203,6 @@ vnoremap > >gv
 vmap // y/<C-R>"<CR>
 vmap <leader>s y:<C-U>%s@\<<C-R>"\>@
 
-"" nnoremap <C-J> <C-W><C-J>
-"" nnoremap <C-K> <C-W><C-K>
-"" nnoremap <C-L> <C-W><C-L>
-"" nnoremap <C-H> <C-W><C-H>
 map <C-n> :cnext<CR>
 map <C-p> :cprev<CR>
 imap <C-a> <C-o>^
@@ -291,13 +261,6 @@ inoremap <F9> <C-R>=strftime("%Y.%m.%d")<CR>
 nnoremap <F10> "=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>P
 inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
-" hi Search term=bold ctermfg=white ctermbg=red
-" hi Visual term=reverse cterm=reverse
-" hi StatusLine term=bold cterm=bold gui=bold
-" hi LineNr ctermfg=lightgray cterm=reverse
-" hi CursorLine term=reverse ctermbg=15 ctermfg=0 cterm=NONE
-" hi CursorColumn term=reverse ctermbg=15 ctermfg=0 cterm=NONE
-" hi MatchParen ctermbg=none cterm=reverse
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 " hi OverLength ctermbg=red ctermfg=white
