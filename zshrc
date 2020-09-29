@@ -261,5 +261,5 @@ export PATH=$(removeduplicates ${PATH} :)
 export PAGER=less
 export LESS='-eiMFXsSx4r'
 export EDITOR='vi'
-export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
+## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
 
