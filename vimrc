@@ -253,7 +253,7 @@ imap <F6> <C-O><F6>
 nnoremap <F7> :set invpaste paste?<CR>
 imap <F7> <C-O><F7>
 set pastetoggle=<F7>
-nnoreamp <F8> :set invspell spell?<CR>
+nnoremap <F8> :set invspell spell?<CR>
 imap <F8> <C-O><F8>
 " AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
