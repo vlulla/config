@@ -133,34 +133,23 @@ fi
 bindkey -e
 
 ## use setopt all by itself to see what zshoptions are different from default
-setopt histignorealldups sharehistory histreduceblanks
 
 ## Zsh options
-### Completion
-setopt autolist
-setopt autoparamslash
-setopt autoremoveslash
-setopt listambiguous
-setopt listtypes
+### Changing directories
+setopt autocd autopushd pushdignoredups
 
+### Completion
+setopt autolist autoparamslash autoremoveslash listambiguous listtypes
 
 ### Expansion and globbing
-setopt markdirs
-setopt nomatch
+setopt markdirs nomatch
 
 ### history
-setopt histignorealldups
-setopt histignorespace
-setopt histreduceblanks
-setopt histsavenodups
+setopt histignorealldups histignorespace histreduceblanks histsavenodups
 # setopt sharehistory  ## enables EXTENDED_HISTORY too!
 
 ## job control
-setopt autoresume
-setopt longlistjobs
-setopt monitor
-setopt noclobber
-setopt notify
+setopt autoresume longlistjobs monitor noclobber notify
 
 ### Zle options
 setopt nobeep
@@ -256,8 +245,9 @@ alias v='vim '
 [[ ! -z "${LS_COLORS}" ]] && unset LS_COLORS
 [[ ! -z "${ZLS_COLORS}" ]] && unset ZLS_COLORS
 
-export PATH=$(removeduplicates ${PATH} :)
-## export MANPATH=$(removeduplicates ${MANPATH} :)
+## man zshbuiltins  ...  /typeset
+typeset -U PATH path MANPATH manpath FPATH fpath
+
 export PAGER=less
 export LESS='-eiMFXsSx4r'
 export EDITOR='vi'
