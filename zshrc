@@ -112,11 +112,6 @@ REPORTTIME=30  ## Very Useful!!
 
 setopt PROMPT_SUBST   ## For prompt substitution
 
-export PAGER=less
-export LESS='-eiMFXsSx4r'
-export EDITOR='vi'
-## export MANPATH="${MANPATH:+${MANPATH}:}/usr/share/man:/usr/local/share/man:${HOME}/.local/share/man"
-
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
 export PS1=$'\n\033[1;37;44m%n@%m [shlvl: $SHLVL] %~\033[0m\n[jobs: %j]\$(git_branch_info) %# '
@@ -233,6 +228,7 @@ alias dm='docker-machine '
 alias e='vim '
 alias fsc='fsharpc'
 alias fsi='fsharpi'
+alias ls='ls --quoting-style=shell-always '
 alias l='ls '
 alias la='ls -a'
 alias ll='ls -l'

@@ -314,35 +314,48 @@ endfunction
 
 
 " Some abbreviations
-iab #d #define
-iab #i #include
-iab #f ## FIXME: 
-iab #t ## TODO: 
-iab dt. <Space><C-O><F9>
-iab THe The
-iab THat That
-iab THis This
-iab VL Vijay Lulla
-iab appl applications
-iab fo of
-iab fucntion function
-iab htat that
-iab hte the
-iab Iatm It appears to me
-iab Iirc If I remember correctly
-iab Iiuc If I understand correctly
-iab Istm It seems to me
-iab iatm it appears to me
-iab iirc if I remember correctly
-iab iiuc if I understand correctly
-iab istm it seems to me
-iab nto not
-iab ofr for
-iab ot to
-iab si is
-iab taht that
-iab teh the
-iab yoru your
+iabbrev @@ vijaylulla@gmail.com
+iabbrev #d #define
+iabbrev #i #include
+iabbrev #f ## FIXME: 
+iabbrev #t ## TODO: 
+iabbrev dt. <Space><C-O><F9>
+iabbrev THe The
+iabbrev THat That
+iabbrev THis This
+iabbrev VL Vijay Lulla
+iabbrev appl application
+iabbrev appls applications
+iabbrev attn attention
+iabbrev ccopy Copyright 2020 Vijay Lulla, all rights reserved.
+iabbrev didnt didn't
+iabbrev dnt don't
+iabbrev dont don't
+iabbrev eg e.g.,
+iabbrev fe for example
+iabbrev fo of
+iabbrev fucntion function
+iabbrev htat that
+iabbrev hte the
+iabbrev ie i.e.,
+iabbrev Iatm It appears to me
+iabbrev Iirc If I remember correctly
+iabbrev Iiuc If I understand correctly
+iabbrev Istm It seems to me
+iabbrev iatm it appears to me
+iabbrev iirc if I remember correctly
+iabbrev iiuc if I understand correctly
+iabbrev istm it seems to me
+iabbrev ive I've
+iabbrev nto not
+iabbrev ofr for
+iabbrev ot to
+iabbrev si is
+" iabbrev ssig --<CR>Vijay Lulla<CR>vijaylulla@gmail.com
+iabbrev taht that
+iabbrev teh the
+iabbrev wnt won't
+iabbrev yoru your
 
 
 filetype off
