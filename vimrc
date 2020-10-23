@@ -347,6 +347,7 @@ iabbrev iirc if I remember correctly
 iabbrev iiuc if I understand correctly
 iabbrev istm it seems to me
 iabbrev ive I've
+iabbrev mins minutes
 iabbrev nto not
 iabbrev ofr for
 iabbrev ot to
