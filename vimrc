@@ -345,17 +345,22 @@ iabbrev Istm It seems to me
 iabbrev iatm it appears to me
 iabbrev iirc if I remember correctly
 iabbrev iiuc if I understand correctly
+iabbrev iotm it occurs to me
+iabbrev Iotm It occurs to me
 iabbrev istm it seems to me
 iabbrev ive I've
 iabbrev mins minutes
 iabbrev nto not
 iabbrev ofr for
 iabbrev ot to
+iabbrev pls please
+iabbrev Pls Please
 iabbrev si is
 " iabbrev ssig --<CR>Vijay Lulla<CR>vijaylulla@gmail.com
 iabbrev taht that
 iabbrev teh the
 iabbrev wnt won't
+iabbrev wont won't
 iabbrev yoru your
 
 
