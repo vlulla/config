@@ -257,7 +257,7 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-hi OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 match OverLength /\%81v/
 
 " See http://amix.dk/vim/vimrc.txt
