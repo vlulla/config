@@ -81,11 +81,6 @@ set wildignore+=*.orig
 " set termencoding=utf-8
 " set fileencoding=utf-8
 
-"" if exists("*strftime")
-""   set statusline=%t-%m-%R-%y-%{strftime('%Y.%m.%d-%H:%M')\ }-%=\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
-"" else
-""   set statusline=%t-%m-%R-%Y-%=-\|d:%03b\|h:0x%02B\|-[pos=%l,%v]\ [len=%L\ (%p%%)]
-"" endif
 function GitBranch()
   return system("git symbolic-ref --short HEAD 2>/dev/null | tr -d '\n' | sed -e 's@^@(@g' -e 's@$@)@g'")
 endfunction
@@ -125,8 +120,8 @@ autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
 autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.md setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.Rmd setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
 
 " Cursorcolumn is helpful with yml files!
 autocmd FileType yaml set cursorcolumn
@@ -155,7 +150,6 @@ autocmd FileType c,cs,cpp,java set cindent et fo=tcrq tw=78 ts=4 cinoptions=(0
 autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType j set tw=0
 autocmd FileType java set makeprg=javac\ \"%\"
-autocmd FileType lilypond set makeprg=~/Applications/Lilypond.app/Contents/Resources/bin/lilypond\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
 autocmd FileType make set noet sw=8 ts=8 sts=8
 autocmd FileType perl set smartindent
@@ -263,8 +257,8 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-" hi OverLength ctermbg=red ctermfg=white
-" match OverLength /\%81v.\+/
+hi OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+match OverLength /\%81v/
 
 " See http://amix.dk/vim/vimrc.txt
 " Helper functions
