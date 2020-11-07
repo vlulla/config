@@ -318,6 +318,10 @@ iabbrev THe The
 iabbrev THat That
 iabbrev THis This
 iabbrev VL Vijay Lulla
+iabbrev Afaict As far as I can tell
+iabbrev afaict as far as I can tell
+iabbrev Aiui As I understand it 
+iabbrev aiui as I understand it 
 iabbrev appl application
 iabbrev appls applications
 iabbrev attn attention
