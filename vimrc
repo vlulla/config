@@ -120,7 +120,7 @@ autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
 autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4 fo+=a
+autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
 
 " Cursorcolumn is helpful with yml files!
