@@ -231,22 +231,22 @@ autocmd BufWritePre * :%s@\s\{3,}$@@e
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
-nnoremap <F2> :set invcursorcolumn cursorcolumn?<CR>
+nnoremap <F2> :setlocal invcursorcolumn cursorcolumn?<CR>
 imap <F2> <C-O><F2>
-nnoremap <F3> :set invcursorline cursorline?<CR>
+nnoremap <F3> :setlocal invcursorline cursorline?<CR>
 imap <F3> <C-O><F3>
-nnoremap <F4> :set invwrap wrap?<CR>
+nnoremap <F4> :setlocal invwrap wrap?<CR>
 imap <F4> <C-O><F4>
-nnoremap <F5> :set invhls hls?<CR>
+nnoremap <F5> :setlocal invhlsearch hlsearch?<CR>
 imap <F5> <C-O><F5>
 " Line numbers are useful for debugging.  Enable toggling line numbers.
-nnoremap <F6> :set invnumber number?<CR>
+nnoremap <F6> :setlocal invnumber number?<CR>
 imap <F6> <C-O><F6>
 " Neat idea from https://www.ukuug.org/events/linux2004/programme/paper-SMyers/Linux_2004_slides/vim_tips/
-nnoremap <F7> :set invpaste paste?<CR>
+nnoremap <F7> :setlocal invpaste paste?<CR>
 imap <F7> <C-O><F7>
 set pastetoggle=<F7>
-nnoremap <F8> :set invspell spell?<CR>
+nnoremap <F8> :setlocal invspell spell?<CR>
 imap <F8> <C-O><F8>
 " AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
