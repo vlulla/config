@@ -11,7 +11,7 @@ set autowrite
 set backspace=eol,start,indent
 set cinoptions=(0
 set cmdheight=2
-" set colorcolumn=80
+" set colorcolumn=+1,+2,+3
 set complete-=t     " no tag search
 set completeopt=longest,menuone
 set cpoptions+=JW
@@ -120,12 +120,11 @@ autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 " autocmd BufWinEnter * call ClearSyntax()
 
 autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4 fo+=a
 autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
 
 " Cursorcolumn is helpful with yml files!
-autocmd FileType yaml set cursorcolumn
-autocmd BufWinLeave,BufLeave *.yml,*.yaml set nocursorcolumn
+autocmd FileType yaml setlocal cursorcolumn
 
 augroup Skeleton
     autocmd!
@@ -142,7 +141,7 @@ augroup Skeleton
     autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
     autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
-    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.sh,*.py,*.go,.gitignore,.dockerignore set modified
+    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,.gitignore,.dockerignore set modified
 augroup END
 
 
