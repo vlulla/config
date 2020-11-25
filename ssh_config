@@ -3,3 +3,4 @@ Host *.amazonaws.com
 
 Host *
   VisualHostKey yes
+  ForwardAgent yes
