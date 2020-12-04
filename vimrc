@@ -19,7 +19,7 @@ set cpoptions+=JW
 set display=lastline
 set esckeys
 set expandtab
-set fillchars=stl:-,stlnc:-,vert:\|,fold:-,diff:-
+set fillchars+=stl:-,stlnc:-,diff:-
 set foldmethod=marker
 set formatoptions=tcroqn1j
 set history=10000
@@ -117,7 +117,6 @@ autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent 
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
-" autocmd BufWinEnter * call ClearSyntax()
 
 autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
@@ -217,20 +216,10 @@ augroup VimReload
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-""" Don't need these since I delete trailing whitespaces before writing!
-""" " highlight trailing white space!
-""" highlight TrailingWhiteSpace ctermbg=Grey guibg=LightRed
-""" match TrailingWhiteSpace /\s\+$/
-" Delete trailing white space before writing
-" autocmd BufWritePre * :%s@\s\+$@@e
 " """ Need below to accomodate "hard line breaks" in markdown (pandoc)
 autocmd BufWritePre * :%s@\s\{3,}$@@e
 
 " map <CR> <ESC>:nohls<CR>
-
-" Good idea from http://amix.dk/vim/vimrc.txt
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
 
 nnoremap <F2> :setlocal invcursorcolumn cursorcolumn?<CR>
 imap <F2> <C-O><F2>
@@ -260,68 +249,20 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 match OverLength /\%81v/
 
-" See http://amix.dk/vim/vimrc.txt
-" Helper functions
-function! Cmdline(str)
-  exe "menu Foo.Bar :" . a:str
-  emenu Foo.Bar
-  unmenu Foo
-endfunction
-
-function! VisualSelection(direction) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . ""
-  elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/' . l:pattern . '/' . ' **/*.')
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/' . l:pattern . '/')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . ""
-  endif
-
-  " Save previous registers
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
-" Idea from https://vi.stackexchange.com/a/10456
-function! ClearSyntax()
-  syntax on
-  let syn = split(execute('syntax list'), "\n")[1:]
-  call filter(syn, {k,v -> match(v, '^\v') > -1})
-  call map(syn, {k,v -> split(v)[0]})
-  for i in syn
-    if match(i, '\c\mcomment') == -1
-      try
-        exe 'syntax clear ' i
-      catch /E28/
-      endtry
-    endif
-  endfor
-endfunction
-
-
 " Some abbreviations
 iabbrev @@ vijaylulla@gmail.com
 iabbrev #d #define
 iabbrev #i #include
-iabbrev #f ## FIXME: 
-iabbrev #t ## TODO: 
-iabbrev dt. <Space><C-O><F9>
+iabbrev #f ## FIXME:
+iabbrev #t ## TODO:
 iabbrev THe The
 iabbrev THat That
 iabbrev THis This
 iabbrev VL Vijay Lulla
 iabbrev Afaict As far as I can tell
 iabbrev afaict as far as I can tell
-iabbrev Aiui As I understand it 
-iabbrev aiui as I understand it 
+iabbrev Aiui As I understand it
+iabbrev aiui as I understand it
 iabbrev appl application
 iabbrev appls applications
 iabbrev attn attention

@@ -4,3 +4,4 @@ Host *.amazonaws.com
 Host *
   VisualHostKey yes
   ForwardAgent yes
+  ServerAliveInterval 120
