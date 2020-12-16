@@ -115,7 +115,7 @@ setopt PROMPT_SUBST   ## For prompt substitution
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
 export PS1=$'\n%B%F{red}%n@%m%(2L. [SHLVL: %L].): %~%f%b\n%B[%D{%Y.%m.%d}]%(1j. [jobs: %j].)\$(git_branch_info) %#%b '
-export RPROMPT="%(?..%F{red} ⅹ %f%?)"
+export RPROMPT="%(?..%F{red} x %f%?)"
 # if [[ -d "${HOME}/VROOT" && $SHLVL == 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
     export VROOT="${HOME}/VROOT"

@@ -81,10 +81,7 @@ set wildignore+=*.orig
 " set termencoding=utf-8
 " set fileencoding=utf-8
 
-function GitBranch()
-  return system("git symbolic-ref --short HEAD 2>/dev/null | tr -d '\n' | sed -e 's@^@(@g' -e 's@$@)@g'")
-endfunction
-set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=-«%{GitBranch()}»-[D:%3b,\ H:0x%2B]-[L:%3l/%3L(%3p%%),\ C:%2v]
+set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=-[D:%3b,\ H:0x%2B]-[L:%3l/%3L(%3p%%),\ C:%2v]
 highlight StatusLine cterm=bold
 
 set swapsync=sync
