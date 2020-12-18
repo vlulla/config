@@ -141,7 +141,7 @@ setopt autolist autoparamslash autoremoveslash listambiguous listtypes
 setopt markdirs nomatch
 
 ### history
-setopt histignorealldups histignorespace histreduceblanks histsavenodups
+setopt histignorealldups histignorespace histreduceblanks histsavenodups nobanghist
 # setopt sharehistory  ## enables EXTENDED_HISTORY too!
 
 ## job control
