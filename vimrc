@@ -14,7 +14,7 @@ set cmdheight=2
 " set colorcolumn=+1,+2,+3
 set complete-=t     " no tag search
 set completeopt=longest,menuone
-set cpoptions+=JW
+set cpoptions+=W
 " set display=lastline,uhex
 set display=lastline
 set esckeys
