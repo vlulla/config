@@ -21,8 +21,14 @@ for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
 done
 unset file
 
-## Some very useful functions
-vf() { vim -o `fzf` }
+#### ## Some very useful functions
+vf() {
+  if which fzf 2>/dev/null; then
+    vim -o $(fzf)
+  else
+    vim
+  fi
+}
 ## following from https://www.datafix.com.au/cookbook/functions.html
 fields() { head -n 1 "$1" | tr "\t" "\n" | nl -w1 | pr -t -2; }
 broken() { awk -F"\t" '{print NF}' "$1" | sort | uniq -c | sed 's/^[ ]*//;s/ /\t/' | sort -nr; }
