@@ -238,6 +238,7 @@ alias lla='ls -la'
 alias llh='ls -lh'
 alias mv='mv -iv'
 alias rm='rm -I'
+alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
 
 [[ ! -z "${LS_COLORS}" ]] && unset LS_COLORS

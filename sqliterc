@@ -1,0 +1,12 @@
+-- Use this script with -init flag of sqlite3.
+--  bash$ sqlite3 -init ${HOME}/.sqliterc tst.sqlite
+--
+-- Or better yet:
+--  bash$ alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
+--
+-- See https://sqlite.org/cli.html for more useful options.
+
+.headers on
+.mode markdown
+.eqp on
+.show
