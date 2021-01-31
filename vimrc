@@ -98,6 +98,9 @@ endif
 let do_syntax_sel_menu=1
 runtime! synmenu.vim
 
+" :help find-manpage
+runtime! ftplugin/man.vim
+
 " let loaded_matchparen=1
 
 " Change diretories automatically " From Markus Motl's vimrc
