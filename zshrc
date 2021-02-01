@@ -44,7 +44,14 @@ removeduplicates() {
 
 ## From "Data cleaner's cookbook" https://www.datafix.com.au/cookbook/functions.html
 
-vf() { vim -o `fzf` } ## vim fuzzy!!  Use fzf fuzzy finder to find a file to open with vim
+## vf() { vim -o `fzf` } ## vim fuzzy!!  Use fzf fuzzy finder to find a file to open with vim
+vf() {
+  if /usr/bin/which fzf 2>/dev/null ; then
+    vim -o $(fzf)
+  else
+    vim
+  fi
+}
 ## following from https://www.datafix.com.au/cookbook/functions.html
 fields() { head -n 1 "$1" | tr "\t" "\n" | nl -w1 | pr -t -2; }
 broken() { awk -F"\t" '{print NF}' "$1" | sort | uniq -c | sed 's/^[ ]*//;s/ /\t/' | sort -nr; }
