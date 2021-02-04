@@ -46,7 +46,8 @@ removeduplicates() {
 
 ## vf() { vim -o `fzf` } ## vim fuzzy!!  Use fzf fuzzy finder to find a file to open with vim
 vf() {
-  if /usr/bin/which fzf 2>/dev/null ; then
+  if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
+    ## vim -o $(fzf --preview='cat {}')
     vim -o $(fzf)
   else
     vim
