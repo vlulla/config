@@ -108,6 +108,18 @@ del_stopped() {
     docker rm "$name"
   fi
 }
+
+dockerpull() {
+  local f
+  for f in $(docker images --format "{{.Repository}}"); do
+    docker pull ${f}
+  done
+  local dangling=$(docker images -q --filter "dangling=true")
+  if [ ${#dangling} -gt 0 ]; then
+    docker rmi ${dangling}
+  fi
+}
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
