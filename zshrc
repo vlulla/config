@@ -140,8 +140,8 @@ export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
 if [[ -d "${HOME}/VROOT" ]]; then
     export VROOT="${HOME}/VROOT"
     export VIRTUALROOT="${HOME}/VROOT"
-    ## export PATH="${PATH:+${PATH}:}${VROOT}/bin"
-    export PATH="${VROOT}/bin${PATH:+:${PATH}}"
+    ## export PATH="${PATH}${PATH:+:}${VROOT}/bin"
+    export PATH="${VROOT}/bin${PATH:+:}${PATH}"
 fi
 
 
@@ -201,43 +201,43 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 zstyle ':completion:*' users-hosts 'vlulla@quarry.uits.iu.edu' 'vlulla@karst.uits.iu.edu' 'vlulla@apps.science.iupui.edu'
 if [[ -d "${HOME}/.cargo" ]]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.cargo/bin"
+    export PATH="${PATH}${PATH:+:}${HOME}/.cargo/bin"
 fi
 if [[ -d "${HOME}/anaconda3" ]]; then
     export CONDAHOME="${HOME}/anaconda3"
-    export PATH="${PATH:+${PATH}:}${CONDAHOME}/bin"
+    export PATH="${PATH}${PATH:+:}${CONDAHOME}/bin"
 fi
 if [[ -d "${HOME}/code/go/gocode" ]]; then
     test -f "/usr/local/go/bin/go" && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
     export GOPATH=${HOME}/code/go/gocode
-    export PATH="${PATH:+${PATH}:}${GOPATH}/bin"
+    export PATH="${PATH}${PATH:+:}${GOPATH}/bin"
     export GO111MODULE=on
 fi
 
 if [[ -d "${HOME}/code/J/j901" ]]; then
     export JHOME=${HOME}/code/J/j901
-    export PATH="${PATH:+${PATH}:}${JHOME}/bin"
+    export PATH="${PATH}${PATH:+:}${JHOME}/bin"
 fi
 
 if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.3.0" ]]; then
     export JULIAHOME="${VROOT}/julia-1.3.0"
-    export PATH="${PATH:+${PATH}:}${JULIAHOME}/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${JULIAHOME}/share/man"
+    export PATH="${PATH}${PATH:+:}${JULIAHOME}/bin"
+    ## export MANPATH="${MANPATH}${MANPATH:+:}${JULIAHOME}/share/man"
 fi
 
 
 if [[ -d "${HOME}/.local" ]]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
+    export PATH="${PATH}${PATH:+:}${HOME}/.local/bin"
 fi
 if [[ -d "${HOME}/code/racket/racket7.4" ]]; then
     export RACKETHOME=$HOME/code/racket/racket7.4
-    export PATH="${PATH:+${PATH}:}${RACKETHOME}/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${RACKETHOME}/man"
+    export PATH="${PATH}${PATH:+:}${RACKETHOME}/bin"
+    ## export MANPATH="${MANPATH}${MANPATH:+:}${RACKETHOME}/man"
 fi
 if [[ -d "${HOME}/code/swift/swift-5.1.3-RELEASE-ubuntu18.04" ]]; then
     export SWIFTHOME="${HOME}/code/swift/swift-5.1.3-RELEASE-ubuntu18.04"
-    export PATH="${PATH:+${PATH}:}${SWIFTHOME}/usr/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${SWIFTHOME}/usr/share/man"
+    export PATH="${PATH}${PATH:+:}${SWIFTHOME}/usr/bin"
+    ## export MANPATH="${MANPATH}${MANPATH:+:}${SWIFTHOME}/usr/share/man"
 fi
 # OPAM configuration
 [[ -f ${HOME}/.opam/opam-init/init.zsh ]] && . /home/v/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
