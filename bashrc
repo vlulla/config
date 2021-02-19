@@ -28,8 +28,10 @@ removeduplicates() {
 
 export PS1='\u@\h: \w\n[jobs: \j] $(git-branch-info) \$ '
 export EDITOR="vi"
-export VROOT=${HOME}/VROOT
-export PATH=${PATH}${PATH:+:}${VROOT}/bin
+if [ -z ${VROOT} ]; then
+  export VROOT=${HOME}/VROOT
+  export PATH=${PATH}${PATH:+:}${VROOT}/bin
+fi
 
 ## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do

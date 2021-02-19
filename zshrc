@@ -265,6 +265,7 @@ alias v='vim '
 [[ ! -z "${ZLS_COLORS}" ]] && unset ZLS_COLORS
 
 ## man zshbuiltins  ...  /typeset
+## typeset -U removes duplicates!!
 typeset -U PATH path MANPATH manpath FPATH fpath
 
 export PAGER=less
