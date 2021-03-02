@@ -219,8 +219,8 @@ if [[ -d "${HOME}/code/J/j901" ]]; then
     export PATH="${PATH}${PATH:+:}${JHOME}/bin"
 fi
 
-if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.3.0" ]]; then
-    export JULIAHOME="${VROOT}/julia-1.3.0"
+if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.5.3" ]]; then
+    export JULIAHOME="${VROOT}/julia-1.5.3"
     export PATH="${PATH}${PATH:+:}${JULIAHOME}/bin"
     ## export MANPATH="${MANPATH}${MANPATH:+:}${JULIAHOME}/share/man"
 fi
