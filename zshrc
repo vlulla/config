@@ -152,7 +152,7 @@ bindkey -e
 
 ## Zsh options
 ### Changing directories
-setopt autocd autopushd pushdignoredups
+setopt autopushd pushdignoredups
 
 ### Completion
 setopt autolist autoparamslash autoremoveslash listambiguous listtypes
