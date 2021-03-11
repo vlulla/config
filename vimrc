@@ -83,6 +83,7 @@ set wildignore+=*.orig
 
 set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=-[D:%3b,\ H:0x%2B]-[L:%3l/%3L(%3p%%),\ C:%2v]
 highlight StatusLine cterm=bold
+highlight MatchParen cterm=bold ctermbg=none ctermfg=white
 
 set swapsync=sync
 autocmd GUIEnter * set vb t_vb= " silence the bell
