@@ -5,6 +5,7 @@ Locations and names for these files:
    emacs          ${HOME}/.emacs
    emacs_mac      ${HOME}/.emacs
    gitconfig      ${HOME}/.gitconfig
+   Makevars       ${HOME}/.R/Makevars
    psqlrc         ${HOME}/.psqlrc
    Rprofile       ${HOME}/.Rprofile
    sqliterc       ${HOME}/.sqliterc     # Use like: sqlite3 -init ${HOME}/.sqliterc tst.sqlite
