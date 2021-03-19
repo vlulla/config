@@ -1,4 +1,5 @@
 MAKEFLAGS+=-j
+CC=clang
+CXX=clang++
 CFLAGS+=-Wall -march=native
 CXXFLAGS+=-Wall -march=native
-CPPFLAGS+=-Wall -march=native
