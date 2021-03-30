@@ -155,6 +155,7 @@ if (interactive()) {
     ## suppressPackageStartupMessage(require(ff))
     ## invisible(enableJIT(3))  ## ?compiler::compile ## causes problems!  2015.11.14
     functions_to_learn_this_session()
+    if(R.version$os == "linux-gnu") options(width=system("tput cols",intern=TRUE))
 }
 
 ## if(ispkginstalled("rstan")) rstan::rstan_options(auto_write=TRUE)
