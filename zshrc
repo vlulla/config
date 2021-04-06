@@ -12,7 +12,7 @@ getinteractive() {
 
 upgradeoutdated() {
   if which apt-get > /dev/null 2>&1 ; then
-    sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoclean -y && sudo apt-get autoremove -y
+    sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
   fi
 }
 
@@ -260,6 +260,26 @@ alias mv='mv -iv'
 alias rm='rm -I'
 alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
+
+# fix some typos
+alias sl='ls'
+alias c='cd'
+alias vo='vim'
+alias ci='vim'
+alias iv='vim'
+alias grpe='grep'
+alias Grep='grep'
+alias les='less'
+alias Les='less'
+alias Less='less'
+alias cd.='cd .'
+alias cd..='cd ..'
+
+# Make piping easier...
+# $ ls -la LL
+# $ ls -la VV
+alias -g VV=' |& vim -'
+alias -g LL=' |& less'
 
 [[ ! -z "${LS_COLORS}" ]] && unset LS_COLORS
 [[ ! -z "${ZLS_COLORS}" ]] && unset ZLS_COLORS
