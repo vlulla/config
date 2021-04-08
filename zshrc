@@ -293,3 +293,6 @@ export LESS='-eiMFXsSx4r'
 export EDITOR='vi'
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
 
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
+  [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
+fi
