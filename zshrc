@@ -12,6 +12,11 @@ getinteractive() {
 
 upgradeoutdated() {
   if which apt-get > /dev/null 2>&1 ; then
+    cat <<-'EOF'
+	Going to run:
+	    sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
+
+	EOF
     sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
   fi
 }
