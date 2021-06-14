@@ -5,6 +5,7 @@ Locations and names for these files:
    emacs          ${HOME}/.emacs
    emacs_mac      ${HOME}/.emacs
    gitconfig      ${HOME}/.gitconfig
+   ipythonconfig  ${HOME}/.ipython/profile_default/ipython_config.py 
    Makevars       ${HOME}/.R/Makevars
    psqlrc         ${HOME}/.psqlrc
    Rprofile       ${HOME}/.Rprofile
