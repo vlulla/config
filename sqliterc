@@ -7,6 +7,7 @@
 -- See https://sqlite.org/cli.html for more useful options.
 
 .headers on
-.mode markdown
+.mode box
 .eqp on
+.timer on
 .show
