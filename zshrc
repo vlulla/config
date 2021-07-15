@@ -219,13 +219,13 @@ if [[ -d "${HOME}/code/go/gocode" ]]; then
     export GO111MODULE=on
 fi
 
-if [[ -d "${HOME}/code/J/j901" ]]; then
-    export JHOME=${HOME}/code/J/j901
+if [[ -d "${HOME}/code/J/j903" ]]; then
+    export JHOME=${HOME}/code/J/j903
     export PATH="${PATH}${PATH:+:}${JHOME}/bin"
 fi
 
-if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.5.3" ]]; then
-    export JULIAHOME="${VROOT}/julia-1.5.3"
+if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.6.2" ]]; then
+    export JULIAHOME="${VROOT}/julia-1.6.2"
     export PATH="${PATH}${PATH:+:}${JULIAHOME}/bin"
     ## export MANPATH="${MANPATH}${MANPATH:+:}${JULIAHOME}/share/man"
 fi
@@ -283,7 +283,7 @@ alias cd..='cd ..'
 # Make piping easier...
 # $ ls -la LL
 # $ ls -la VV
-alias -g VV=' |& vim -'
+alias -g VV=' |& view -'
 alias -g LL=' |& less'
 
 [[ ! -z "${LS_COLORS}" ]] && unset LS_COLORS
