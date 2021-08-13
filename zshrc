@@ -11,14 +11,17 @@ getinteractive() {
 }
 
 upgradeoutdated() {
-  if which apt-get > /dev/null 2>&1 ; then
-    cat <<-'EOF'
-	Going to run:
-	    sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
-
-	EOF
-    sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
-  fi
+  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
+  local cmd=""
+  case "${sys##*=}" in
+    "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
+    "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
+    "amzn") cmd="sudo yum update --yes && sudo yum clean all --yes && sudo yum autoremove --yes" ;;
+    "alpine") cmd="sudo apk update && sudo apk upgrade" ;;
+    *) cmd="echo 'Do not know how to upgrade this system'" ;;
+  esac
+  echo "Will run: ${cmd}\n"
+  eval "${cmd}"
 }
 
 enable_OTB() {
