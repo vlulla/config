@@ -16,7 +16,7 @@
 \set VERBOSITY 'verbose'
 \set HISTCONTROL 'ignoreboth'
 \set HISTSIZE 20000
-\set PROMPT1 '%~%x%# '
+\set PROMPT1 '%~ %x%# '
 \pset expanded 'auto'
 \pset null ∅
 \pset linestyle 'unicode'
@@ -30,7 +30,8 @@ SET statement_timeout=5000;
 \echo 'Some custom extra commands:\n'
 \echo '   :dbsize      --  Database size'
 \echo '   :settings    --  Server settings'
-\echo '   :sp          --  SHOW search_path;\n\n'
+\echo '   :sp          --  SHOW search_path;\n'
+\echo 'Type \\set to see how these are defined.\n\n'
 \set dbsize 'select datname,pg_size_pretty(pg_database_size(datname)) db_size from pg_database ORDER BY db_size;'
 \set settings 'select name,setting,source,short_desc from pg_settings;'
 \set sp 'SHOW search_path;'
