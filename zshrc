@@ -211,8 +211,8 @@ zstyle ':completion:*' users-hosts 'vlulla@quarry.uits.iu.edu' 'vlulla@karst.uit
 if [[ -d "${HOME}/.cargo" ]]; then
     export PATH="${PATH}${PATH:+:}${HOME}/.cargo/bin"
 fi
-if [[ -d "${HOME}/anaconda3" ]]; then
-    export CONDAHOME="${HOME}/anaconda3"
+if [[ -d "${HOME}/miniconda3" ]]; then
+    export CONDAHOME="${HOME}/miniconda3"
     export PATH="${PATH}${PATH:+:}${CONDAHOME}/bin"
 fi
 if [[ -d "${HOME}/code/go/gocode" ]]; then
