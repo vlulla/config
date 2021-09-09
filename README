@@ -2,6 +2,7 @@ Contains config files for all the programs that I use.
 
 Locations and names for these files:
    bashrc         ${HOME}/.bashrc
+   condarc        ${HOME}/.condarc
    emacs          ${HOME}/.emacs
    emacs_mac      ${HOME}/.emacs
    gitconfig      ${HOME}/.gitconfig
