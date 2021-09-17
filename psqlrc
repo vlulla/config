@@ -39,7 +39,7 @@ SET statement_timeout=5000;
 \set nrows 'select table_schema as schema, table_name as table, reltuples as numrows from information_schema.tables join pg_class on relname = table_name where table_schema not in (''pg_catalog'',''information_schema'') and table_type=''BASE TABLE'';'
 \set settings 'select name,setting,source,short_desc from pg_settings;'
 \set sp 'SHOW search_path;'
-\set tblsize 'select tablename,pg_size_pretty(pg_table_size(tablename::regclass)) tbl_size from pg_tables where schemaname not in (''pg_catalog'',''information_schema'') order by tbl_size;'
+\set tblsize 'select schemaname,tablename,pg_size_pretty(pg_table_size((schemaname || ''.'' || tablename)::regclass)) tbl_size from pg_tables where schemaname not in (''pg_catalog'',''information_schema'') order by tbl_size;'
 
 \timing on
 \x auto
