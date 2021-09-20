@@ -18,7 +18,7 @@ upgradeoutdated() {
     "alpine") cmd="sudo apk update && sudo apk upgrade" ;;
     "*") cmd="echo 'Do not know how to upgrade this system.'";;
   esac
-  echo "Will run: ${cmd}\n"
+  echo -e "Will run: ${cmd}\n"
   eval "${cmd}"
 }
 
