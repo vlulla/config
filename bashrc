@@ -5,18 +5,21 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 git-branch-info() {
-  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'
+  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@«(@g' -e 's@$@)»@g'
 }
 
 upgradeoutdated() {
-  if which apt-get > /dev/null 2>&1 ; then
-    cat <<-'EOF'
-	Going to run:
-	    sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
-
-	EOF
-    sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoclean -y && sudo apt-get autoremove -y
-  fi
+  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
+  local cmd=""
+  case "${sys##*=}" in
+    "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
+    "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
+    "amzn") cmd="sudo yum update --assumeyes && sudo yum clean all --assumeyes && sudo yum autoremove --assumeyes" ;;
+    "alpine") cmd="sudo apk update && sudo apk upgrade" ;;
+    "*") cmd="echo 'Do not know how to upgrade this system.'";;
+  esac
+  echo "Will run: ${cmd}\n"
+  eval "${cmd}"
 }
 
 removeduplicates() {
