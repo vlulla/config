@@ -36,7 +36,7 @@ SET statement_timeout=5000;
 \echo '   :sp          --  SHOW search_path'
 \echo '   :tblsize     --  Table sizes\n'
 \echo 'Type \\set to see how these are defined.\n\n'
-\set cols 'select attrelid::regclass as tablename, array_agg(attname) filter (where (attnum > 0)) as colnames from pg_attribute att join pg_class c on att.attrelid = c.oid where c.relkind=''r'' and c.relnamespace::regnamespace::text not like ''pg_%'' and c.relnamespace::regnamespace::text <> ''information_schema'' group by attrelid;'
+\set cols 'select c.relnamespace::regnamespace as schemaname, att.attrelid::regclass as tablename, attname as colname, atttypid::regtype as coltype from pg_attribute att join pg_class c on att.attrelid = c.oid where att.attnum > 0 and c.relkind=''r'' and c.relnamespace::regnamespace::text not like ''pg_%'' and c.relnamespace::regnamespace::text <> ''information_schema'';'
 \set dbsize 'select datname,pg_size_pretty(pg_database_size(datname)) db_size from pg_database order by db_size;'
 \set nrows 'select table_schema as schema, table_name as table, reltuples as numrows from information_schema.tables join pg_class on relname = table_name where table_schema not in (''pg_catalog'',''information_schema'') and table_type=''BASE TABLE'';'
 \set settings 'select name,setting,source,short_desc from pg_settings;'
