@@ -17,9 +17,9 @@
 \set VERBOSITY 'verbose'
 \set HISTCONTROL 'ignoreboth'
 \set HISTSIZE 20000
-\set PROMPT1 '%~ %x%# '
-\pset expanded 'auto'
-\pset null ∅
+\set PROMPT1 '%n@%/ %x%R%# '
+\set PROMPT2 '%R%# '
+\pset null '[null]'
 \pset linestyle 'unicode'
 \pset border 2
 
