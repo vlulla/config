@@ -25,6 +25,14 @@ upgradeoutdated() {
   eval "${cmd}"
 }
 
+updatecondaenvs() {
+  local env=""
+  for env in $(conda env list | awk '!/^#/{print $1}'); do
+    echo "Updating conda environment:   ${env}"
+    conda update --update-all --yes --name ${env}
+  done
+}
+
 enable_OTB() {
   ## OTB related!  Commented because it interferes with lots of other things!
   otbenv_profile=${HOME}/code/rs_gis/OTB-6.6.1-Linux64/otbenv.profile

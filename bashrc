@@ -22,6 +22,14 @@ upgradeoutdated() {
   eval "${cmd}"
 }
 
+updatecondaenvs() {
+  local env=""
+  for env in $(conda env list | awk '!/^#/{print $1}'); do
+    echo "Updating conda environment:   ${env}"
+    conda update --update-all --yes --name ${env}
+  done
+}
+
 removeduplicates() {
     ## Use this to remove duplicates from PATH and MANPATH
     ## Call it like:
