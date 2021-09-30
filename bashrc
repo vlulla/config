@@ -24,8 +24,12 @@ upgradeoutdated() {
 
 updatecondaenvs() {
   local env=""
+  local red=$(tput setaf 1)
+  local green=$(tput setaf 2)
+  local bold=$(tput bold)
+  local reset=$(tput sgr0)
   for env in $(conda env list | awk '!/^#/{print $1}'); do
-    echo "Updating conda environment:   ${env}"
+    echo "Updating conda environment:   ${bold}${green}${env}${reset}"
     conda update --update-all --yes --name ${env}
   done
 }
