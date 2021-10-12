@@ -1,3 +1,10 @@
+## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
+for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
+    if [[ -r ${file} ]] && [[ -f ${file} ]]; then
+        source "${file}"
+    fi
+done
+unset file
 
 git_branch_info() {
   git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@ «(@g' -e 's@$@)»@g'
