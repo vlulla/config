@@ -20,6 +20,8 @@ getinteractive() {
 upgradeoutdated() {
   local sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
   local cmd=""
+  local bold=$(tput bold)
+  local reset=$(tput sgr0)
   case "${sys##*=}" in
     "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
     "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
@@ -28,7 +30,8 @@ upgradeoutdated() {
     "freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
     *) cmd="echo 'Do not know how to upgrade this system'" ;;
   esac
-  echo "Will run: ${cmd}\n"
+  echo "Will run the command:"
+  echo "${bold}${cmd}${reset}\n"
   eval "${cmd}"
 }
 
