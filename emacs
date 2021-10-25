@@ -39,7 +39,7 @@
   "Inserts timestamp (formatted: %Y-%m-%dT%H:%M:%S) at current cursor location.
 See ISO 8601 timestamp standard for more details."
   (interactive)
-  (insert (format-time-string ("%Y-%m-%dT%H:%M:%S")))
+  (insert (format-time-string "%FT%T%z"))
 )
 
 (defun setup-keys ()
@@ -50,12 +50,14 @@ See ISO 8601 timestamp standard for more details."
   (global-set-key "\C-c\C-k" 'kill-region)
   (global-set-key (kbd "<f5>") 'call-last-kbd-macro)
   (global-set-key (kbd "<f7>") 'font-lock-mode)
-  (global-set-key (kbd "<f11>") 'insert-date)
-  (global-set-key (kbd "<f12>") 'insert-timestamp)
+  (global-set-key (kbd "<f9>") 'insert-date)
+  (global-set-key (kbd "<f10>") 'insert-timestamp)
 
 )
 
 (defun setup-ESS ()
+  (add-to-list 'load-path "~/code/elisp/ess-18.10.2/lisp")
+  (load "ess-autoloads")
   (require 'ess-site)
   (setq-default inferior-R-args "-q")
   ;; (add-to-list 'auto-mode-alist '("\\.rd$" . Rd-mode))
@@ -150,7 +152,7 @@ See ISO 8601 timestamp standard for more details."
 
 (defun setup-auctex ()
   (load "auctex.el" nil t t)
-  (load "preview-latex.el" nil t t)
+  ;; (load "preview-latex.el" nil t t)
   (require 'tex-mik) ;; For use with MikTeX Only
 
   (autoload 'LaTeX-mode "tex-site" "AucTeX mode." t)
