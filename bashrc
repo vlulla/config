@@ -1,5 +1,6 @@
 alias R='R --no-restore '
 
+alias awk='awk --sandbox'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
