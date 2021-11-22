@@ -276,7 +276,7 @@ fi
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source ${CONDAHOME}/bin/aws_zsh_completer.sh
 ## Some aliases
-alias awk='awk --sandbox
+alias awk='awk --sandbox'
 alias bc='bc -l'
 alias cp='cp -iv'
 alias dm='docker-machine '
