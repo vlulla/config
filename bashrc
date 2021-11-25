@@ -48,6 +48,7 @@ removeduplicates() {
     echo -n $1 | awk -v RS=$2 -v ORS=$2 '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
 }
 
+export PROMPT_DIRTRIM=7
 export PS1='\u@\h: \w\n[jobs: \j] $(git-branch-info) \$ '
 export EDITOR="vi"
 if [ -z ${VROOT} ]; then
