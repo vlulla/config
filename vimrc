@@ -139,10 +139,11 @@ augroup Skeleton
     autocmd BufNewFile *.md 0r ~/code/vim_emacs/vim_templates/mdtemplate.md
     autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
     autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
+    autocmd BufNewFile *.dot 0r ~/code/vim_emacs/vim_templates/dottempate.dot
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
     autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
     autocmd BufNewFile Dockerfile 0r ~/code/vim_emacs/vim_templates/Dockerfile
-    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,.gitignore,.dockerignore,Dockerfile set modified
+    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,*.dot,.gitignore,.dockerignore,Dockerfile set modified
 augroup END
 
 
@@ -247,7 +248,8 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
+" highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
+highlight OverLength term=standout cterm=bold ctermbg=white ctermfg=black gui=bold guibg=red guifg=white
 match OverLength /\%81v/
 
 " Some abbreviations
