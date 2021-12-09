@@ -159,6 +159,9 @@ autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
 autocmd FileType scala set makeprg=scala\ \"%\"
 autocmd FileType sql set syntax=OFF
 
+" Delete trailing whitespace for some of the programming file types...
+autocmd FileType c,cs,cpp,java,python,r,scala,sql,make autocmd BufWritePre <buffer> %s@\s\+$@@e
+
 let mapleader=","
 " let mapleader="\<Space>"
 " Saw the above on http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
