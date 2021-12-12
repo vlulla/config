@@ -272,11 +272,15 @@ iabbrev aiui as I understand it
 iabbrev appl application
 iabbrev appls applications
 iabbrev attn attention
+iabbrev btw by the way
+iabbrev Btw By the way,
+iabbrev BTW By the way,
 iabbrev ccopy Copyright 2020 Vijay Lulla, all rights reserved.
 iabbrev didnt didn't
 iabbrev dnt don't
 iabbrev dont don't
 iabbrev eg e.g.,
+iabbrev exprot export
 iabbrev fe for example
 iabbrev fo of
 iabbrev fucntion function
@@ -290,6 +294,9 @@ iabbrev Istm It seems to me
 iabbrev iatm it appears to me
 iabbrev iirc if I remember correctly
 iabbrev iiuc if I understand correctly
+iabbrev imo in my opinion
+iabbrev Imo In my opinion,
+iabbrev IMO In my opinion,
 iabbrev iotm it occurs to me
 iabbrev Iotm It occurs to me
 iabbrev istm it seems to me
@@ -304,6 +311,10 @@ iabbrev si is
 " iabbrev ssig --<CR>Vijay Lulla<CR>vijaylulla@gmail.com
 iabbrev taht that
 iabbrev teh the
+iabbrev tfs thanks for sharing
+iabbrev Tfs Thanks for sharing
+iabbrev thx thanks
+iabbrev Thx Thanks
 iabbrev wnt won't
 iabbrev wont won't
 iabbrev yoru your
