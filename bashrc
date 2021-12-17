@@ -84,3 +84,14 @@ csv2tsv() {
 tsv2csv() {
   sed 's/\t/","/g;s/^/"/;s/$/"/' "$1" > "$2"
 }
+
+## gdal related ... see https://gdal.org/gdal.pdf
+export GDAL_CACHE_MAX=512
+export GDAL_NUM_THREADS=$(( $(nproc) - 2 ))
+export NUM_THREADS=${GDAL_NUM_THREADS}
+export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
+export COMPRESS=LERC_ZSTD
+export PREDICTOR=3
+export ZLEVEL=5
+export ZSTD_LEVEL=7
+export PG_USE_COPY=YES

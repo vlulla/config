@@ -6,6 +6,10 @@
 
 \set QUIET 1
 
+SET DateStyle='ISO, MDY';
+SET IntervalStyle='iso_8601';
+SET statement_timeout=5000;
+
 -- Find the variables you can set in documentation of `psql` under PostgreSQL Client Applications
 -- in the manual (part VI. Reference)
 \set COMP_KEYWORD_CASE 'upper'
@@ -23,13 +27,9 @@
 \pset linestyle 'unicode'
 \pset border 2
 
-SET DateStyle='ISO, MDY';
-SET IntervalStyle='iso_8601';
-SET statement_timeout=5000;
-
 -- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
 \echo 'Some custom extra commands:\n'
-\echo '   :cols        --  List columns of all all the tables'
+\echo '   :cols        --  List columns of all the tables'
 \echo '   :dbsize      --  Database size'
 \echo '   :nrows       --  # rows in all tables (Run VACUUM if many tables have 0 rows)'
 \echo '   :settings    --  Server settings'
@@ -44,5 +44,6 @@ SET statement_timeout=5000;
 \set tblsize 'select schemaname,tablename,pg_size_pretty(pg_table_size((quote_ident(schemaname) || ''.'' || quote_ident(tablename))::regclass)) tbl_size from pg_tables where schemaname not in (''pg_catalog'',''information_schema'') order by tbl_size;'
 
 \timing on
-\x auto
+-- \x auto
+
 \unset QUIET

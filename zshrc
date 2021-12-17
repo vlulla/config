@@ -330,3 +330,14 @@ export TIME_STYLE="long-iso"
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
   [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
 fi
+
+## gdal related ... see https://gdal.org/gdal.pdf
+export GDAL_CACHE_MAX=512
+export GDAL_NUM_THREADS=$(( $(nroc) - 2 ))
+export NUM_THREADS=${GDAL_NUM_THREADS}
+export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
+export COMPRESS=LERC_ZSTD
+export SPARSE_OK=TRUE
+export ZLEVEL=5
+export ZSTD_LEVEL=7
+export PG_USE_COPY=YES
