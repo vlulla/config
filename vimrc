@@ -15,8 +15,7 @@ set cmdheight=2
 set complete-=t     " no tag search
 set completeopt=longest,menuone
 set cpoptions+=W
-" set display=lastline,uhex
-set display=lastline
+set display=lastline,uhex
 set esckeys
 set expandtab
 set fillchars+=stl:-,stlnc:-,diff:-
@@ -42,6 +41,7 @@ set noscrollbind " Buffers scroll independently....need this!
 set nrformats+=alpha " :help CTRL-A  OR :help nrformats
 set nowrap
 set scrolloff=2
+set sessionoptions+=unix,slash
 set sidescrolloff=3
 set shiftwidth=2
 set showcmd
