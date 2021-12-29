@@ -8,7 +8,7 @@
 
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
-SET statement_timeout=5000;
+SET statement_timeout=180000; -- cancel request after 3 mins
 
 -- Find the variables you can set in documentation of `psql` under PostgreSQL Client Applications
 -- in the manual (part VI. Reference)
@@ -21,7 +21,7 @@ SET statement_timeout=5000;
 \set VERBOSITY 'verbose'
 \set HISTCONTROL 'ignoreboth'
 \set HISTSIZE 20000
-\set PROMPT1 '%n@%/[%p] %x%R%# '
+\set PROMPT1 '%n@%/ [%p] %x%R%# '
 \set PROMPT2 '%/%R%# '
 \pset null '(null)'
 \pset linestyle 'unicode'
@@ -31,10 +31,11 @@ SET statement_timeout=5000;
 \echo 'Some custom extra commands:\n'
 \echo '   :cols        --  List columns of all the tables'
 \echo '   :dbsize      --  Database size'
-\echo '   :nrows       --  # rows in all tables (Run VACUUM if many tables have 0 rows)'
+\echo '   :nrows       --  Estimate of # rows in all tables (Run VACUUM if many tables have 0 rows). Use count(*) to get actual count of rows.'
 \echo '   :settings    --  Server settings'
 \echo '   :sp          --  SHOW search_path'
-\echo '   :tblsize     --  Table sizes\n'
+\echo '   :tblsize     --  Table sizes'
+\echo ''
 \echo 'Type \\set to see how these are defined.\n\n'
 \set cols 'select c.relnamespace::regnamespace as schemaname, att.attrelid::regclass as tablename, attname as colname, atttypid::regtype as coltype from pg_attribute att join pg_class c on att.attrelid = c.oid where att.attnum > 0 and c.relkind=''r'' and c.relnamespace::regnamespace::text not like ''pg_%'' and c.relnamespace::regnamespace::text <> ''information_schema'';'
 \set dbsize 'select datname,pg_size_pretty(pg_database_size(datname)) db_size from pg_database order by db_size;'
