@@ -6,7 +6,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 git-branch-info() {
-  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@«(@g' -e 's@$@)»@g'
+  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'
 }
 
 upgradeoutdated() {
