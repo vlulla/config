@@ -13,7 +13,9 @@
 .timer on
 .show
 
+PRAGMA cache_size = -10000; -- 10 Mb
 PRAGMA journal_mode = WAL;
+PRAGMA locking_mode = exclusive;
 PRAGMA busy_timeout = 5000;
 PRAGMA foreign_keys = ON;
 PRAGMA mmap_size = 536870912; -- 512 Mb
