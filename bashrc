@@ -84,6 +84,14 @@ csv2tsv() {
 tsv2csv() {
   sed 's/\t/","/g;s/^/"/;s/$/"/' "$1" > "$2"
 }
+vf() {
+  if which fzf 2>/dev/null 1>&2 ; then
+    export FZF_DEFAULT_OPTS='--height 40% --border'
+    vim -o $(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)
+  else
+    vim
+  fi
+}
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512

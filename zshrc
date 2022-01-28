@@ -79,7 +79,8 @@ removeduplicates() {
 vf() {
   if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
     ## vim -o $(fzf --preview='cat {}')
-    vim -o $(fzf)
+    export FZF_DEFAULT_OPTS='--height 40% --border'
+    vim -o $(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)
   else
     vim
   fi
