@@ -56,6 +56,7 @@ set splitright
 set splitbelow
 set textwidth=0
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
+set timeoutlen=150
 " set nowrapscan
 " set whichwrap=b,s,l,h
 set whichwrap=b,s,l,h,<,>,[,]
@@ -139,7 +140,7 @@ augroup Skeleton
     autocmd BufNewFile *.md 0r ~/code/vim_emacs/vim_templates/mdtemplate.md
     autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
     autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
-    autocmd BufNewFile *.dot 0r ~/code/vim_emacs/vim_templates/dottempate.dot
+    autocmd BufNewFile *.dot 0r ~/code/vim_emacs/vim_templates/dottemplate.dot
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
     autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
     autocmd BufNewFile Dockerfile 0r ~/code/vim_emacs/vim_templates/Dockerfile

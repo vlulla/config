@@ -44,7 +44,7 @@ SET statement_timeout=180000; -- cancel request after 3 mins
 \set schemarows 'select table_schema as schema, table_name as table, reltuples::bigint as numrows, relowner::regrole as owner from information_schema.tables join pg_class on relname = table_name where table_schema not in (''pg_catalog'',''information_schema'') and table_type<>''VIEW'' and table_schema::text in (select unnest(string_to_array(setting,'', '')) from pg_settings where name=''search_path'');'
 \set settings 'select name,setting,source,short_desc from pg_settings;'
 \set sp 'SHOW search_path;'
-\set tblsize 'select schemaname,tablename,pg_size_pretty(pg_table_size((quote_ident(schemaname) || ''.'' || quote_ident(tablename))::regclass)) tbl_size from pg_tables where schemaname not in (''pg_catalog'',''information_schema'') order by tbl_size;'
+\set tblsize 'select schemaname,tablename,pg_size_pretty(pg_table_size((quote_ident(schemaname) || ''.'' || quote_ident(tablename))::regclass)) tbl_size from pg_tables where schemaname not in (''pg_catalog'',''information_schema'') and has_schema_privilege(schemaname,''USAGE'') order by pg_table_size(quote_ident(schemaname)||''.''||quote_ident(tablename));'
 
 \timing on
 -- \x auto
