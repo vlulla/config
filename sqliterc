@@ -10,12 +10,16 @@
 .mode box
 .echo on
 -- .eqp on
-.timer on
-.show
 
-PRAGMA cache_size = -10000; -- 10 Mb
+PRAMGA analysis_limit = 100000; -- ANALYZE only these many rows
+PRAGMA auto_vacuum = full;
+PRAGMA cache_size = -100000; -- 100 Mb
 PRAGMA journal_mode = WAL;
 PRAGMA locking_mode = exclusive;
 PRAGMA busy_timeout = 5000;
 PRAGMA foreign_keys = ON;
 PRAGMA mmap_size = 536870912; -- 512 Mb
+PRAGMA wal_autocheckpoint = 10000;
+
+.show
+.timer on
