@@ -54,7 +54,7 @@ set smarttab
 set softtabstop=4
 set splitright
 set splitbelow
-set textwidth=0
+set textwidth=100
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
 set timeoutlen=150
 " set nowrapscan
@@ -260,8 +260,8 @@ match OverLength /\%81v/
 iabbrev @@ vijaylulla@gmail.com
 iabbrev #d #define
 iabbrev #i #include
-iabbrev #f ## FIXME:
-iabbrev #t ## TODO:
+iabbrev #f ## FIXME (vijay):
+iabbrev #t ## TODO (vijay):
 iabbrev THe The
 iabbrev THat That
 iabbrev THis This
