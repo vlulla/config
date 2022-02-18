@@ -42,12 +42,12 @@ set nrformats+=alpha " :help CTRL-A  OR :help nrformats
 set nowrap
 set scrolloff=2
 set sessionoptions+=unix,slash
-set sidescrolloff=3
 set shiftwidth=2
 set showcmd
 set showmatch
 set showmode
-set sidescrolloff=3
+set sidescroll=5
+" set sidescrolloff=3
 set smartcase
 " set smartindent
 set smarttab
