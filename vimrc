@@ -54,7 +54,7 @@ set smarttab
 set softtabstop=4
 set splitright
 set splitbelow
-set textwidth=100
+set textwidth=0
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
 set timeoutlen=150
 " set nowrapscan
