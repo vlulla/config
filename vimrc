@@ -18,6 +18,7 @@ set cpoptions+=W
 set display=lastline,uhex
 set esckeys
 set expandtab
+set fileformat=unix
 set fillchars+=stl:-,stlnc:-,diff:-
 set foldmethod=marker
 set formatoptions=tcroqn1j
@@ -46,7 +47,7 @@ set shiftwidth=2
 set showcmd
 set showmatch
 set showmode
-set sidescroll=5
+" set sidescroll=5
 " set sidescrolloff=3
 set smartcase
 " set smartindent
