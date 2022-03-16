@@ -322,7 +322,7 @@ alias -g LL=' |& less'
 typeset -U PATH path MANPATH manpath FPATH fpath
 
 export PAGER=less
-export LESS='-eiMFXsSx4r'
+export LESS='-eiMFXsSx4'
 export LESSSECURE=1
 export EDITOR='vi'
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
