@@ -329,9 +329,9 @@ export EDITOR='vi'
 # man ls ... then /TIME_STYLE
 export TIME_STYLE="long-iso"
 
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
-  [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
-fi
+## if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
+##   [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
+## fi
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
