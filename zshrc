@@ -160,7 +160,7 @@ HISTFILE=~/.zsh_history
 fpath=(~/.zsh/completion $fpath)
 
 
-REPORTTIME=30  ## Very Useful!!
+EXPORT REPORTTIME=30  ## Very Useful!!
 
 setopt PROMPT_SUBST   ## For prompt substitution
 
@@ -188,6 +188,9 @@ setopt autopushd pushdignoredups
 
 ### Completion
 setopt autolist autoparamslash autoremoveslash listambiguous listtypes
+
+### Initialisation
+setopt allexport
 
 ### Expansion and globbing
 setopt markdirs nomatch
