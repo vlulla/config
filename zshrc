@@ -160,7 +160,7 @@ HISTFILE=~/.zsh_history
 fpath=(~/.zsh/completion $fpath)
 
 
-EXPORT REPORTTIME=30  ## Very Useful!!
+export REPORTTIME=30  ## Very Useful!!
 
 setopt PROMPT_SUBST   ## For prompt substitution
 
