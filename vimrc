@@ -145,7 +145,8 @@ augroup Skeleton
     autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
     autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
     autocmd BufNewFile Dockerfile 0r ~/code/vim_emacs/vim_templates/Dockerfile
-    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,*.dot,.gitignore,.dockerignore,Dockerfile set modified
+    autocmd BufNewFile build.sbt 0r ~/code/vim_emacs/vim_templates/build.sbt
+    autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,*.dot,.gitignore,.dockerignore,Dockerfile,build.sbt set modified
 augroup END
 
 
