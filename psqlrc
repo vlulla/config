@@ -6,6 +6,7 @@
 
 \set QUIET 1
 
+SET TIMEZONE to 'UTC'; -- AWS also uses only UTC! 
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
 SET statement_timeout=180000; -- cancel request after 3 mins
