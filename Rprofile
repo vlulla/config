@@ -86,6 +86,7 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       ##                     INLA="https://inla.r-inla-download.org/R/stable"))
       , repos=structure(c(CRAN="https://cloud.r-project.org/",
                           INLA="https://inla.r-inla-download.org/R/stable"))
+      , timeout = max(300, getOption("timeout")) ## INLA download timesout with default value! See ?download.file of why we need higher value here...
       , useFancyQuotes=FALSE # causes problems with LaTeX
       ## , warnPartialMatchArgs=TRUE  ## Causes lots of warnings!
       , warnPartialMatchAttr=TRUE     ## Comment if weird "repeatwithsimplewarning" error messages start popping up.
