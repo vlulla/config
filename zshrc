@@ -189,8 +189,8 @@ setopt autopushd pushdignoredups
 ### Completion
 setopt autolist autoparamslash autoremoveslash listambiguous listtypes
 
-### Initialisation
-setopt allexport
+## ### Initialisation
+## setopt allexport
 
 ### Expansion and globbing
 setopt markdirs nomatch
