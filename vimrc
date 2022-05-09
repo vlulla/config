@@ -28,7 +28,7 @@ set hlsearch
 set incsearch
 set laststatus=2
 set lazyredraw " Don't display macro steps
-set listchars=tab:>-,trail:.,eol:$,precedes:<,extends:>
+set listchars+=tab:>-,trail:.,precedes:<,extends:>
 set matchtime=2
 set modelines=5 " Mac's default vim sets it to 0??
 set more
