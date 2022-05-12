@@ -4,6 +4,7 @@ Locations and names for these files:
    bashrc         ${HOME}/.bashrc
    condarc        ${HOME}/.condarc
    emacs          ${HOME}/.emacs
+   config.json    ${HOME}/.docker/config.json
    emacs_mac      ${HOME}/.emacs
    gitconfig      ${HOME}/.gitconfig
    ipythonconfig  ${HOME}/.ipython/profile_default/ipython_config.py 
