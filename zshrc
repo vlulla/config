@@ -264,6 +264,9 @@ fi
 if [[ -d "${HOME}/.local" ]]; then
     export PATH="${PATH}${PATH:+:}${HOME}/.local/bin"
 fi
+if [[ -d "${HOME}/bin" ]]; then
+    export PATH="${HOME}/bin${PATH:+:${PATH}}"
+fi
 if [[ -d "${HOME}/code/racket/racket7.4" ]]; then
     export RACKETHOME=$HOME/code/racket/racket7.4
     export PATH="${PATH:+${PATH}:}${RACKETHOME}/bin"
