@@ -283,9 +283,9 @@ fi
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source ${CONDAHOME}/bin/aws_zsh_completer.sh
 ## Some aliases
-alias awk='awk --sandbox'
 alias bc='bc -l'
 alias cp='cp -iv'
+alias date='date -Iseconds'
 alias dm='docker-machine '
 alias e='vim '
 alias fsi='dotnet fsi'
@@ -341,9 +341,11 @@ export TIME_STYLE="long-iso"
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
-[ -x "$(command -v nproc)" ] && export GDAL_NUM_THREADS=$(( $(nproc) - 2 ))
-export NUM_THREADS=${GDAL_NUM_THREADS}
-export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
+if [[ -x "$(command -v nproc)" ]]; then
+  export GDAL_NUM_THREADS=$(( $(nproc) - 2 ))
+  export NUM_THREADS=${GDAL_NUM_THREADS}
+  export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
+fi
 export COMPRESS=LERC_ZSTD
 export SPARSE_OK=TRUE
 export ZLEVEL=5
