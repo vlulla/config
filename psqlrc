@@ -10,6 +10,8 @@ SET TIMEZONE to 'UTC'; -- AWS also uses only UTC!
 SET DateStyle='ISO, MDY';
 SET IntervalStyle='iso_8601';
 SET statement_timeout=180000; -- cancel request after 3 mins
+SET plpgsql.extra_errors TO 'all';
+SET plpgsql.extra_warnings TO 'all';
 
 -- Find the variables you can set in documentation of `psql` under PostgreSQL Client Applications
 -- in the manual (part VI. Reference)
