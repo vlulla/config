@@ -10,8 +10,10 @@ git-branch-info() {
 }
 
 upgradeoutdated() {
-  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
-  local cmd=""
+  local sys
+  local cmd
+  sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
+  cmd=""
   case "${sys##*=}" in
     "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
     "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
@@ -25,14 +27,19 @@ upgradeoutdated() {
 }
 
 updatecondaenvs() {
-  local env=""
-  local red=$(tput setaf 1)
-  local green=$(tput setaf 2)
-  local bold=$(tput bold)
-  local reset=$(tput sgr0)
+  local env
+  local red
+  local green
+  local bold
+  local reset
+  env=""
+  red=$(tput setaf 1)
+  green=$(tput setaf 2)
+  bold=$(tput bold)
+  reset=$(tput sgr0)
   for env in $(conda env list | awk '!/^#/{print $1}'); do
     echo "Updating conda environment:   ${bold}${green}${env}${reset}"
-    conda update --update-all --yes --name ${env}
+    conda update --update-all --yes --name "${env}"
   done
 }
 
@@ -45,15 +52,16 @@ removeduplicates() {
     ## $ # compare the above with echo ${PATH} | tr ':' '\n'
     ##
     ## $ export PATH=$(removeduplicates ${PATH} :)
-    echo -n $1 | awk -v RS=$2 -v ORS=$2 '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
+    echo -n "$1" | awk -v RS="$2" -v ORS="$2" '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
 }
 
 export PROMPT_DIRTRIM=7
 export PS1='\u@\h: \w\n[jobs: \j] $(git-branch-info) \$ '
 export EDITOR="vi"
-if [ -z ${VROOT} ]; then
+if [ -d "${VROOT}" ]; then
   export VROOT=${HOME}/VROOT
-  export PATH=${PATH}${PATH:+:}${VROOT}/bin
+  export VIRTUALROOT=${VROOT}
+  export PATH="${VROOT}/bin${PATH:+:${PATH}}"
 fi
 
 ## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
@@ -65,14 +73,6 @@ done
 unset file
 
 #### ## Some very useful functions
-vf() {
-  if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
-    ## vim -o $(fzf --preview='cat {}')
-    vim -o $(fzf)
-  else
-    vim
-  fi
-}
 ## following from https://www.datafix.com.au/cookbook/functions.html
 fields() { head -n 1 "$1" | tr "\t" "\n" | nl -w1 | pr -t -2; }
 broken() { awk -F"\t" '{print NF}' "$1" | sort | uniq -c | sed 's/^[ ]*//;s/ /\t/' | sort -nr; }
@@ -87,7 +87,7 @@ tsv2csv() {
 vf() {
   if which fzf 2>/dev/null 1>&2 ; then
     export FZF_DEFAULT_OPTS='--height 40% --border'
-    vim -o $(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)
+    vim -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
   else
     vim
   fi

@@ -18,10 +18,14 @@ getinteractive() {
 }
 
 upgradeoutdated() {
-  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
-  local cmd=""
-  local bold=$(tput bold)
-  local reset=$(tput sgr0)
+  local sys
+  local cmd
+  local bold
+  local reset
+  sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
+  cmd=""
+  bold=$(tput bold)
+  reset=$(tput sgr0)
   case "${sys##*=}" in
     "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
     "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
@@ -30,20 +34,25 @@ upgradeoutdated() {
     "freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
     *) cmd="echo 'Do not know how to upgrade this system'" ;;
   esac
-  echo "Will run the command:"
-  echo "${bold}${cmd}${reset}\n"
+  printf "Will run the command:"
+  printf "%s%s%s\n" "${bold}" "${cmd}" "${reset}"
   eval "${cmd}"
 }
 
 updatecondaenvs() {
-  local env=""
-  local red=$(tput setaf 1)
-  local green=$(tput setaf 2)
-  local bold=$(tput bold)
-  local reset=$(tput sgr0)
+  local env
+  local red
+  local green
+  local bold
+  local reset
+  env=""
+  red=$(tput setaf 1)
+  green=$(tput setaf 2)
+  bold=$(tput bold)
+  reset=$(tput sgr0)
   for env in $(conda env list | awk '!/^#/{print $1}'); do
     echo "Updating conda environment:   ${bold}${green}${env}${reset}"
-    conda update --update-all --yes --name ${env}
+    conda update --update-all --yes --name "${env}"
   done
 }
 
@@ -70,7 +79,7 @@ removeduplicates() {
     ## $ # compare the above with echo ${PATH} | tr ':' '\n'
     ##
     ## $ export PATH=$(removeduplicates ${PATH} :)
-    echo -n $1 | awk -v RS=$2 -v ORS=$2 '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
+    echo -n "$1" | awk -v RS="$2" -v ORS="$2" '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
 }
 
 ## From "Data cleaner's cookbook" https://www.datafix.com.au/cookbook/functions.html
@@ -80,7 +89,7 @@ vf() {
   if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
     ## vim -o $(fzf --preview='cat {}')
     export FZF_DEFAULT_OPTS='--height 40% --border'
-    vim -o $(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)
+    vim -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
   else
     vim
   fi
@@ -118,7 +127,7 @@ dcleanup() {
   ## mapfile works only in bash!
   ## local containers
   ## mapfile -t containers < <(docker ps -aq 2>/dev/null)
-  docker rm $(docker ps -aq ) 2>/dev/null
+  docker rm "$(docker ps -aq )" 2>/dev/null
 
   ## local volumes
   ## mapfile -t volumes < <(docker ps --filter status=exited -q 2>/dev/null)
@@ -128,7 +137,7 @@ dcleanup() {
 
   ## local images
   ## mapfile -t images < <(docker images --filter dangling=true -q 2>/dev/null)
-  docker rmi $(docker images --filter dangling=true -q) 2>/dev/null
+  docker rmi "$(docker images --filter dangling=true -q)" 2>/dev/null
 }
 
 del_stopped() {
@@ -144,11 +153,12 @@ del_stopped() {
 dockerpull() {
   local f
   for f in $(docker images --format "{{.Repository}}"); do
-    docker pull ${f}
+    docker pull "${f}"
   done
-  local dangling=$(docker images -q --filter "dangling=true")
+  local dangling
+  dangling="$(docker images -q --filter "dangling=true")"
   if [ ${#dangling} -gt 0 ]; then
-    docker rmi ${dangling}
+    docker rmi "${dangling}"
   fi
 }
 
@@ -171,7 +181,7 @@ export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
 # if [[ -d "${HOME}/VROOT" && $SHLVL == 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
     export VROOT="${HOME}/VROOT"
-    export VIRTUALROOT="${HOME}/VROOT"
+    export VIRTUALROOT="${VROOT}"
     ## export PATH="${PATH:+${PATH}:}${VROOT}/bin"
     export PATH="${VROOT}/bin${PATH:+:${PATH}}"
 fi
@@ -278,10 +288,10 @@ if [[ -d "${HOME}/code/swift/swift-5.1.3-RELEASE-ubuntu18.04" ]]; then
     ## export MANPATH="${MANPATH:+${MANPATH}:}${SWIFTHOME}/usr/share/man"
 fi
 # OPAM configuration
-[[ -f ${HOME}/.opam/opam-init/init.zsh ]] && . /home/v/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+[[ -f ${HOME}/.opam/opam-init/init.zsh ]] && source "${HOME}"/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source ${CONDAHOME}/bin/aws_zsh_completer.sh
+[[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source "${CONDAHOME}"/bin/aws_zsh_completer.sh
 ## Some aliases
 alias bc='bc -l'
 alias cp='cp -iv'
@@ -320,8 +330,8 @@ alias cd..='cd ..'
 alias -g VV=' |& view -'
 alias -g LL=' |& less'
 
-[[ ! -z "${LS_COLORS}" ]] && unset LS_COLORS
-[[ ! -z "${ZLS_COLORS}" ]] && unset ZLS_COLORS
+[[ -n "${LS_COLORS}" ]] && unset LS_COLORS
+[[ -n "${ZLS_COLORS}" ]] && unset ZLS_COLORS
 
 ## man zshbuiltins  ...  /typeset
 ## typeset -U removes duplicates!!
