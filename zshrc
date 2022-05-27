@@ -127,7 +127,7 @@ dcleanup() {
   ## mapfile works only in bash!
   ## local containers
   ## mapfile -t containers < <(docker ps -aq 2>/dev/null)
-  docker rm "$(docker ps -aq )" 2>/dev/null
+  docker rm $(docker ps -aq ) 2>/dev/null
 
   ## local volumes
   ## mapfile -t volumes < <(docker ps --filter status=exited -q 2>/dev/null)
@@ -137,7 +137,7 @@ dcleanup() {
 
   ## local images
   ## mapfile -t images < <(docker images --filter dangling=true -q 2>/dev/null)
-  docker rmi "$(docker images --filter dangling=true -q)" 2>/dev/null
+  docker rmi $(docker images --filter dangling=true -q) 2>/dev/null
 }
 
 del_stopped() {
@@ -356,6 +356,11 @@ if [[ -x "$(command -v nproc)" ]]; then
   export NUM_THREADS=${GDAL_NUM_THREADS}
   export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
 fi
+## GDAL/OGR options
+export OGR_SQLITE_SYNCHRONOUS=OFF
+export OGR_SQLITE_CACHE=1024
+export OGR_SQL_LIKE_AS_ILIKE=YES
+export FGDB_BULK_LOAD=YES
 export COMPRESS=LERC_ZSTD
 export SPARSE_OK=TRUE
 export ZLEVEL=5
