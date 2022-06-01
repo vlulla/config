@@ -252,11 +252,8 @@ if [[ -d "${HOME}/miniconda3" ]]; then
     export CONDAHOME="${HOME}/miniconda3"
     export PATH="${PATH:+${PATH}:}${CONDAHOME}/bin"
 fi
-if [[ -d "${HOME}/code/go/gocode" ]]; then
-    test -f "/usr/local/go/bin/go" && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
-    export GOPATH=${HOME}/code/go/gocode
-    export PATH="${PATH:+${PATH}:}${GOPATH}/bin"
-    export GO111MODULE=on
+if [[ -d "${HOME}/code/go" ]]; then
+    test -x "/usr/local/go/bin/go" && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
 fi
 
 if [[ -d "${HOME}/code/J/j903" ]]; then
