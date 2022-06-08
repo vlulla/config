@@ -345,6 +345,12 @@ export TIME_STYLE="long-iso"
 ##   [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
 ## fi
 
+## Some Python related stuff
+export PYTHONOPTIMIZE=2
+## export PYTHONWARNINGS=error ## This should be set, at least, during developing ...
+## export PYTHONPROFILEIMPORTTIME=true ## ditto
+## export PYTHONUTF8=1 ## aspire to uncmoment this!
+
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
 if [[ -x "$(command -v nproc)" ]]; then
