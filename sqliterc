@@ -11,7 +11,7 @@
 .echo on
 -- .eqp on
 
-PRAMGA analysis_limit = 100000; -- ANALYZE only these many rows
+PRAGMA analysis_limit = 100000; -- ANALYZE only these many rows
 PRAGMA auto_vacuum = full;
 PRAGMA cache_size = -100000; -- 100 Mb
 PRAGMA journal_mode = WAL;
