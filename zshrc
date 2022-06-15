@@ -289,6 +289,7 @@ fi
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source "${CONDAHOME}"/bin/aws_zsh_completer.sh
 ## Some aliases
+[[ -f "${HOME}/code/config/bashrc" ]] && alias bash='bash --rcfile "${HOME}/code/config/bashrc" '
 alias bc='bc -l'
 alias cp='cp -iv'
 alias date='date -Iseconds'
@@ -353,11 +354,13 @@ export PYTHONOPTIMIZE=2
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
-if [[ -x "$(command -v nproc)" ]]; then
-  export GDAL_NUM_THREADS=$(( $(nproc) - 2 ))
-  export NUM_THREADS=${GDAL_NUM_THREADS}
-  export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
-fi
+case "$(uname)" in
+  "Linux")  export GDAL_NUM_THREADS=$(( $(nproc) - 2 )) ;;
+  "Darwin") export GDAL_NUM_THREADS=$(( $(sysctl -n hw.physicalcpu) - 2 )) ;;
+  "*")      export GDAL_NUM_THREADS=2
+esac
+export NUM_THREADS=${GDAL_NUM_THREADS}
+export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
 ## GDAL/OGR options
 export OGR_SQLITE_SYNCHRONOUS=OFF
 export OGR_SQLITE_CACHE=1024

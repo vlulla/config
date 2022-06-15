@@ -95,7 +95,11 @@ vf() {
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
-export GDAL_NUM_THREADS=$(( $(nproc) - 2 ))
+case "$(uname)" in
+  "Linux")  export GDAL_NUM_THREADS=$(( $(nproc) - 2 )) ;;
+  "Darwin") export GDAL_NUM_THREADS=$(( $(sysctl -n hw.physicalcpu) - 2 )) ;;
+  "*")      export GDAL_NUM_THREADS=2 ;;
+esac
 export NUM_THREADS=${GDAL_NUM_THREADS}
 export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
 export COMPRESS=LERC_ZSTD
