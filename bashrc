@@ -93,6 +93,9 @@ vf() {
   fi
 }
 
+[[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
+[[ -z "${QUOTING_STYLE}" ]] && export QUOTING_STYLE="shell-always"
+
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
 case "$(uname)" in

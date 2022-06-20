@@ -339,8 +339,9 @@ export LESS='-eiMFXsSx4R'
 export LESSSECURE=1
 export EDITOR='vi'
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
-# man ls ... then /TIME_STYLE
-export TIME_STYLE="long-iso"
+# man ls ... then /(TIME|QUOTING)_STYLE
+[[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
+[[ -z "${QUOTING_STYLE}" ]] && export QUOTING_STYLE="shell-always"
 
 ## if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
 ##   [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
