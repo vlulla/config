@@ -348,7 +348,7 @@ export EDITOR='vi'
 ## fi
 
 ## Some Python related stuff
-export PYTHONOPTIMIZE=2
+## export PYTHONOPTIMIZE=2  ## causes lots of scripts to break (especially in ubuntu and miniconda!)
 ## export PYTHONWARNINGS=error ## This should be set, at least, during developing ...
 ## export PYTHONPROFILEIMPORTTIME=true ## ditto
 ## export PYTHONUTF8=1 ## aspire to uncmoment this!
