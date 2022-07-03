@@ -27,12 +27,12 @@ upgradeoutdated() {
   bold=$(tput bold)
   reset=$(tput sgr0)
   case "${sys##*=}" in
-    "ubuntu") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
-    "debian") cmd="sudo apt-get update --yes && sudo apt-get upgrade --yes && sudo apt-get autoclean --yes && sudo apt-get autoremove --yes" ;;
-    "amzn") cmd="sudo yum update --assumeyes && sudo yum clean all --assumeyes && sudo yum autoremove --assumeyes" ;;
-    "alpine") cmd="sudo apk update && sudo apk upgrade" ;;
-    "freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
-    *) cmd="echo 'Do not know how to upgrade this system'" ;;
+    ("ubuntu") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
+    ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
+    ("amzn") cmd="sudo yum update --assumeyes && sudo yum clean all --assumeyes && sudo yum autoremove --assumeyes" ;;
+    ("alpine") cmd="sudo apk update && sudo apk upgrade" ;;
+    ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
+    (*) cmd="echo 'Do not know how to upgrade this system'" ;;
   esac
   printf "Will run the command:"
   printf "%s%s%s\n" "${bold}" "${cmd}" "${reset}"
