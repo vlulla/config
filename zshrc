@@ -372,3 +372,9 @@ export SPARSE_OK=TRUE
 export ZLEVEL=5
 export ZSTD_LEVEL=7
 export PG_USE_COPY=YES
+## Dask options
+# From dask docs Dask searches for all environment variables that start with DASK_, then transforms keys by converting to lower case and changing double-underscores to nested structures.
+export DASK_ARRAY__CHUNK_SIZE="128 MiB"
+export DASK_DISTRIBUTED__WORKERS__MEMORY__SPILL=0.85
+export DASK_DISTRIBUTED__WORKERS__MEMORY__TARGET=0.75
+export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
