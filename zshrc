@@ -50,9 +50,9 @@ updatecondaenvs() {
   green=$(tput setaf 2)
   bold=$(tput bold)
   reset=$(tput sgr0)
-  for env in $(conda env list | awk '!/^#/{print $1}'); do
-    echo "Updating conda environment:   ${bold}${green}${env}${reset}"
-    conda update --update-all --yes --name "${env}"
+  for env in $(mamba env list | awk '!/^#/{print $1}'); do
+    echo "Updating mamba environment:   ${bold}${green}${env}${reset}"
+    mamba update --update-all --yes --name "${env}"
   done
 }
 
@@ -248,8 +248,8 @@ zstyle ':completion:*' users-hosts 'vlulla@quarry.uits.iu.edu' 'vlulla@karst.uit
 if [[ -d "${HOME}/.cargo" ]]; then
     export PATH="${PATH:+${PATH}:}${HOME}/.cargo/bin"
 fi
-if [[ -d "${HOME}/miniconda3" ]]; then
-    export CONDAHOME="${HOME}/miniconda3"
+if [[ -d "${HOME}/mambaforge" ]]; then
+    export CONDAHOME="${HOME}/mambaforge"
     export PATH="${PATH:+${PATH}:}${CONDAHOME}/bin"
 fi
 
