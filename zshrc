@@ -212,6 +212,9 @@ setopt histignorealldups histignorespace histreduceblanks histsavenodups nobangh
 ## job control
 setopt autoresume longlistjobs monitor noclobber notify
 
+## shell emulation
+setopt ksharrays
+
 ### Zle options
 setopt nobeep
 # Use modern completion system
