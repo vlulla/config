@@ -1,6 +1,8 @@
 Contains config files for all the programs that I use.
 
 Locations and names for these files:
+
+```bash
    bashrc         ${HOME}/.bashrc
    condarc        ${HOME}/.condarc
    emacs          ${HOME}/.emacs
@@ -16,4 +18,4 @@ Locations and names for these files:
    tmux.conf      ${HOME}/.tmux.conf
    vimrc          ${HOME}/.vimrc
    zshrc          ${HOME}/.zshrc
-
+```
