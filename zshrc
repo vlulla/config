@@ -270,7 +270,7 @@ if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.6.2" ]]; then
 fi
 
 
-if [[ -d "${HOME}/.local" ]]; then
+if [[ -d "${HOME}/.local/bin" ]]; then
     export PATH="${PATH}${PATH:+:}${HOME}/.local/bin"
 fi
 if [[ -d "${HOME}/bin" ]]; then
