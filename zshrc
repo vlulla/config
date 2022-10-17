@@ -246,8 +246,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #
 #  Below is my setup
 
-
-zstyle ':completion:*' users-hosts 'vlulla@quarry.uits.iu.edu' 'vlulla@karst.uits.iu.edu' 'vlulla@apps.science.iupui.edu'
 if [[ -d "${HOME}/.cargo" ]]; then
     export PATH="${PATH:+${PATH}:}${HOME}/.cargo/bin"
 fi
@@ -281,11 +279,6 @@ if [[ -d "${HOME}/code/racket/racket7.4" ]]; then
     export PATH="${PATH:+${PATH}:}${RACKETHOME}/bin"
     ## export MANPATH="${MANPATH:+${MANPATH}:}${RACKETHOME}/man"
 fi
-if [[ -d "${HOME}/code/swift/swift-5.1.3-RELEASE-ubuntu18.04" ]]; then
-    export SWIFTHOME="${HOME}/code/swift/swift-5.1.3-RELEASE-ubuntu18.04"
-    export PATH="${PATH:+${PATH}:}${SWIFTHOME}/usr/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${SWIFTHOME}/usr/share/man"
-fi
 # OPAM configuration
 [[ -f ${HOME}/.opam/opam-init/init.zsh ]] && source "${HOME}"/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
@@ -298,7 +291,6 @@ alias cp='cp -iv'
 alias date='date -Iseconds'
 alias dm='docker-machine '
 alias e='vim '
-alias fsi='dotnet fsi'
 [ "$(uname)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
 alias l='ls '
 alias la='ls -a'
