@@ -6,16 +6,26 @@
 	name = Vijay Lulla
 	signingkey = A64CB348F0B6836F
 [alias]
-	co = checkout
-	br = branch
+	ap = add --patch
+	br = branch -a
 	ci = commit
-	st = status
-	r = log --pretty=format:\"%C(yellow bold)%h%Creset %C(green bold)(%ai)%Creset %s\"
-	## new = !git init && git symbolic-ref HEAD refs/heads/main
-	graph = log --all --graph --decorate --oneline
+	co = checkout
+	conf = config --show-origin --list
+	f = !git ls-files | grep -i
+	gr = grep -Ii
+	graph = log --all --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%as%Creset %s\" --graph --date=short
+	grep = grep -Ii
+	hist = log --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%as%Creset %s\" --graph --date=short
+	la = !git config --list | grep alias
+	rl = reflog
+	st = status -sb
 [init]
 	defaultBranch = main
 [credential]
-	helper = cache --timeout 30000
+	helper = cache --timeout=18000
 [commit]
 	gpgSign = true
+[color]
+	ui = auto
+[format]
+	pretty = oneline
