@@ -256,10 +256,9 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 " highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 highlight OverLength term=standout cterm=bold ctermbg=white ctermfg=black gui=bold guibg=red guifg=white
-match OverLength /\%81v/
+match OverLength /\%121v/
 
 " Some abbreviations
-iabbrev @@ vijaylulla@gmail.com
 iabbrev #d #define
 iabbrev #i #include
 iabbrev #f ## FIXME (vijay):
@@ -267,7 +266,7 @@ iabbrev #t ## TODO (vijay):
 iabbrev THe The
 iabbrev THat That
 iabbrev THis This
-iabbrev VL Vijay Lulla
+iabbrev LV Vijay Lulla
 iabbrev Afaict As far as I can tell
 iabbrev afaict as far as I can tell
 iabbrev Aiui As I understand it
@@ -278,7 +277,7 @@ iabbrev attn attention
 iabbrev btw by the way
 iabbrev Btw By the way,
 iabbrev BTW By the way,
-iabbrev ccopy Copyright 2020 Vijay Lulla, all rights reserved.
+" iabbrev ccopy Copyright 2022 Vijay Lulla, all rights reserved.
 iabbrev didnt didn't
 iabbrev dnt don't
 iabbrev dont don't
