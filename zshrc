@@ -266,23 +266,11 @@ if [[ -d "${HOME}/code/J/j903" ]]; then
     export PATH="${PATH:+${PATH}:}${JHOME}/bin"
 fi
 
-if [[ -n "${VROOT}" && -d "${VROOT}/julia-1.6.2" ]]; then
-    export JULIAHOME="${VROOT}/julia-1.6.2"
-    export PATH="${PATH:+${PATH}:}${JULIAHOME}/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${JULIAHOME}/share/man"
-fi
-
-
 if [[ -d "${HOME}/.local/bin" ]]; then
     export PATH="${PATH}${PATH:+:}${HOME}/.local/bin"
 fi
 if [[ -d "${HOME}/bin" ]]; then
     export PATH="${HOME}/bin${PATH:+:${PATH}}"
-fi
-if [[ -d "${HOME}/code/racket/racket7.4" ]]; then
-    export RACKETHOME=$HOME/code/racket/racket7.4
-    export PATH="${PATH:+${PATH}:}${RACKETHOME}/bin"
-    ## export MANPATH="${MANPATH:+${MANPATH}:}${RACKETHOME}/man"
 fi
 # OPAM configuration
 [[ -f ${HOME}/.opam/opam-init/init.zsh ]] && source "${HOME}"/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
