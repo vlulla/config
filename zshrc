@@ -176,7 +176,12 @@ setopt PROMPT_SUBST   ## For prompt substitution
 
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
-export PS1=$'\n%B%F{cyan}%n@%m%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}]\$(git_branch_info) %#%b '
+if [[ "aws" == "${$(uname -r)##*-}" ]]; then
+  PUBLIC_HOSTNAME=$(curl -s 'http://169.254.169.254/latest/meta-data/public-hostname/')
+else
+  PUBLIC_HOSTNAME="%m"
+fi
+export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}]\$(git_branch_info) %#%b '
 export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
 # if [[ -d "${HOME}/VROOT" && $SHLVL == 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
