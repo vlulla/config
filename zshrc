@@ -177,6 +177,10 @@ setopt PROMPT_SUBST   ## For prompt substitution
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
 if [[ "aws" == "${$(uname -r)##*-}" ]]; then
+  ## This only works for zsh.
+  ## For bash you'll have to do something like this:
+  ## u=$(uname -r)
+  ## if [[ "aws" == "${u##*-}" ]]; then
   PUBLIC_HOSTNAME=$(curl -s 'http://169.254.169.254/latest/meta-data/public-hostname/')
 else
   PUBLIC_HOSTNAME="%m"
