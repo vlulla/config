@@ -34,8 +34,8 @@ upgradeoutdated() {
     ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
     (*) cmd="echo 'Do not know how to upgrade this system'" ;;
   esac
-  printf "Will run the command:"
-  printf "%s%s%s\n" "${bold}" "${cmd}" "${reset}"
+  echo "Will run the command:"
+  echo "${bold}${cmd//&& /&& \\ \n}${reset}\n\n"
   eval "${cmd}"
 }
 
