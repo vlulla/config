@@ -110,6 +110,8 @@ export PREDICTOR=3
 export ZLEVEL=5
 export ZSTD_LEVEL=7
 export PG_USE_COPY=YES
+export GDAL_DISABLE_READDIR_ON_OPEN=YES
+export CPL_VSIL_CURL_ALLOWED_EXTENSIONS=tif
 ## Dask related
 # Dask searches for all environment variables that start with DASK_, then transforms keys by converting to lower case and changing double-underscores to nested structures.
 export DASK_ARRAY__CHUNK_SIZE="128 MiB"
