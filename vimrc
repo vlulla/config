@@ -157,7 +157,7 @@ autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType j set tw=0
 autocmd FileType java set makeprg=javac\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
-autocmd FileType make set noet sw=8 ts=8 sts=8
+autocmd FileType make set noet sw=8 ts=8 sts=8 list
 autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
