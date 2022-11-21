@@ -1,3 +1,5 @@
+shopt -s globstar
+
 alias R='R --no-restore '
 
 alias awk='awk --sandbox'
