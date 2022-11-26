@@ -111,7 +111,7 @@ tsv2csv() {
 dc() {
   local containers
   ## read -d '\n' containers < <(docker ps -aq 2>/dev/null)
-  containers=$(docker ps -aq 2>/dev/null)
+  containers=( $(docker ps -aq 2>/dev/null) )
   echo "${containers[@]}"
 }
 
@@ -152,13 +152,15 @@ del_stopped() {
 
 dockerpull() {
   local f
-  for f in $(docker images --format "{{.Repository}}:{{.Tag}}" --filter "dangling=false"); do
+  local l
+  l=( $(docker images --format "{{.Repository}}:{{.Tag}}" --filter "dangling=false") )
+  for f in ${l[@]}; do
     docker pull "${f}"
   done
   local dangling
-  dangling="$(docker images -q --filter "dangling=true")"
-  if [ ${#dangling} -gt 0 ]; then
-    docker rmi "${dangling}"
+  dangling=( $(docker images -q --filter "dangling=true") )
+  if [[ ${#dangling[@]} -gt 0 ]]; then
+    docker rmi "${dangling[@]}"
   fi
 }
 
@@ -373,4 +375,4 @@ export DASK_DISTRIBUTED__WORKERS__MEMORY__SPILL=0.85
 export DASK_DISTRIBUTED__WORKERS__MEMORY__TARGET=0.75
 export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
 export PGTZ='utc'
-export PGDATESTYLE='ISO,MDY"
+export PGDATESTYLE="ISO,MDY"
