@@ -152,7 +152,7 @@ del_stopped() {
 
 dockerpull() {
   local f
-  for f in $(docker images --format "{{.Repository}}"); do
+  for f in $(docker images --format "{{.Repository}}:{{.Tag}}" --filter "dangling=false"); do
     docker pull "${f}"
   done
   local dangling
