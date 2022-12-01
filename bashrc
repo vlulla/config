@@ -3,9 +3,37 @@ shopt -s globstar
 alias R='R --no-restore '
 
 alias awk='awk --sandbox'
+alias bc='bc -l'
 alias cp='cp -iv'
+alias e='vim '
+[ "$(uname)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
+alias l='ls '
+alias la='ls -a'
+alias lla='ls -la'
+alias llh='ls -lh'
 alias mv='mv -iv'
 alias rm='rm -iv'
+[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3=sqlite3 -init ${HOME}/.sqliterc '
+alias v='vim '
+
+# fix some typos
+alias sl='ls'
+alias c='cd'
+alias vo='vim'
+alias ci='vim'
+alias grpe='grep'
+alias Grep='grep'
+alias les='less'
+alias Les='less'
+alias Less='less'
+alias cd.='cd .'
+alias cd..='cd ..'
+
+# Make piping easier...
+# $ ls -la LL
+# $ ls -la VV
+alias -g VV=' |& view -'
+alias -g LL=' |& less'
 
 git-branch-info() {
   git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'

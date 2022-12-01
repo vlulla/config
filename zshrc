@@ -298,7 +298,7 @@ alias lla='ls -la'
 alias llh='ls -lh'
 alias mv='mv -iv'
 alias rm='rm -I'
-alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
+[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
 
 # fix some typos
