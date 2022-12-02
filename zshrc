@@ -168,9 +168,9 @@ dockerhosts() {
   local ip
   local name
   local id
-  for id in $(docker ps -q | awk '{print $1}'); do
+  for id in $(docker ps --format="{{.ID}}"); do
     ip=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$id")
-    name=$(docker ps | grep "$id" | awk '{print $NF}')
+    name=$(docker ps --filter="id=$id" --format="{{.Names}}")
     printf "%s %s\n" "$ip" "$name"
   done
 }
