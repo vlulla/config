@@ -13,7 +13,7 @@ alias lla='ls -la'
 alias llh='ls -lh'
 alias mv='mv -iv'
 alias rm='rm -iv'
-[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3=sqlite3 -init ${HOME}/.sqliterc '
+[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
 
 # fix some typos
@@ -32,8 +32,8 @@ alias cd..='cd ..'
 # Make piping easier...
 # $ ls -la LL
 # $ ls -la VV
-alias -g VV=' |& view -'
-alias -g LL=' |& less'
+alias VV=' |& view -'
+alias LL=' |& less'
 
 git-branch-info() {
   git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@(@g' -e 's@$@)@g'
