@@ -164,6 +164,17 @@ dockerpull() {
   fi
 }
 
+dockerhosts() {
+  local ip
+  local name
+  local id
+  for id in $(docker ps -q | awk '{print $1}'); do
+    ip=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$id")
+    name=$(docker ps | grep "$id" | awk '{print $NF}')
+    printf "%s %s\n" "$ip" "$name"
+  done
+}
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=10000
