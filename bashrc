@@ -12,6 +12,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias llh='ls -lh'
 alias mv='mv -iv'
+alias python='python -I '
+alias python3='python3 -I '
 alias rm='rm -iv'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
@@ -125,6 +127,13 @@ vf() {
 
 [[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
 [[ -z "${QUOTING_STYLE}" ]] && export QUOTING_STYLE="shell-always"
+
+## Some Python related stuff
+## export PYTHONOPTIMIZE=2  ## causes lots of scripts to break (especially in ubuntu and miniconda)
+## export PYTHONWARNINGS=error ## Should be set, at least, during developing...
+## export PYTHONPROFILEIMPORTTIME=true ## ditto
+## export PYTHONUTF8=1 ## aspire to uncomment this!
+export PYTHONSAFEPATH=1 ## don't add pwd to sys.path. To avoid custom code execution/injection!
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512

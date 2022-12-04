@@ -308,6 +308,8 @@ alias ll='ls -l'
 alias lla='ls -la'
 alias llh='ls -lh'
 alias mv='mv -iv'
+alias python='python -I '
+alias python3='python3 -I '
 alias rm='rm -I'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
@@ -357,6 +359,7 @@ export EDITOR='vi'
 ## export PYTHONWARNINGS=error ## This should be set, at least, during developing ...
 ## export PYTHONPROFILEIMPORTTIME=true ## ditto
 ## export PYTHONUTF8=1 ## aspire to uncmoment this!
+export PYTHONSAFEPATH=1 ## don't add pwd to sys.path. To avoid custom code execution/injection!
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
