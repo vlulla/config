@@ -42,10 +42,7 @@ git-branch-info() {
 }
 
 upgradeoutdated() {
-  local sys
-  local cmd
-  sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
-  cmd=""
+  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"') cmd=""
   case "${sys##*=}" in
     ("ubuntu") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
     ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
@@ -59,16 +56,7 @@ upgradeoutdated() {
 }
 
 updatecondaenvs() {
-  local env
-  local red
-  local green
-  local bold
-  local reset
-  env=""
-  red=$(tput setaf 1)
-  green=$(tput setaf 2)
-  bold=$(tput bold)
-  reset=$(tput sgr0)
+  local env="" red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
   for env in $(conda env list | awk '!/^#/{print $1}'); do
     echo "Updating conda environment:   ${bold}${green}${env}${reset}"
     conda update --update-all --yes --name "${env}"

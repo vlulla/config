@@ -18,14 +18,7 @@ getinteractive() {
 }
 
 upgradeoutdated() {
-  local sys
-  local cmd
-  local bold
-  local reset
-  sys=$(grep "^ID=" /etc/os-release | tr -d $'"')
-  cmd=""
-  bold=$(tput bold)
-  reset=$(tput sgr0)
+  local sys=$(grep "^ID=" /etc/os-release | tr -d $'"') cmd="" bold=$(tput bold) reset=$(tput sgr0)
   case "${sys##*=}" in
     ("ubuntu") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
     ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
@@ -40,16 +33,7 @@ upgradeoutdated() {
 }
 
 updatecondaenvs() {
-  local env
-  local red
-  local green
-  local bold
-  local reset
-  env=""
-  red=$(tput setaf 1)
-  green=$(tput setaf 2)
-  bold=$(tput bold)
-  reset=$(tput sgr0)
+  local env="" red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
   for env in $(mamba env list | awk '!/^#/{print $1}'); do
     echo "Updating mamba environment:   ${bold}${green}${env}${reset}"
     mamba update --update-all --yes --name "${env}"
@@ -141,8 +125,7 @@ dcleanup() {
 }
 
 del_stopped() {
-  local name=$1
-  local state
+  local state name=$1
   state=$(docker inpsect --format "{{.State.Running}}" "$name" 2>/dev/null)
 
   if [[ "$state" == "false" ]]; then
@@ -151,13 +134,11 @@ del_stopped() {
 }
 
 dockerpull() {
-  local f
-  local l
+  local f l dangling
   l=( $(docker images --format "{{.Repository}}:{{.Tag}}" --filter "dangling=false") )
   for f in ${l[@]}; do
     docker pull "${f}"
   done
-  local dangling
   dangling=( $(docker images -q --filter "dangling=true") )
   if [[ ${#dangling[@]} -gt 0 ]]; then
     docker rmi "${dangling[@]}"
@@ -165,9 +146,7 @@ dockerpull() {
 }
 
 dockerhosts() {
-  local ip
-  local name
-  local id
+  local ip name id
   for id in $(docker ps --format="{{.ID}}"); do
     ip=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$id")
     name=$(docker ps --filter="id=$id" --format="{{.Names}}")
