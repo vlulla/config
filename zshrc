@@ -128,7 +128,7 @@ del_stopped() {
   local state name=$1
   state=$(docker inpsect --format "{{.State.Running}}" "$name" 2>/dev/null)
 
-  if [[ "$state" == "false" ]]; then
+  if [[ "$state" = "false" ]]; then
     docker rm "$name"
   fi
 }
@@ -168,18 +168,18 @@ setopt PROMPT_SUBST   ## For prompt substitution
 
 export PIPENV_VENV_IN_PROJECT=1
 ## PROMPT=$(print "\n%n@%m [jobs: %j] [shlvl: $SHLVL] %~\n%# ")
-if [[ "aws" == "${$(uname -r)##*-}" ]]; then
+if [[ "aws" = "${$(uname -r)##*-}" ]]; then
   ## This only works for zsh.
   ## For bash you'll have to do something like this:
   ## u=$(uname -r)
-  ## if [[ "aws" == "${u##*-}" ]]; then
+  ## if [[ "aws" = "${u##*-}" ]]; then
   PUBLIC_HOSTNAME=$(curl -s 'http://169.254.169.254/latest/meta-data/public-hostname/')
 else
   PUBLIC_HOSTNAME="%m"
 fi
 export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}]\$(git_branch_info) %#%b '
 export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
-# if [[ -d "${HOME}/VROOT" && $SHLVL == 1 ]]; then
+# if [[ -d "${HOME}/VROOT" && $SHLVL = 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
     export VROOT="${HOME}/VROOT"
     export VIRTUALROOT="${VROOT}"
@@ -280,12 +280,18 @@ alias cp='cp -iv'
 alias date='date -Iseconds'
 alias dm='docker-machine '
 alias e='vim '
-[ "$(uname)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
+[ "$(uname -s)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
 alias l='ls '
 alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -la'
-alias llh='ls -lh'
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  alias ll='ls -l -D "%Y-%m-%d %H:%M:%S" '
+  alias lla='ls -la -D "%Y-%m-%d %H:%M:%S" '
+  alias llh='ls -lh -D "%Y-%m-%d %H:%M:%S" '
+else
+  alias ll='ls -l'
+  alias lla='ls -la'
+  alias llh='ls -lh'
+fi
 alias mv='mv -iv'
 alias python='python -I '
 alias python3='python3 -I '
