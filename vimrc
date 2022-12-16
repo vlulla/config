@@ -128,7 +128,7 @@ autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
 
 " Cursorcolumn is helpful with yml files!
-autocmd FileType yaml setlocal cursorcolumn noautoindent nocindent nosmartindent indentexpr=
+autocmd FileType yaml setlocal cursorcolumn cursorline noautoindent nocindent nosmartindent indentexpr=
 autocmd BufWinEnter *.yml,*.yaml set indentexpr=
 
 augroup Skeleton
