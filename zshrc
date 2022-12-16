@@ -24,7 +24,7 @@ upgradeoutdated() {
     ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
     ("amzn" | "fedora") cmd="sudo dnf update --assumeyes && sudo dnf clean all --assumeyes && sudo dnf autoremove --assumeyes" ;;
     ("alpine") cmd="sudo apk update && sudo apk upgrade" ;;
-    ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes" ;;
+    ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes && sudo freebsd-update fetch install" ;;
     (*) cmd="echo 'Do not know how to upgrade this system'" ;;
   esac
   echo "Will run the command:"
