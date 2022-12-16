@@ -295,6 +295,8 @@ fi
 alias mv='mv -iv'
 alias python='python -I '
 alias python3='python3 -I '
+alias ipython='ipython --pdb --no-pprint --no-banner --simple-prompt '
+alias ipython3='ipython3 --pdb --no-pprint --no-banner --simple-prompt '
 alias rm='rm -I'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias v='vim '
