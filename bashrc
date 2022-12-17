@@ -25,6 +25,7 @@ alias ipython='ipython --pdb --no-pprint --no-banner --simple-prompt '
 alias ipython3='ipython3 --pbd --no-pprint --no-banner --simple-prompt '
 alias rm='rm -iv'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
+alias sudo='sudo -v; sudo '
 alias v='vim '
 
 # fix some typos
