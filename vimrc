@@ -134,21 +134,21 @@ autocmd BufWinEnter *.yml,*.yaml set indentexpr=
 augroup Skeleton
     autocmd!
     " See :help template
-    autocmd BufNewFile *.tex  0r ~/code/vim_emacs/vim_templates/latextemplate.tex
-    autocmd BufNewFile *.Rnw  0r ~/code/vim_emacs/vim_templates/sweavetemplate.Rnw
-    autocmd BufNewFile *.ly  0r ~/code/vim_emacs/vim_templates/lilypondtemplate.ly
-    autocmd BufNewFile Makefile  0r ~/code/vim_emacs/vim_templates/Makefile
-    autocmd BufNewFile *.R 0r ~/code/vim_emacs/vim_templates/Rtemplate.R
-    autocmd BufNewFile *.Rmd 0r ~/code/vim_emacs/vim_templates/Rmdtemplate.Rmd
-    autocmd BufNewFile *.sh 0r ~/code/vim_emacs/vim_templates/shell-template.sh
-    autocmd BufNewFile *.md 0r ~/code/vim_emacs/vim_templates/mdtemplate.md
-    autocmd BufNewFile *.py 0r ~/code/vim_emacs/vim_templates/pythontemplate.py
-    autocmd BufNewFile *.go 0r ~/code/vim_emacs/vim_templates/gotemplate.go
-    autocmd BufNewFile *.dot 0r ~/code/vim_emacs/vim_templates/dottemplate.dot
-    autocmd BufNewFile .gitignore 0r ~/code/vim_emacs/vim_templates/gitignore
-    autocmd BufNewFile .dockerignore 0r ~/code/vim_emacs/vim_templates/dockerignore
-    autocmd BufNewFile Dockerfile 0r ~/code/vim_emacs/vim_templates/Dockerfile
-    autocmd BufNewFile build.sbt 0r ~/code/vim_emacs/vim_templates/build.sbt
+    autocmd BufNewFile *.tex  0r ~/code/vim_templates/latextemplate.tex
+    autocmd BufNewFile *.Rnw  0r ~/code/vim_templates/sweavetemplate.Rnw
+    autocmd BufNewFile *.ly  0r ~/code/vim_templates/lilypondtemplate.ly
+    autocmd BufNewFile Makefile  0r ~/code/vim_templates/Makefile
+    autocmd BufNewFile *.R 0r ~/code/vim_templates/Rtemplate.R
+    autocmd BufNewFile *.Rmd 0r ~/code/vim_templates/Rmdtemplate.Rmd
+    autocmd BufNewFile *.sh 0r ~/code/vim_templates/shell-template.sh
+    autocmd BufNewFile *.md 0r ~/code/vim_templates/mdtemplate.md
+    autocmd BufNewFile *.py 0r ~/code/vim_templates/pythontemplate.py
+    autocmd BufNewFile *.go 0r ~/code/vim_templates/gotemplate.go
+    autocmd BufNewFile *.dot 0r ~/code/vim_templates/dottemplate.dot
+    autocmd BufNewFile .gitignore 0r ~/code/vim_templates/gitignore
+    autocmd BufNewFile .dockerignore 0r ~/code/vim_templates/dockerignore
+    autocmd BufNewFile Dockerfile 0r ~/code/vim_templates/Dockerfile
+    autocmd BufNewFile build.sbt 0r ~/code/vim_templates/build.sbt
     autocmd BufNewFile *.tex,*.Rnw,*.ly,Makefile,*.R,*.Rmd,*.md,*.sh,*.py,*.go,*.dot,.gitignore,.dockerignore,Dockerfile,build.sbt set modified
 augroup END
 
