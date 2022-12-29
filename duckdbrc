@@ -1,0 +1,9 @@
+.echo on
+-- .eqp on
+.null NULL
+.maxrows 25
+.mode duckbox
+-- .stats on
+.timer on
+
+.show

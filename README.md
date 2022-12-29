@@ -5,6 +5,7 @@ Locations and names for these files:
 ```bash
    bashrc         ${HOME}/.bashrc
    condarc        ${HOME}/.condarc
+   duckdbrc       ${HOME}/.duckdbrc
    emacs          ${HOME}/.emacs
    config.json    ${HOME}/.docker/config.json
    emacs_mac      ${HOME}/.emacs
