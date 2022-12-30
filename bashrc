@@ -87,7 +87,8 @@ removeduplicates() {
 
 export PROMPT_DIRTRIM=7
 export PS1='\u@\h [SHLVL: ${SHLVL}]: \w\n[jobs: \j] $(git-branch-info) \$ '
-export EDITOR="vi"
+export EDITOR="vim"
+export VISUAL="${EDITOR}"
 if [ -d "${VROOT}" ]; then
   export VROOT=${HOME}/VROOT
   export VIRTUALROOT=${VROOT}

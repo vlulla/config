@@ -332,7 +332,8 @@ typeset -U PATH path MANPATH manpath FPATH fpath
 export PAGER=less
 export LESS='-eiMFXsSx4R'
 export LESSSECURE=1
-export EDITOR='vi'
+export EDITOR='vim'
+export VISUAL="${EDITOR}"
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
 # man ls ... then /(TIME|QUOTING)_STYLE
 [[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
