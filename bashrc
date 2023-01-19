@@ -152,6 +152,9 @@ export PG_USE_COPY=YES
 # export GDAL_DISABLE_READDIR_ON_OPEN=YES
 export GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR
 export CPL_VSIL_CURL_ALLOWED_EXTENSIONS=tif
+export GDAL_MAX_RAW_BLOCK_CACHE_SIZE=200000000
+export GDAL_SWATH_SIZE=200000000
+export VSI_CURL_CACHE_SIZE=200000000
 ## Dask related
 # Dask searches for all environment variables that start with DASK_, then transforms keys by converting to lower case and changing double-underscores to nested structures.
 export DASK_ARRAY__CHUNK_SIZE="128 MiB"
