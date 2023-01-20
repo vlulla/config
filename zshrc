@@ -7,7 +7,15 @@ done
 unset file
 
 git_branch_info() {
-  git symbolic-ref --short "HEAD" 2>/dev/null | sed -e 's@^@ (@g' -e 's@$@)@g'
+  local branch sha res
+  branch="$(git symbolic-ref --short HEAD 2>/dev/null)"
+  sha="$(git rev-parse --short=7 HEAD 2>/dev/null)"
+  if [[ -n "${branch}" ]]; then
+    res="$(printf "(%s - %s)" "${branch}" "${sha}")"
+  else
+    res=""
+  fi
+  echo "${res}"
 }
 ## precmd() { RPROMPT="$(git_branch_info)" } ## For right prompt!!
 
@@ -177,7 +185,7 @@ if [[ "aws" = "${$(uname -r)##*-}" ]]; then
 else
   PUBLIC_HOSTNAME="%m"
 fi
-export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}]\$(git_branch_info) %#%b '
+export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}] \$(git_branch_info) %#%b '
 export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
 # if [[ -d "${HOME}/VROOT" && $SHLVL = 1 ]]; then
 if [[ -d "${HOME}/VROOT" ]]; then
@@ -372,7 +380,6 @@ export PG_USE_COPY=YES
 # https://trac.osgeo.org/gdal/wiki/ConfigOptions#GDAL_DISABLE_READDIR_ON_OPEN
 # export GDAL_DISABLE_READDIR_ON_OPEN=YES
 export GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR
-export CPL_VSIL_CURL_ALLOWED_EXTENSIONS=tif
 export GDAL_MAX_RAW_BLOCK_CACHE_SIZE=200000000
 export GDAL_SWATH_SIZE=200000000
 export VSI_CURL_CACHE_SIZE=200000000
