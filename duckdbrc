@@ -1,6 +1,6 @@
 .echo on
 -- .eqp on
-.null NULL
+.null "¤"
 .maxrows 25
 .mode duckbox
 -- .stats on
