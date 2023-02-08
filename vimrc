@@ -51,8 +51,8 @@ set showmode
 " set sidescrolloff=3
 set smartcase
 " set smartindent
-set smarttab
-set softtabstop=4
+" set smarttab
+set softtabstop=2
 set splitright
 set splitbelow
 set textwidth=0
