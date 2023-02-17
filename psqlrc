@@ -33,6 +33,7 @@ SET max_parallel_workers_per_gather TO 4;
 
 -- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
 \echo 'Some custom extra commands:\n'
+\echo '   :cat_tblsize --  Tablesizes (rows, cols) of various tables in the pg_catalog namespace.'
 \echo '   :cols        --  List columns of all the tables'
 \echo '   :cols_arr    --  List cols as array. This is helpful to figure out what cols to use for relation.'
 \echo '   :dbsize      --  Database size'
@@ -52,8 +53,9 @@ SET max_parallel_workers_per_gather TO 4;
 \echo '   :help        --  List the commands that you can call'
 \echo ''
 \echo 'Type \\set to see how these are defined.\n\n'
-\set cmds '\\qecho ''\nCommands you can call:\n  [ :cols , :cols_arr , :dbsize , :explain, :indexes , :ncols , :nrows , :schemacols , :schemarows , :setsp , :settings , :sp , :tables , :tblsize , :cmds, :help ]\n  \\\\qecho :tables -- to see how tables is defined.\n  \\\\qecho :cmds -- interesting use of qecho!\n'''
+\set cmds '\\qecho ''\nCommands you can call:\n  [ :cat_tblsize , :cols , :cols_arr , :dbsize , :explain, :indexes , :ncols , :nrows , :schemacols , :schemarows , :setsp , :settings , :sp , :tables , :tblsize , :cmds, :help ]\n  \\\\qecho :tables -- to see how tables is defined.\n  \\\\qecho :cmds -- interesting use of qecho!\n'''
 \set help :cmds
+\set cat_tblsize 'with schemas(oid,_schema) as (select oid,nspname from pg_namespace where nspname=''pg_catalog''),tables(_schema,_tbl,_fqtn,_rowestimate,_ncols) as (select s._schema,relname,quote_ident(s._schema)||''.''||quote_ident(relname::text),reltuples,relnatts from pg_class c join schemas s on c.relnamespace=s.oid where has_schema_privilege(relnamespace,''USAGE'') and relkind=''r'') select _schema schemaname,_tbl tablename, to_char(_rowestimate,''999G999G999G999'') rowestimate,_ncols ncols,pg_size_pretty(pg_table_size(_fqtn)) tbl_size,pg_size_pretty(pg_indexes_size(_fqtn)) index_size,pg_size_pretty(pg_total_relation_size(_fqtn)) total_relation_size from tables order by tablename;'
 \set cols 'with cols as (select c.relnamespace::regnamespace::text as schemaname, att.attrelid::regclass as tablename, attname as colname, row_number() over (partition by attrelid order by attnum) colnum, atttypid::regtype as coltype from pg_attribute att join pg_class c on att.attrelid = c.oid where att.attnum > 0 and c.relkind=''r'' and c.relnamespace::regnamespace::text not in (''pg_catalog'',''pg_toast'',''information_schema'') and att.atttypid <> 0 order by schemaname,tablename,att.attnum) select * from cols;'
 \set cols_arr 'with cols as ( select c.relnamespace::regnamespace::text as schemaname, att.attrelid::regclass as tablename, attname as colname, row_number() over (partition by attrelid order by attnum) colnum, pg_catalog.format_type(atttypid,atttypmod) as coltype from pg_attribute att join pg_class c on att.attrelid = c.oid where att.attnum > 0 and c.relkind=''r'' and c.relnamespace::regnamespace::text not in (''pg_catalog'',''pg_toast'',''information_schema'') and att.atttypid <> 0 order by schemaname,tablename,att.attnum) select schemaname,tablename,array_agg(colname||''(''||coltype||'')'' order by colnum) as "columns" from cols group by schemaname,tablename order by schemaname,tablename;'
 \set dbsize 'with dbsz(_dbname,_dbsize,_acl) as (select datname,case when has_database_privilege(current_user,oid,''CONNECT'') then pg_database_size(datname) else -1 end,datacl from pg_database) select _dbname as datname,case when _dbsize=-1 then ''No CONNECT privilege for pg_database_size'' else pg_size_pretty(_dbsize) end dbsize,_acl as acl from dbsz order by _dbname,_dbsize desc;'
