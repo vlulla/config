@@ -338,7 +338,7 @@ alias -g LL=' |& less'
 typeset -U PATH path MANPATH manpath FPATH fpath
 
 export PAGER=less
-export LESS='-eiMFXsSx4R'
+export LESS='-eiMFXR'
 export LESSSECURE=1
 export EDITOR='vim'
 export VISUAL="${EDITOR}"
