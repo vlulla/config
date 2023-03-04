@@ -1,6 +1,7 @@
 [core]
 	editor = vim
 	autocrlf = input
+	pager = less
 [user]
 	email = vijaylulla@gmail.com
 	name = Vijay Lulla
