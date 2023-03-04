@@ -30,6 +30,7 @@ SET max_parallel_workers_per_gather TO 4;
 \pset null '¤'
 \pset linestyle 'unicode'
 \pset border 2
+\setenv PAGER 'less'
 
 -- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
 \echo 'Some custom extra commands:\n'
