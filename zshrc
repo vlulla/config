@@ -48,20 +48,6 @@ updatecondaenvs() {
   done
 }
 
-enable_OTB() {
-  ## OTB related!  Commented because it interferes with lots of other things!
-  otbenv_profile=${HOME}/code/rs_gis/OTB-6.6.1-Linux64/otbenv.profile
-  if [[ -r "${otbenv_profile}" ]] && [[ -f "${otbenv_profile}" ]]; then
-    source "${otbenv_profile}"
-  fi
-  unset otbenv_profile
-
-  ## otbenv.profile modifies PATH and other env variables.  You can remove OTB
-  ## the path variable using the following:
-  ##
-  ##   zsh:~ $ PATH=$(echo PATH | sed -e 's@/home/v/code/rs_gis/OTB-6.6.1-Linux64/bin:@@g')
-}
-
 removeduplicates() {
     ## Use this to remove duplicates from PATH and MANPATH
     ## Call it like:
@@ -265,8 +251,8 @@ fi
 
 [[ -x "/usr/local/go/bin/go" ]] && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
 
-if [[ -d "${HOME}/code/J/j903" ]]; then
-    export JHOME=${HOME}/code/J/j903
+if [[ -d "${HOME}/code/J/j9.4" ]]; then
+    export JHOME=${HOME}/code/J/j9.4
     export PATH="${PATH:+${PATH}:}${JHOME}/bin"
 fi
 
@@ -395,3 +381,4 @@ export DASK_DISTRIBUTED__WORKERS__MEMORY__TARGET=0.75
 export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
 export PGTZ='utc'
 export PGDATESTYLE="ISO,MDY"
+export PSQL_PAGER="less"
