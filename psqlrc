@@ -29,8 +29,11 @@ SET max_parallel_workers_per_gather TO 4;
 \set PROMPT2 '%/%R%# '
 \pset null '¤'
 \pset linestyle 'unicode'
+\pset unicode_header_linestyle double
 \pset border 2
 \setenv PAGER 'less'
+\setenv LESS '-iMFXSx4R'
+\setenv EDITOR 'vim'
 
 -- A neat idea from https://opensourcedbms.com/dbms/psqlrc-psql-startup-file-for-postgres/
 \echo 'Some custom extra commands:\n'

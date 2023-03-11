@@ -294,7 +294,7 @@ alias ipython3='ipython3 --pdb --no-autoindent --no-pprint --no-banner --no-conf
 alias rm='rm -I'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 ## alias sudo='sudo -v; sudo '
-alias v='vim '
+alias v="view -c 'map <SPACE> <C-F> -c 'map b <C-B>' -c 'map q :q<CR>' "
 alias view="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
 
 # fix some typos
@@ -327,7 +327,7 @@ typeset -U PATH path MANPATH manpath FPATH fpath
 ## export PAGER=less
 # # don't forget to do this too!
 # printf "let %s=''\n" '$PAGER' >> ~/.vimrc
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'nmap K :map <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'nmap K :map <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -c 'highlight OverLength NONE' -\""
 export LESS='-eiMFXR'
 export LESSSECURE=1
 export EDITOR='vim'
