@@ -50,7 +50,7 @@ alias LL=' |& less'
 git-branch-info() {
   local branch sha res
   branch="$(git symbolic-ref --short HEAD 2>/dev/null)"
-  sha="$(git rev-parse --short=7 HEAD 2>/dev/null)"
+  sha="$(git rev-parse --short=10 HEAD 2>/dev/null)"
   if [[ -n "${branch}" ]]; then
     res="$(printf "(%s - %s)" "${branch}" "${sha}")"
   else
@@ -170,3 +170,8 @@ export DASK_DISTRIBUTED__WORKERS__MEMORY__TARGET=0.75
 export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
 export PGTZ='utc'
 export PGDATESTYLE='ISO,MDY'
+
+
+[[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
+[[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
+[[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
