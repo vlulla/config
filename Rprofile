@@ -71,7 +71,7 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       , defaultPackages=c(options()$defaultPackages, "tools")
       , digits=18 ## to catch issues with floating point rounding. Try log(1000)/log(10) with different values of digits to see how it gets printed.
       , digits.secs=2
-      , editor="vi"
+      , editor="vim"
       ## , error=utils::recover
       , expressions=2000
       , help_type = "html"
@@ -156,7 +156,7 @@ if (interactive()) {
     ## suppressPackageStartupMessage(require(ff))
     ## invisible(enableJIT(3))  ## ?compiler::compile ## causes problems!  2015.11.14
     functions_to_learn_this_session()
-    if(R.version$os == "linux-gnu") options(width=system("tput cols",intern=TRUE))
+    if(isTRUE(any(grepl("^(linux|darwin)",R.version$os,ignore.case=TRUE)))) options(width=system("tput cols",intern=TRUE))
 }
 
 ## if(ispkginstalled("rstan")) rstan::rstan_options(auto_write=TRUE)
