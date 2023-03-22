@@ -26,10 +26,13 @@ getinteractive() {
 }
 
 upgradeoutdated() {
-  local os=$(grep "^ID=" /etc/os-release | tr -d $'"') cmd="" bold=$(tput bold) reset=$(tput sgr0) sys=$(uname -s | tr A-Z a-z)
+  local os cmd bold reset sys
+  sys=$(uname -s | tr A-Z a-z)
   if [[ "${sys}" == "darwin" ]]; then
     cmd="sudo port -c -b -u upgrade outdated"
   else
+    os=$(grep "^ID=" /etc/os-release | tr -d $'"')
+    bold=$(tput bold) reset=$(tput sgr0)
     case "${os##*=}" in
       ("ubuntu") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
       ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
