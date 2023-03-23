@@ -29,7 +29,7 @@ upgradeoutdated() {
   local os cmd bold reset sys
   sys=$(uname -s | tr A-Z a-z)
   if [[ "${sys}" == "darwin" ]]; then
-    cmd="sudo port -c -b -u upgrade outdated"
+    cmd="sudo port selfupdate && sudo port -c -b -u upgrade outdated && sudo port clean --all installed"
   else
     os=$(grep "^ID=" /etc/os-release | tr -d $'"')
     bold=$(tput bold) reset=$(tput sgr0)
