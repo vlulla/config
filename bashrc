@@ -25,6 +25,7 @@ alias ipython='ipython --pdb --no-autoindent --no-pprint --no-banner --no-confir
 alias ipython3='ipython3 --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit '
 alias rm='rm -iv'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
+alias tree="tree --gitignore -I '*.pyc' -I '__init__.py' -I '__pycache__' "
 ## alias sudo='sudo -v; sudo '
 alias v='vim '
 
