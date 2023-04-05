@@ -8,3 +8,4 @@ pd.set_option("display.max_rows",6)
 pd.set_option("display.max_colwidth",50)
 pd.set_option("display.max_seq_items",20)
 pd.set_option("display.html.table_schema",True)
+pd.set_option("mode.copy_on_write",True) ## introduced in pandas 2.0.0
