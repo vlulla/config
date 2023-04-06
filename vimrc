@@ -222,6 +222,7 @@ map <leader>et :tabedit %%
 " Great idea from http://howivim.com/2016/damian-conway/
 nmap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
 nmap <silent> ;v :split $MYVIMRC<CR>
+nmap <Space> <C-F>
 augroup VimReload
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
