@@ -122,6 +122,8 @@ autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent 
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
+autocmd BufRead,BufWinEnter,BufNewFile *.sed set filetype=sed
+autocmd BufRead,BufWinEnter,BufNewFile *.awk set filetype=awk
 
 autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
@@ -166,7 +168,7 @@ autocmd FileType scala set makeprg=scala\ \"%\"
 autocmd FileType sql set syntax=OFF
 
 " Delete trailing whitespace for some of the programming file types...
-autocmd FileType c,cs,cpp,java,python,r,scala,sql,make autocmd BufWritePre <buffer> %s@\s\+$@@e
+autocmd FileType c,cs,cpp,java,python,r,scala,sql,make,sed,awk autocmd BufWritePre <buffer> %s@\s\+$@@e
 
 let mapleader=","
 " let mapleader="\<Space>"
