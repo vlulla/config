@@ -1,0 +1,8 @@
+## ~/.pdbrc or in `pwd`/.pdbrc
+## After getting an error start the python program like this:
+## bash $ python -m pdb my-failing-program.py
+## this will start debugger and the following commands will be run...
+##
+## Alternatively, you can run pdb.pm() in the python repl to start a postmortem debugger!
+list
+where

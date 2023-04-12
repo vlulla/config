@@ -12,6 +12,7 @@ Locations and names for these files:
    gitconfig      ${HOME}/.gitconfig
    ipythonconfig  ${HOME}/.ipython/profile_default/ipython_config.py 
    Makevars       ${HOME}/.R/Makevars
+   pdbrc          ${HOME}/.pdbrc or `pwd`/.pdbrc
    psqlrc         ${HOME}/.psqlrc
    pandas-opts.py ${HOME}/.ipython/profile_default/startup/01-pandas-opts.py
    Rprofile       ${HOME}/.Rprofile
