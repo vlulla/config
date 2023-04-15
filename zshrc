@@ -333,10 +333,10 @@ alias -g LL=' |& less'
 ## typeset -U removes duplicates!!
 typeset -U PATH path MANPATH manpath FPATH fpath
 
-## export PAGER=less
+export PAGER=less
 # # don't forget to do this too!
 # printf "let %s=''\n" '$PAGER' >> ~/.vimrc
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'nmap K :map <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -c 'highlight OverLength NONE' -\""
+## export PAGER="/bin/sh -c \"unset PAGER;col -b -x | vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'nmap K :map <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -c 'highlight OverLength NONE' -\""
 export LESS='-eiMFXR'
 export LESSSECURE=1
 export EDITOR='vim'
