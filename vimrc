@@ -212,7 +212,7 @@ nnoremap <leader>st :st<CR>
 vnoremap < <gv
 vnoremap > >gv
 vmap / y/<C-R>"<CR>
-vmap <leader>s y:<C-U>%s@\<<C-R>"\>@
+vmap <leader>s y:<C-U>%s@\<<C-R>"\>@@gc<Left><Left><Left>
 
 map <C-n> :cnext<CR>
 map <C-p> :cprev<CR>
