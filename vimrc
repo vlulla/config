@@ -76,6 +76,7 @@ set wildignore+=*.luac
 set wildignore+=*.pyc
 set wildignore+=*.orig
 
+set shortmess=a
 
 " Doesn't work on my Mac OSX
 " Use UTF-8
@@ -164,7 +165,7 @@ autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType j set tw=0
 autocmd FileType java set makeprg=javac\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
-autocmd FileType make set noet sw=8 ts=8 sts=8 list
+autocmd FileType make set noet sw=8 ts=8 sts=8
 autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
@@ -210,7 +211,7 @@ nnoremap <leader>st :st<CR>
 " From http://rayninfo.co.uk/vimtips.html
 vnoremap < <gv
 vnoremap > >gv
-vmap // y/<C-R>"<CR>
+vmap / y/<C-R>"<CR>
 vmap <leader>s y:<C-U>%s@\<<C-R>"\>@
 
 map <C-n> :cnext<CR>
@@ -226,9 +227,9 @@ map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
 " Great idea from http://howivim.com/2016/damian-conway/
-nmap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
-nmap <silent> ;v :split $MYVIMRC<CR>
-nmap <Space> <C-F>
+nnoremap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
+nnoremap <silent> ;v :edit $MYVIMRC<CR>
+nnoremap <Space> <C-F>
 augroup VimReload
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -249,7 +250,7 @@ nnoremap <F5> :setlocal invhlsearch hlsearch?<CR>
 imap <F5> <C-O><F5>
 " Line numbers are useful for debugging.  Enable toggling line numbers.
 nnoremap <F6> :setlocal invnumber number?<CR>
-imap <F6> <C-O><F6>
+inoremap <F6> <C-O>:setlocal invnumber number?<CR>
 " Neat idea from https://www.ukuug.org/events/linux2004/programme/paper-SMyers/Linux_2004_slides/vim_tips/
 nnoremap <F7> :setlocal invpaste paste?<CR>
 imap <F7> <C-O><F7>
@@ -258,8 +259,8 @@ nnoremap <F8> :setlocal invspell spell?<CR>
 imap <F8> <C-O><F8>
 " AutoHotkey causes problem for normal mode mapping.  Check AHK to see if F9/F10/F11 is mapped there! 2017.09.21
 nnoremap <F9> "=strftime("%Y.%m.%d")<CR>P
-inoremap <F9> <C-R>=strftime("%Y.%m.%d")<CR>
 nnoremap <F10> "=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>P
+inoremap <F9> <C-R>=strftime("%Y.%m.%d")<CR>
 inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
 
