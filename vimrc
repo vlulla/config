@@ -211,7 +211,7 @@ nnoremap <leader>st :st<CR>
 " From http://rayninfo.co.uk/vimtips.html
 vnoremap < <gv
 vnoremap > >gv
-vmap / y/<C-R>"<CR>
+vmap // y/<C-R>"<CR>
 vmap <leader>s y:<C-U>%s@\<<C-R>"\>@@gc<Left><Left><Left>
 
 map <C-n> :cnext<CR>
