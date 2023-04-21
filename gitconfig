@@ -30,3 +30,6 @@
 	ui = auto
 [format]
 	pretty = oneline
+[pull]
+	rebase = false
+
