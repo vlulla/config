@@ -170,7 +170,7 @@ autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
 autocmd FileType scala set makeprg=scala\ \"%\"
-autocmd FileType sql set syntax=OFF
+autocmd FileType sql set syntax=OFF ignorecase
 
 " Delete trailing whitespace for some of the programming file types...
 autocmd FileType c,cs,cpp,java,python,r,scala,sql,make,sed,awk autocmd BufWritePre <buffer> %s@\s\+$@@e
