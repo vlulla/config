@@ -365,7 +365,7 @@ case "$(uname)" in
   "*")      export GDAL_NUM_THREADS=2
 esac
 export NUM_THREADS=${GDAL_NUM_THREADS}
-export OPJ_NUM_THREADS=${GDAL_NUM_THREADS}
+## export OPJ_NUM_THREADS=${GDAL_NUM_THREADS} # typo? 2023.04.21
 ## GDAL/OGR options
 export OGR_SQLITE_SYNCHRONOUS=OFF
 export OGR_SQLITE_CACHE=1024
