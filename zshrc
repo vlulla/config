@@ -278,7 +278,7 @@ fi
 [[ -f "${HOME}/code/config/bashrc" ]] && alias bash='bash --rcfile "${HOME}/code/config/bashrc" '
 alias bc='bc -l'
 alias cp='cp -iv'
-alias date='date -Iseconds'
+alias date='date -u -Iseconds'
 alias dm='docker-machine '
 alias e='vim '
 [ "$(uname -s)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
