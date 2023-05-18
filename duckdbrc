@@ -1,4 +1,4 @@
-.echo on
+-- .echo on
 -- .eqp on
 .null "¤"
 .maxrows 25
