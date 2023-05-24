@@ -48,10 +48,11 @@ upgradeoutdated() {
 }
 
 updatecondaenvs() {
-  local env="" red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
-  for env in $(mamba env list | awk '!/^#/{print $1}'); do
-    echo "Updating mamba environment:   ${bold}${green}${env}${reset}"
-    mamba update --update-all --yes --name "${env}"
+  local env="" envs=() red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
+  envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
+  for env in "${envs[@]}"; do
+    echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
+    micromamba update --all --yes --name "${env}"
   done
 }
 
@@ -250,10 +251,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 if [[ -d "${HOME}/.cargo" ]]; then
     export PATH="${PATH:+${PATH}:}${HOME}/.cargo/bin"
-fi
-if [[ -d "${HOME}/mambaforge" ]]; then
-    export CONDAHOME="${HOME}/mambaforge"
-    export PATH="${PATH:+${PATH}:}${CONDAHOME}/bin"
 fi
 
 [[ -x "/usr/local/go/bin/go" ]] && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
