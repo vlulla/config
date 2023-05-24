@@ -52,7 +52,7 @@ updatecondaenvs() {
   envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
   for env in "${envs[@]}"; do
     echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
-    micromamba update --all --yes --name "${env}"
+    micromamba update --all --yes --quiet --name "${env}"
   done
 }
 
