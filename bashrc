@@ -2,7 +2,6 @@ shopt -s globstar
 
 alias R='R --no-restore '
 
-alias awk='awk --sandbox'
 alias bc='bc -l'
 alias cp='cp -iv'
 alias date='date -u -Iseconds'
