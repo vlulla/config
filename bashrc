@@ -41,7 +41,7 @@ alias Les='less'
 alias Less='less'
 alias cd.='cd .'
 alias cd..='cd ..'
-[[ "$(uname -s)" == "Linux" ]] && alias pbcopy='xsel --clipboard --input' pbpaste='xsel --clipboard --output'
+[[ "$(uname -s)" == "Linux" && $(command -v xsel) ]] && alias pbcopy='xsel --clipboard --input' pbpaste='xsel --clipboard --output'
 
 # Make piping easier...
 # $ ls -la LL
