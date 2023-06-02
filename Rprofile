@@ -77,7 +77,7 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       , help_type = "html"
       , help.try.all.packages=TRUE
       , locatorBell=FALSE
-      , lubridate.fasttime=TRUE
+      ## , lubridate.fasttime=TRUE
       ## , max.print=800
       , mc.cores = parallel::detectCores()
       , Ncpus = parallel::detectCores() - 2
@@ -140,7 +140,7 @@ if (interactive()) {
     suppressPackageStartupMessages(require(compiler))
     suppressPackageStartupMessages(require(fastmatch))
     match <- fmatch ## faster matching!
-    suppressPackageStartupMessages(require(fasttime))
+    ## suppressPackageStartupMessages(require(fasttime))
     suppressPackageStartupMessages(compilePKGS(TRUE))  ## ?compiler::compile
     setCompilerOptions(suppressUndefined=TRUE)  ## ?compiler::compile
     suppressPackageStartupMessages(require(MASS))
