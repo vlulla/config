@@ -149,7 +149,7 @@ if (interactive()) {
     suppressPackageStartupMessages(require(bit64))
     suppressPackageStartupMessages(require(RSQLite))
     suppressPackageStartupMessages(require(data.table))
-    suppressPackageStartupMessages(require(ggplot2)); theme_set(theme_vl())
+    suppressPackageStartupMessages(require(ggplot2)); ## theme_set(theme_vl())
     suppressPackageStartupMessages(require(utils))
     suppressPackageStartupMessages(require(sf))
     ## suppressPackageStartupMessages(require(knitr))
