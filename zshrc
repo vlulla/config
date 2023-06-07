@@ -157,7 +157,8 @@ dockerhosts() {
 }
 
 RR() {
-  docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || sysctl -n hw.ncpu) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
+  ## docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || sysctl -n hw.ncpu) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
+  docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
 }
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
