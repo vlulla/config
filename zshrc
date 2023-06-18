@@ -156,6 +156,15 @@ dockerhosts() {
   done
 }
 
+# replace alias date=date -u -Iseconds
+date() {
+  if [[ ${#@} == 0 ]]; then
+    command date -u -Iseconds
+  else
+    command date "${@}"
+  fi
+}
+
 RR() {
   ## docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || sysctl -n hw.ncpu) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
   docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --net host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
@@ -280,7 +289,6 @@ fi
 [[ -f "${HOME}/code/config/bashrc" ]] && alias bash='bash --rcfile "${HOME}/code/config/bashrc" '
 alias bc='bc -l'
 alias cp='cp -iv'
-alias date='date -u -Iseconds'
 alias dm='docker-machine '
 alias e='vim '
 [ "$(uname -s)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
