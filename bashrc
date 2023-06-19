@@ -20,8 +20,8 @@ fi
 alias mv='mv -iv'
 alias python='python -I '
 alias python3='python3 -I '
-alias ipython='ipython --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logfile="ipython_log-$(date +%Y-%m-%d).py" '
-alias ipython3='ipython3 --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logfile="ipython_log-$(date +%Y-%m-%d).py" '
+alias ipython='ipython --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logappend="ipython_log-$(date +%Y-%m-%d).py" '
+alias ipython3='ipython3 --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logappend="ipython_log-$(date +%Y-%m-%d).py" '
 alias rm='rm -iv'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias tree="tree --gitignore -I '*.pyc' -I '__init__.py*' -I '__pycache__' "
