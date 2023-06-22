@@ -142,6 +142,12 @@ vf() {
   fi
 }
 
+if [[ ! -x $(command -pv pandoc) ]]; then
+  pandoc() {
+    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
+  }
+fi
+
 [[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
 [[ -z "${QUOTING_STYLE}" ]] && export QUOTING_STYLE="shell-always"
 

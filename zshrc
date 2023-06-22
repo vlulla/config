@@ -170,6 +170,12 @@ RR() {
   docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --net host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
 }
 
+if [[ ! -x $(command -pv pandoc) ]]; then
+  pandoc() {
+    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
+  }
+fi
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=10000
