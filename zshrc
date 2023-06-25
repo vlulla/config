@@ -75,9 +75,9 @@ vf() {
   if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
     ## vim -o $(fzf --preview='cat {}')
     export FZF_DEFAULT_OPTS='--height 40% --border'
-    vim -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
+    vim --ttyfail -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
   else
-    vim
+    vim --ttyfail
   fi
 }
 ## following from https://www.datafix.com.au/cookbook/functions.html
@@ -296,7 +296,7 @@ fi
 alias bc='bc -l'
 alias cp='cp -iv'
 alias dm='docker-machine '
-alias e='vim '
+alias e='vim --ttyfail'
 [ "$(uname -s)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
 alias l='ls '
 alias la='ls -a'
@@ -324,9 +324,9 @@ alias view="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
 # fix some typos
 alias sl='ls'
 alias c='cd'
-alias vo='vim'
-alias ci='vim'
-alias iv='vim'
+alias vo='vim --ttyfail'
+alias ci='vim --ttyfail'
+alias iv='vim --ttyfail'
 alias grpe='grep'
 alias Grep='grep'
 alias les='less'
