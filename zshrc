@@ -1,3 +1,5 @@
+set -u
+
 ## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
     if [[ -r ${file} ]] && [[ -f ${file} ]]; then
@@ -5,6 +7,9 @@ for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
     fi
 done
 unset file
+
+prepath() { for d in $@; [[ -d ${d:A} ]] && path=(${d:A} ${path[@]}) }
+postpath() { for d in $@; [[ -d ${d:A} ]] && path+=(${d:A}) }
 
 git_branch_info() {
   local branch sha res
@@ -201,14 +206,6 @@ else
 fi
 export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}] \$(git_branch_info) %#%b '
 export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
-# if [[ -d "${HOME}/VROOT" && $SHLVL = 1 ]]; then
-if [[ -d "${HOME}/VROOT" ]]; then
-    export VROOT="${HOME}/VROOT"
-    export VIRTUALROOT="${VROOT}"
-    ## export PATH="${PATH:+${PATH}:}${VROOT}/bin"
-    export PATH="${VROOT}/bin${PATH:+:${PATH}}"
-fi
-
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
@@ -269,28 +266,17 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #
 #  Below is my setup
 
-if [[ -d "${HOME}/.cargo" ]]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.cargo/bin"
-fi
+[[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT"
+prepath "${VROOT}/bin"
+[[ -d "${HOME}/code/J/j9.4" ]] && export JHOME="${HOME}/code/J/j9.4"
+postpath  "${HOME}/.cargo/bin" /usr/local/go/bin/go "${JHOME}/bin" "${HOME}/.local/bin"
+prepath "${HOME}/bin"
 
-[[ -x "/usr/local/go/bin/go" ]] && export PATH="${PATH:+${PATH}:}/usr/local/go/bin"
-
-if [[ -d "${HOME}/code/J/j9.4" ]]; then
-    export JHOME=${HOME}/code/J/j9.4
-    export PATH="${PATH:+${PATH}:}${JHOME}/bin"
-fi
-
-if [[ -d "${HOME}/.local/bin" ]]; then
-    export PATH="${PATH}${PATH:+:}${HOME}/.local/bin"
-fi
-if [[ -d "${HOME}/bin" ]]; then
-    export PATH="${HOME}/bin${PATH:+:${PATH}}"
-fi
 # OPAM configuration
 [[ -f ${HOME}/.opam/opam-init/init.zsh ]] && source "${HOME}"/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source "${CONDAHOME}"/bin/aws_zsh_completer.sh
+## [[ -f ${CONDAHOME}/bin/aws_zsh_completer.sh ]] && source "${CONDAHOME}"/bin/aws_zsh_completer.sh
 ## Some aliases
 [[ -f "${HOME}/code/config/bashrc" ]] && alias bash='bash --rcfile "${HOME}/code/config/bashrc" '
 alias bc='bc -l'
@@ -343,7 +329,7 @@ alias -g VV=' |& view -'
 alias -g LL=' |& less'
 
 [[ -n "${LS_COLORS}" ]] && unset LS_COLORS
-[[ -n "${ZLS_COLORS}" ]] && unset ZLS_COLORS
+## [[ -n "${ZLS_COLORS}" ]] && unset ZLS_COLORS
 
 ## man zshbuiltins  ...  /typeset
 ## typeset -U removes duplicates!!
@@ -372,6 +358,7 @@ export VISUAL="${EDITOR}"
 ## export PYTHONPROFILEIMPORTTIME=true ## ditto
 ## export PYTHONUTF8=1 ## aspire to uncmoment this!
 export PYTHONSAFEPATH=1 ## don't add pwd to sys.path. To avoid custom code execution/injection!
+export PYTHONOPTIMIZE=1
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
