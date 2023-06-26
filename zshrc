@@ -249,7 +249,7 @@ zstyle ':completion:*' menu select=2
 if which dircolors > /dev/null 2>&1 ; then
   eval "$(dircolors -b)"
 fi
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+[[ -v LS_COLORS ]] && zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
@@ -328,8 +328,8 @@ alias cd..='cd ..'
 alias -g VV=' |& view -'
 alias -g LL=' |& less'
 
-[[ -n "${LS_COLORS}" ]] && unset LS_COLORS
-## [[ -n "${ZLS_COLORS}" ]] && unset ZLS_COLORS
+[[ -v LS_COLORS ]] && [[ -n "${LS_COLORS}" ]] && unset LS_COLORS
+[[ -v ZLS_COLORS ]] && [[ -n "${ZLS_COLORS}" ]] && unset ZLS_COLORS
 
 ## man zshbuiltins  ...  /typeset
 ## typeset -U removes duplicates!!
@@ -345,8 +345,8 @@ export EDITOR='vim'
 export VISUAL="${EDITOR}"
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
 # man ls ... then /(TIME|QUOTING)_STYLE
-[[ -z "${TIME_STYLE}" ]] && export TIME_STYLE="long-iso"
-[[ -z "${QUOTING_STYLE}" ]] && export QUOTING_STYLE="shell-always"
+[[ -v TIME_STYLE ]] || export TIME_STYLE="long-iso"
+[[ -v QUOTING_STYLE ]] || export QUOTING_STYLE="shell-always"
 
 ## if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
 ##   [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
