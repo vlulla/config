@@ -273,6 +273,7 @@ match OverLength /\%121v/
 iabbrev #d #define
 iabbrev #i #include
 iabbrev #f ## FIXME (vijay):
+iabbrev #n ## NOTE (vijay):
 iabbrev #t ## TODO (vijay):
 iabbrev THe The
 iabbrev THat That
