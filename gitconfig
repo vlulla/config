@@ -34,5 +34,5 @@
 	rebase = false
 	ff = only
 
-[merge]
-	ff = false
+## [merge]
+## 	ff = false
