@@ -27,7 +27,7 @@ SET max_parallel_workers_per_gather TO 4;
 \set HISTSIZE 20000
 \set PROMPT1 '%n@%/ [%p] %x%R%# '
 \set PROMPT2 '%/%R%# '
-\pset null '¤'
+\pset null '∅'
 \pset linestyle 'unicode'
 \pset unicode_header_linestyle double
 \pset border 2

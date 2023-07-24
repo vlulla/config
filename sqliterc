@@ -9,6 +9,7 @@
 .headers on
 .mode box
 .echo on
+.null "∅"
 -- .eqp on
 
 PRAGMA analysis_limit = 100000; -- ANALYZE only these many rows
