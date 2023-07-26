@@ -358,7 +358,6 @@ export VISUAL="${EDITOR}"
 ## export PYTHONPROFILEIMPORTTIME=true ## ditto
 ## export PYTHONUTF8=1 ## aspire to uncmoment this!
 export PYTHONSAFEPATH=1 ## don't add pwd to sys.path. To avoid custom code execution/injection!
-export PYTHONOPTIMIZE=1
 
 ## gdal related ... see https://gdal.org/gdal.pdf
 export GDAL_CACHE_MAX=512
