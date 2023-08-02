@@ -1,4 +1,3 @@
--- .echo on
 -- .eqp on
 .null "∅"
 .maxrows 25
@@ -6,4 +5,5 @@
 -- .stats on
 .timer on
 
+.echo on
 .show
