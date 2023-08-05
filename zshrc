@@ -172,7 +172,7 @@ date() {
 
 RR() {
   ## docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || sysctl -n hw.ncpu) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
-  docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --net host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
+  docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --network=host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
 }
 
 if [[ ! -x $(command -pv pandoc) ]]; then
@@ -266,8 +266,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #
 #  Below is my setup
 
-[[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT"
-prepath "${VROOT}/bin"
+[[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT" && prepath "${VROOT}/bin"
 [[ -d "${HOME}/code/J/j9.4" ]] && export JHOME="${HOME}/code/J/j9.4"
 postpath  "${HOME}/.cargo/bin" /usr/local/go/bin/go "${JHOME:-}/bin" "${HOME}/.local/bin"
 prepath "${HOME}/bin"

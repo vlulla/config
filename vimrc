@@ -11,7 +11,7 @@ set autowrite
 set backspace=eol,start,indent
 set cinoptions=(0
 set cmdheight=2
-" set colorcolumn=+1,+2,+3
+set colorcolumn=+1,+2,+3
 set complete-=t     " no tag search
 set completeopt=longest,menuone
 set cpoptions+=W
@@ -55,7 +55,7 @@ set smartcase
 set softtabstop=2
 set splitright
 set splitbelow
-set textwidth=0
+set textwidth=141
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
 set timeoutlen=150
 " set nowrapscan
@@ -266,8 +266,8 @@ inoremap <F10> <C-R>=strftime("%Y.%m.%dT%H:%M:%S%z")<CR>
 
 "" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 " highlight OverLength term=standout cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
-highlight OverLength term=standout cterm=bold ctermbg=white ctermfg=black gui=bold guibg=red guifg=white
-match OverLength /\%121v/
+" highlight OverLength term=standout cterm=bold ctermbg=white ctermfg=black gui=bold guibg=red guifg=white
+" match OverLength /\%121v/
 
 " Some abbreviations
 iabbrev #d #define
