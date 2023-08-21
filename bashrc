@@ -18,8 +18,8 @@ else
   alias llh='ls -lh'
 fi
 alias mv='mv -iv'
-alias python='python -I -m pdb '
-alias python3='python3 -I -m -pdb '
+alias python='python -I '
+alias python3='python3 -I '
 alias ipython='ipython --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logappend="ipython_log-$(date +%Y-%m-%d).py" '
 alias ipython3='ipython3 --pdb --no-autoindent --no-pprint --no-banner --no-confirm-exit --logappend="ipython_log-$(date +%Y-%m-%d).py" '
 alias rm='rm -iv'
