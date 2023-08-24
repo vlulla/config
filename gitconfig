@@ -33,6 +33,10 @@
 [pull]
 	rebase = false
 	ff = only
-
-## [merge]
+[merge]
 ## 	ff = false
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	tool = vimdiff
