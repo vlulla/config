@@ -392,3 +392,4 @@ export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
 export PGTZ='utc'
 export PGDATESTYLE="ISO,MDY"
 export PSQL_PAGER="less"
+[[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"

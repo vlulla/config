@@ -1,0 +1,7 @@
+## Requires setting RIPGREP_CONFIG_PATH pointing to the ripgreprc to work!
+## export RIPGREP_CONFIG_PATH=${HOME}/.ripgreprc
+
+--type-add=web:*.{html,css,js}*
+--type-add=j:*.ijs
+--hidden
+--smart-case

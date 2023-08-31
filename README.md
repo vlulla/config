@@ -15,6 +15,7 @@ Locations and names for these files:
    pdbrc          ${HOME}/.pdbrc or `pwd`/.pdbrc
    psqlrc         ${HOME}/.psqlrc
    pandas-opts.py ${HOME}/.ipython/profile_default/startup/01-pandas-opts.py
+   ripgreprc      ${HOME}/.ripgreprc
    Rprofile       ${HOME}/.Rprofile
    sqliterc       ${HOME}/.sqliterc     # Use like: sqlite3 -init ${HOME}/.sqliterc tst.sqlite
    ssh_config     ${HOME}/.ssh/config   # Also needs: chmod og-rwx ${HOME}/.ssh

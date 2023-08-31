@@ -191,3 +191,4 @@ export PGDATESTYLE='ISO,MDY'
 [[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
 [[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
 [[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
+[[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
