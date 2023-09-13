@@ -36,7 +36,7 @@
 [merge]
 ## 	ff = false
 	tool = vimdiff
-	conflictstyle = diff3
+##	conflictstyle = diff3
 [mergetool]
 	prompt = false
 [diff]
