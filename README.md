@@ -19,6 +19,7 @@ Locations and names for these files:
    Rprofile       ${HOME}/.Rprofile
    sqliterc       ${HOME}/.sqliterc     # Use like: sqlite3 -init ${HOME}/.sqliterc tst.sqlite
    ssh_config     ${HOME}/.ssh/config   # Also needs: chmod og-rwx ${HOME}/.ssh
+   startup.jl     ${HOME}/.julia/config/startup.jl
    tmux.conf      ${HOME}/.tmux.conf
    vimrc          ${HOME}/.vimrc
    zshrc          ${HOME}/.zshrc
