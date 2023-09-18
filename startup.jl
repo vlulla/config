@@ -1,7 +1,20 @@
+using InteractiveUtils, Pkg
 ## should go in ${HOME}/.julia/config/startup.jl
 
 # some aliases...useful for interactive usage
 q = quit = exit
 dput = dump ## R's amazing dput!
-ls = varinfo 
+ls = InteractiveUtils.varinfo
 len = length ## so used to python's len
+
+function update_pkgs()
+  Pkg.update()
+end
+
+function repl_customize(repl)
+  ## repl.hascolor = false
+  ## repl.options.hascolor = false
+  ## dump(repl)
+end
+
+atreplinit(repl_customize)
