@@ -186,6 +186,7 @@ export DASK_DISTRIBUTED__WORKERS__MEMORY__TARGET=0.75
 export DASK_DISTRIBUTED__WORKERS__MEMORY__TERMINATE=0.98
 export PGTZ='utc'
 export PGDATESTYLE='ISO,MDY'
+export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 
 
 [[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
