@@ -4,7 +4,7 @@ alias R='R --no-restore '
 
 alias bc='bc -l'
 alias cp='cp -iv'
-alias e='vim '
+alias e='vim --ttyfail'
 [[ "$(uname -s)" = 'Linux' ]] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
 alias l='ls '
 alias la='ls -a'
@@ -26,13 +26,15 @@ alias rm='rm -iv'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias tree="tree --gitignore -I '*.pyc' -I '__init__.py*' -I '__pycache__' "
 ## alias sudo='sudo -v; sudo '
-alias v='vim '
+alias v="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
+alias view="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
 
 # fix some typos
 alias sl='ls'
 alias c='cd'
-alias vo='vim'
-alias ci='vim'
+alias vo='vim --ttyfail'
+alias ci='vim --ttyfail'
+alias iv='vim --ttyfail'
 alias grpe='grep'
 alias Grep='grep'
 alias les='less'
