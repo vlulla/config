@@ -54,6 +54,7 @@ upgradeoutdated() {
 
 updatecondaenvs() {
   local env="" envs=() red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
+  micromamba self-update
   envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
   for env in "${envs[@]}"; do
     echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"

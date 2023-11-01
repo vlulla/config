@@ -77,10 +77,13 @@ upgradeoutdated() {
 }
 
 updatecondaenvs() {
-  local env="" red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
-  for env in $(conda env list | awk '!/^#/{print $1}'); do
-    echo "Updating conda environment:   ${bold}${green}${env}${reset}"
-    conda update --update-all --yes --name "${env}"
+  local env="" envs=() red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
+  micromamba self-update
+  ## for env in $(conda env list | awk '!/^#/{print $1}'); do
+  envs=( $(micromamba env list --quiet | awk 'NR>2{print $1}') )
+  for env in "${envs[@]}"; do
+    echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
+    micromamba update --all --yes --quiet --name "${env}"
   done
 }
 
