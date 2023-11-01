@@ -32,7 +32,7 @@ getinteractive() {
 
 upgradeoutdated() {
   local os cmd bold reset sys
-  sys=$(uname -s | tr A-Z a-z)
+  sys=$(uname -s | tr '[:upper:]' '[:lower:]')
   if [[ "${sys}" == "darwin" ]]; then
     cmd="sudo port selfupdate && sudo port -c -b -u upgrade outdated && sudo port clean --all installed"
   else
@@ -44,20 +44,21 @@ upgradeoutdated() {
       ("amzn" | "fedora") cmd="sudo dnf update --assumeyes && sudo dnf clean all --assumeyes && sudo dnf autoremove --assumeyes" ;;
       ("alpine") cmd="sudo apk update && sudo apk upgrade" ;;
       ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes && sudo freebsd-update fetch install" ;;
-      (*) cmd="echo 'Do not know how to upgrade this system'" ;;
+      (*) cmd="printf 'Do not know how to upgrade this system'" ;;
     esac
   fi
-  echo "Will run the command:"
-  echo "${bold}${cmd//&& /&& \\ \n}${reset}\n\n"
+  printf "Will run the command:"
+  printf "%s" "${bold}${cmd//&& /&& \\ \n}${reset}\n\n"
   eval "${cmd}"
 }
 
 updatecondaenvs() {
-  local env="" envs=() red=$(tput setaf 1) green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
+  local env="" envs=() green=$(tput setaf 2) bold=$(tput bold) reset=$(tput sgr0)
   micromamba self-update
   envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
   for env in "${envs[@]}"; do
-    echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
+    ## echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
+    printf "%s" "Updating micromamba environment:   ${bold}${green}${env}${reset}"
     micromamba update --all --yes --quiet --name "${env}"
   done
 }
