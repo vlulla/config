@@ -44,7 +44,7 @@ upgradeoutdated() {
       ("amzn" | "fedora") cmd="sudo dnf update --assumeyes && sudo dnf clean all --assumeyes && sudo dnf autoremove --assumeyes" ;;
       ("alpine") cmd="sudo apk update && sudo apk upgrade" ;;
       ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes && sudo freebsd-update fetch install" ;;
-      (*) cmd="printf 'Do not know how to upgrade this system'" ;;
+      (*) cmd="printf 'Do not know how to upgrade this system'\n" ;;
     esac
   fi
   printf "%s\n" "Will run the command:"
@@ -58,7 +58,7 @@ updatecondaenvs() {
   envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
   for env in "${envs[@]}"; do
     ## echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
-    printf "%b" "Updating micromamba environment:   ${bold}${green}${env}${reset}"
+    printf "%b\n" "Updating micromamba environment:   ${bold}${green}${env}${reset}"
     micromamba update --all --yes --quiet --name "${env}"
   done
 }
