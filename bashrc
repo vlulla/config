@@ -44,11 +44,12 @@ alias cd.='cd .'
 alias cd..='cd ..'
 [[ "$(uname -s)" == "Linux" && $(command -v xsel) ]] && alias pbcopy='xsel --clipboard --input' pbpaste='xsel --clipboard --output'
 
-# Make piping easier...
-# $ ls -la LL
-# $ ls -la VV
-alias VV=' |& view -'
-alias LL=' |& less'
+## ## This only works in zsh!
+## # Make piping easier...
+## # $ ls -la LL
+## # $ ls -la VV
+## alias VV=' |& view -'
+## alias LL=' |& less'
 
 git-branch-info() {
   local branch sha res
