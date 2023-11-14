@@ -1,7 +1,11 @@
+.mode line
+select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
+.headers on
+.mode duckbox
+select function_name,parameter_types,return_type from duckdb_functions() where schema_name='main' order by random() limit 5;
 -- .eqp on
 .null "∅"
 .maxrows 25
-.mode duckbox
 -- .stats on
 .timer on
 
