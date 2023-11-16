@@ -194,8 +194,28 @@ export PGTZ='utc'
 export PGDATESTYLE='ISO,MDY'
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 
+postpath() {
+  for d in $@; do
+    case "${PATH}" in
+      *${d}*) ;;
+      *) export PATH=${PATH:+${PATH}:}$d ;;
+    esac
+  done
+}
+
+prepath() {
+  for d in $@; do
+    case "${PATH}" in
+      *${d}*) ;;
+      *) export PATH=${d}${PATH:+:${PATH}} ;;
+    esac
+  done
+}
+postpath "${VROOT}/bin" "${HOME}/.local/bin"
+
+## [[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
+## [[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
 
 [[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
-[[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
-[[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
+
