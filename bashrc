@@ -219,3 +219,4 @@ postpath "${VROOT}/bin" "${HOME}/.local/bin"
 [[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
+hadolint() { docker run --rm -i hadolint/hadolint $@ ; }

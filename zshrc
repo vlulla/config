@@ -396,3 +396,5 @@ export PGDATESTYLE="ISO,MDY"
 export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
+
+hadolint() { docker run --rm -i hadolint/hadolint $@ ; }
