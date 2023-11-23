@@ -341,3 +341,9 @@ filetype off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
+if &diff
+  set noautoread
+  " without this the following will not work
+  " $ vim -d <( cat t1.json | jq) <(cat t2.json | jq)
+  " man bash and then /<\( to read/learn about process substitution
+endif
