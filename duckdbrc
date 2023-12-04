@@ -2,7 +2,7 @@
 select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
 .headers on
 .mode duckbox
-create temporary table todays_trivia as select function_name,function_type,parameter_types,return_type from duckdb_functions() where schema_name='main' order by random() limit 5;
+create temporary table todays_trivia as select function_name,function_type,parameters,parameter_types,return_type,example from duckdb_functions() where schema_name='main' order by random() limit 5;
 table todays_trivia;
 -- .eqp on
 .null "∅"
