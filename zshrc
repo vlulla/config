@@ -177,7 +177,7 @@ RR() {
   docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --network=host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
 }
 
-if [[ ! -x $(command -pv pandoc) ]]; then
+if [[ ! -x $(command -v pandoc) ]]; then
   pandoc() {
     docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
   }

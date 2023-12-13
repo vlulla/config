@@ -148,7 +148,7 @@ vf() {
   fi
 }
 
-if [[ ! -x $(command -pv pandoc) ]]; then
+if [[ ! -x $(command -v pandoc) ]]; then
   pandoc() {
     docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
   }
