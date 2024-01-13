@@ -134,7 +134,7 @@ autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
 
 " https://unix.stackexchange.com/a/383044
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-autocmd FileChangedSHellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Cursorcolumn is helpful with yml files!
 autocmd FileType yaml setlocal cursorcolumn cursorline noautoindent nocindent nosmartindent indentexpr=

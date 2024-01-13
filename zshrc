@@ -179,7 +179,7 @@ RR() {
 
 if [[ ! -x $(command -v pandoc) ]]; then
   pandoc() {
-    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
+    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/latex:3.1 "$@"
   }
 fi
 
@@ -269,7 +269,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #  Below is my setup
 
 [[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT" && prepath "${VROOT}/bin"
-[[ -d "${HOME}/code/J/j9.4" ]] && export JHOME="${HOME}/code/J/j9.4"
+[[ -d "${HOME}/code/J/j9.5" ]] && export JHOME="${HOME}/code/J/j9.5"
 postpath  "${HOME}/.cargo/bin" /usr/local/go/bin "${JHOME:-}/bin" "${HOME}/.local/bin"
 prepath "${HOME}/bin"
 
