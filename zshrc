@@ -1,4 +1,7 @@
-set -u
+## Commenting this because micromamba activate.d/*.sh scripts fail with unset variables...
+## set -u
+
+## Use envvar "${-}" to check the options set by the shell. `man zshoptions` then /-u .
 
 ## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
