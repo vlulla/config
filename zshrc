@@ -42,8 +42,7 @@ upgradeoutdated() {
     os=$(grep "^ID=" /etc/os-release | tr -d $'"')
     bold=$(tput bold) reset=$(tput sgr0)
     case "${os##*=}" in
-      ("ubuntu") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
-      ("debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
+      ("ubuntu" | "debian") cmd="sudo DEBIAN_FRONTEND=noninteractive apt-get update --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoclean --yes && sudo DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes" ;;
       ("amzn" | "fedora") cmd="sudo dnf update --assumeyes && sudo dnf clean all --assumeyes && sudo dnf autoremove --assumeyes" ;;
       ("alpine") cmd="sudo apk update && sudo apk upgrade" ;;
       ("freebsd") cmd="sudo pkg update && sudo pkg upgrade --yes && sudo freebsd-update fetch install" ;;
