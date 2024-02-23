@@ -10,5 +10,8 @@ table todays_trivia;
 -- .stats on
 .timer on
 
+.changes on
+.highlight off
+
 .echo on
 .show
