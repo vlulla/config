@@ -60,7 +60,7 @@ set splitbelow
 set textwidth=0
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
 set timeoutlen=150
-" set nowrapscan
+set nowrapscan
 " set whichwrap=b,s,l,h
 set whichwrap=b,s,l,h,<,>,[,]
 set viminfo='200,f1,<100,h,/50,:50
@@ -214,6 +214,17 @@ nnoremap <leader>st :st<CR>
 " From http://rayninfo.co.uk/vimtips.html
 vnoremap < <gv
 vnoremap > >gv
+
+" Below from ThePrimeagen's YT video titled "0 to LSP: Neovim RC from scratch" @ around 25:30 marker
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap J mzJ`z
+
 vmap // y/<C-R>"<CR>
 vmap <leader>s y:<C-U>%s@\<<C-R>"\>@@gc<Left><Left><Left>
 
