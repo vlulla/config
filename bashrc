@@ -210,7 +210,7 @@ prepath() {
     esac
   done
 }
-postpath "${VROOT}/bin" "${HOME}/.local/bin"
+postpath "${VROOT}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 
 ## [[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
 ## [[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
