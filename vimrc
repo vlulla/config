@@ -216,8 +216,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Below from ThePrimeagen's YT video titled "0 to LSP: Neovim RC from scratch" @ around 25:30 marker
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" The below two mappings were not as useful as I had thought. Also, i use join in visual selections quite often (prerequisite of exploratory work) so it interferes with that usage.
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
