@@ -78,7 +78,7 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       , help.try.all.packages=TRUE
       , locatorBell=FALSE
       ## , lubridate.fasttime=TRUE
-      ## , max.print=800
+      , max.print=500
       , mc.cores = parallel::detectCores()
       , Ncpus = parallel::detectCores() - 2
       # , prompt="R=> "  # Causes problems with ESS
