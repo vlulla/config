@@ -149,7 +149,7 @@ vf() {
 
 if [[ ! -x $(command -v pandoc) ]]; then
   pandoc() {
-    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/core "$@"
+    docker run -ti --rm --volume "$(pwd):/data" --user "$(id -u):$(id -g)" pandoc/latex:3.1 "$@"
   }
 fi
 
@@ -218,4 +218,7 @@ postpath "${VROOT}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 [[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
-hadolint() { docker run --rm -i hadolint/hadolint $@ ; }
+hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
+ocaml() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
+node() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
+

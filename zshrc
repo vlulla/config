@@ -399,4 +399,6 @@ export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
-hadolint() { docker run --rm -i hadolint/hadolint $@ ; }
+hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
+ocaml() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
+node() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
