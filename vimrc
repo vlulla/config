@@ -332,12 +332,14 @@ iabbrev istm it seems to me
 iabbrev ive I've
 iabbrev mins minutes
 iabbrev nto not
+iabbrev nz non-zero
 iabbrev ofr for
 iabbrev ot to
 iabbrev pls please
 iabbrev Pls Please
 iabbrev si is
 " iabbrev ssig --<CR>Vijay Lulla<CR>vijaylulla@gmail.com
+iabbrev tath that
 iabbrev taht that
 iabbrev teh the
 iabbrev tfs thanks for sharing
