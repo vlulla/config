@@ -219,6 +219,6 @@ postpath "${VROOT}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
-ocaml() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
-node() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
+ocaml() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
+node() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
 
