@@ -185,10 +185,10 @@ if [[ ! -x $(command -v pandoc) ]]; then
   }
 fi
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=~/.zsh_history
+HISTORY_IGNORE="(ls|ls *|cd|cd ..|pwd|exit|e *|v *|R|python)"
 
 fpath=(~/.zsh/completion $fpath)
 
