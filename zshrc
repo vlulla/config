@@ -185,10 +185,10 @@ if [[ ! -x $(command -v pandoc) ]]; then
   }
 fi
 
-HISTSIZE=1000000
-SAVEHIST=1000000
-HISTFILE=~/.zsh_history
-HISTORY_IGNORE="(ls|ls *|cd|cd ..|pwd|exit|e *|v *|R|python)"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export HISTFILE=~/.zsh_history
+export HISTORY_IGNORE="(ls|ls *|cd|cd ..|pwd|exit|e *|v *|R|python)"
 
 fpath=(~/.zsh/completion $fpath)
 
