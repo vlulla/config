@@ -60,8 +60,8 @@ updatecondaenvs() {
   envs+=($(micromamba env list --quiet | awk 'NR>2{print $1}'))
   for env in "${envs[@]}"; do
     ## echo "Updating micromamba environment:   ${bold}${green}${env}${reset}"
-    printf "%b\n" "Updating micromamba environment:   ${bold}${green}${env}${reset}"
     micromamba update --all --yes --quiet --name "${env}"
+    printf "%b\n" "Updated micromamba environment:   ${bold}${green}${env}${reset}"
   done
 }
 
@@ -272,7 +272,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT" && prepath "${VROOT}/bin"
 [[ -d "${HOME}/code/J/j9.5" ]] && export JHOME="${HOME}/code/J/j9.5"
-postpath  "${HOME}/.cargo/bin" /usr/local/go/bin "${JHOME:-}/bin" "${HOME}/.local/bin" "${HOME}/go/bin" 
+postpath  "${HOME}/.cargo/bin" /usr/local/go/bin "${JHOME:-}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 prepath "${HOME}/bin"
 
 # OPAM configuration

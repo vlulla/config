@@ -8,10 +8,10 @@ table todays_trivia;
 .null "∅"
 .maxrows 25
 -- .stats on
-.timer on
+-- .timer on
 
-.changes on
+-- .changes on
 .highlight off
 
-.echo on
+-- .echo on
 .show
