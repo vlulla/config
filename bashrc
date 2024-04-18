@@ -4,6 +4,7 @@ alias R='R --no-restore '
 
 alias bc='bc -l'
 alias cp='cp -iv'
+( command -v duckdb >/dev/null 2>&1 ) && alias ddb='duckdb '
 alias e='vim --ttyfail'
 [[ "$(uname -s)" = 'Linux' ]] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
 alias l='ls '

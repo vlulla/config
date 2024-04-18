@@ -284,6 +284,7 @@ prepath "${HOME}/bin"
 [[ -f "${HOME}/code/config/bashrc" ]] && alias bash='bash --rcfile "${HOME}/code/config/bashrc" '
 alias bc='bc -l'
 alias cp='cp -iv'
+( command -v duckdb >/dev/null 2>&1 ) && alias ddb='duckdb '
 alias dm='docker-machine '
 alias e='vim --ttyfail'
 [ "$(uname -s)" = 'Linux' ] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
