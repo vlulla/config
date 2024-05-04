@@ -1,7 +1,7 @@
 channels:
   - conda-forge
-  - r
-  - defaults
+##  - r
+##  - defaults
 channel_priority: strict
 auto_update_conda: false
 auto_activate_base: false

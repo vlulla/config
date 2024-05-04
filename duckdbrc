@@ -1,3 +1,4 @@
+-- set TimeZone='UTC';
 .mode line
 select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
 .headers on
