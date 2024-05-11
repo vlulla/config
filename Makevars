@@ -1,3 +1,4 @@
+## Set this in ${HOME}/.R/Makevars
 MAKEFLAGS+=-j
 CC=clang 
 CXX=clang++

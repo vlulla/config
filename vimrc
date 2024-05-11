@@ -12,7 +12,7 @@ set backspace=eol,start,indent
 set cinoptions=(0
 set cmdheight=2
 " set colorcolumn=+1,+2,+3
-set colorcolumn=121,122,123
+set colorcolumn=121,122,123,124,125
 set complete-=t     " no tag search
 set completeopt=longest,menuone
 set cpoptions+=W
@@ -226,7 +226,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap J mzJ`z
 
-vmap // y/<C-R>"<CR>
+vmap <leader>/ y/<C-R>"<CR>
 vmap <leader>s y:<C-U>%s@\<<C-R>"\>@@gc<Left><Left><Left>
 
 map <C-n> :cnext<CR>

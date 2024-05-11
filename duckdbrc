@@ -1,4 +1,4 @@
--- set TimeZone='UTC';
+set TimeZone='UTC';
 .mode line
 select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
 .headers on
@@ -7,7 +7,7 @@ create temporary table todays_trivia as select function_name,function_type,list_
 table todays_trivia;
 -- .eqp on
 .null "∅"
-.maxrows 25
+.maxrows 12
 -- .stats on
 -- .timer on
 
