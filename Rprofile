@@ -82,10 +82,8 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       , mc.cores = parallel::detectCores()
       , Ncpus = parallel::detectCores() - 2
       # , prompt="R=> "  # Causes problems with ESS
-      ## , repos=structure(c(CRAN="https://ftp.ussg.iu.edu/CRAN/",
+      ## , repos=structure(c(CRAN="https://cloud.r-project.org/",
       ##                     INLA="https://inla.r-inla-download.org/R/stable"))
-      , repos=structure(c(CRAN="https://cloud.r-project.org/",
-                          INLA="https://inla.r-inla-download.org/R/stable"))
       , timeout = max(300, getOption("timeout")) ## INLA download timesout with default value! See ?download.file of why we need higher value here...
       , useFancyQuotes=FALSE # causes problems with LaTeX
       ## , warnPartialMatchArgs=TRUE  ## Causes lots of warnings!
