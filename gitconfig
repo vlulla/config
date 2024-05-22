@@ -31,7 +31,7 @@
 [format]
 	pretty = oneline
 [pull]
-	rebase = false
+	## rebase = true
 	ff = only
 [merge]
 ## 	ff = false
