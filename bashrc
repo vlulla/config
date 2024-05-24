@@ -113,11 +113,6 @@ export PROMPT_DIRTRIM=7
 export PS1='\u@\h [SHLVL: ${SHLVL}]: \w\n[jobs: \j] $(git-branch-info) \$ '
 export EDITOR="vim"
 export VISUAL="${EDITOR}"
-if [ -d "${VROOT}" ]; then
-  export VROOT=${HOME}/VROOT
-  export VIRTUALROOT=${VROOT}
-  export PATH="${VROOT}/bin${PATH:+:${PATH}}"
-fi
 
 ## Neat idea from https://github.com/jessfraz/dotfiles/blob/master/.bashrc
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
@@ -198,7 +193,7 @@ postpath() {
   for d in $@; do
     case "${PATH}" in
       *${d}*) ;;
-      *) export PATH=${PATH:+${PATH}:}$d ;;
+      *) [[ -d "$d" ]] && export PATH=${PATH:+${PATH}:}$d ;;
     esac
   done
 }
@@ -207,16 +202,14 @@ prepath() {
   for d in $@; do
     case "${PATH}" in
       *${d}*) ;;
-      *) export PATH=${d}${PATH:+:${PATH}} ;;
+      *) [[ -d "$d" ]] && export PATH=${d}${PATH:+:${PATH}} ;;
     esac
   done
 }
+
+[[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT" VIRTUALROOT="${HOME}/VROOT"
 postpath "${VROOT}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 
-## [[ -d "${VROOT}/bin" ]] && export PATH="${PATH:+${PATH}:}${VROOT}/bin"
-## [[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH:+${PATH}:}${HOME}/.local/bin"
-
-[[ -d "${HOME}/VROOT" ]] && export VROOT="${HOME}/VROOT"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
