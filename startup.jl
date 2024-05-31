@@ -1,6 +1,8 @@
 using InteractiveUtils, Pkg
 ## should go in ${HOME}/.julia/config/startup.jl
 
+using DataFrames,StatsModels,GLM # some packages i use regularly
+
 # some aliases...useful for interactive usage
 q = quit = exit
 dput = dump ## R's amazing dput!
