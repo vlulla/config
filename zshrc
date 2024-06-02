@@ -110,13 +110,8 @@ dc() {
   echo "${containers[@]}"
 }
 
-dcup() {
-  docker-compose up --build -d
-}
-
-dcdown() {
-  docker-compose down
-}
+dcup() { docker-compose up --build -d ; }
+dcdown() { docker-compose down ; }
 
 dcleanup() {
   ## mapfile works only in bash!
@@ -157,8 +152,8 @@ dockerpull() {
 }
 
 dockerhosts() {
-  local ip name id
-  for id in $(docker ps --format="{{.ID}}"); do
+  local ip name id ids=( $(docker ps --format="{{.ID}}") )
+  for id in ${ids[@]}; do
     ip=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$id")
     name=$(docker ps --filter="id=$id" --format="{{.Names}}")
     printf "%s %s\n" "$ip" "$name"
@@ -176,7 +171,7 @@ date() {
 
 RR() {
   ## docker run -ti --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || sysctl -n hw.ncpu) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
-  docker run -ti -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix --network=host --rm --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) -v "$(pwd):/app" -w /app vl-ds R "$@"
+  docker run -ti --rm -e DISPLAY=${DISPLAY} -e LANG=C.UTF-8 --mount type=bind,src=/tmp/.X11-unix,dst=/tmp/.X11-unix,ro --mount type=bind,src="$(pwd)",dst=/app --workdir=/app --ipc=host --network=host --hostname=vl-ds-container --cpus=$(( $( (command nproc 2>/dev/null) || echo 5) - 1.5)) vl-ds R --no-save "$@"
 }
 
 if [[ ! -x $(command -v pandoc) ]]; then
@@ -401,6 +396,6 @@ export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
-hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
-ocaml() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
-node() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
+hadolint() { docker run --rm -i  --mount type=bind,src="$(pwd)",dst=/app --workdir=/app hadolint/hadolint "$@" ; }
+ocaml()    { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app ocaml/opam ocaml  "$@" ; }
+node()     { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app node              "$@" ; }
