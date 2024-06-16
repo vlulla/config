@@ -304,8 +304,8 @@ alias rm='rm -I'
 [[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias tree="tree --gitignore -I '*.pyc' -I '__init__.py*' -I '__pycache__' "
 ## alias sudo='sudo -v; sudo '
-alias v="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
-alias view="view -c 'map <SPACE> <C-F>' -c 'map b <C-B>' -c 'map q :q<CR>' "
+alias v="view -c 'map <SPACE> <C-F>zz' -c 'map b <C-B>zz' -c 'map q :q<CR>' "
+alias view="view -c 'map <SPACE> <C-F>zz' -c 'map b <C-B>zz' -c 'map q :q<CR>' "
 
 # fix some typos
 alias sl='ls'
@@ -396,6 +396,8 @@ export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
+# bash $ hadolint <Dockerfile
+# bash $ hadolint hadolint ./Dockerfile
 hadolint() { docker run --rm -i  --mount type=bind,src="$(pwd)",dst=/app --workdir=/app hadolint/hadolint "$@" ; }
 ocaml()    { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app ocaml/opam ocaml  "$@" ; }
 node()     { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app node              "$@" ; }
