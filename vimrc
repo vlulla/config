@@ -224,6 +224,8 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
 nnoremap J mzJ`z
 
 vmap <leader>/ y/<C-R>"<CR>
