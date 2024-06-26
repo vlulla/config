@@ -203,7 +203,7 @@ if [[ "aws" = "${$(uname -r)##*-}" ]]; then
 else
   PUBLIC_HOSTNAME="%m"
 fi
-export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}] \$(git_branch_info) %#%b '
+export PS1=$'\n%B%F{cyan}%n@${PUBLIC_HOSTNAME}%(2L. [SHLVL: %L].): %(8~|%-1~/.../%6~|%7~)%f%b\n%B[%D{%Y.%m.%d}] \$(git_branch_info)%(?.. %Ux %?%u) %#%b '
 export RPROMPT="%(1j.%B%F{green}[Jobs: %j]%f%b.)%(?..%B%F{red} x %?%f%b)"
 
 # Use emacs keybindings even if our EDITOR is set to vi
