@@ -15,13 +15,11 @@ prepath() { for d in $@; [[ -d ${d:A} ]] && path=(${d:A} ${path[@]}) }
 postpath() { for d in $@; [[ -d ${d:A} ]] && path+=(${d:A}) }
 
 git_branch_info() {
-  local branch sha res
+  local branch sha res=""
   branch="$(git symbolic-ref --short HEAD 2>/dev/null)"
   sha="$(git rev-parse --short=10 HEAD 2>/dev/null)"
   if [[ -n "${branch}" ]]; then
     res="$(printf "(%s - %s)" "${branch}" "${sha}")"
-  else
-    res=""
   fi
   echo "${res}"
 }
