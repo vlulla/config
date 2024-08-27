@@ -87,7 +87,7 @@ set shortmess=a
 " set fileencoding=utf-8
 
 set statusline=%t-%m-%R-%Y-[ff:%{&fileformat}]-%=-[D:%3b,\ H:0x%02B]-[L:%3l/%3L(%3p%%),\ C:%2v]
-highlight StatusLine cterm=bold
+highlight StatusLineNC cterm=bold
 " highlight MatchParen cterm=bold ctermbg=none ctermfg=white
 " highlight SpellBad term=reverse ctermfg=15 ctermbg=9 guifg=White guibg=Red
 " highlight DiffText term=reverse ctermfg=15 ctermbg=9 guifg=White guibg=Red
