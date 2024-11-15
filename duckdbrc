@@ -14,6 +14,7 @@ table todays_trivia;
 
 -- .changes on
 .highlight off
+.thousand_sep _
 
 -- .echo on
 .show
