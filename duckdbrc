@@ -13,8 +13,7 @@ table todays_trivia;
 -- .timer on
 
 -- .changes on
-.highlight off
 .thousand_sep _
 
 -- .echo on
-.show
+-- .show
