@@ -4,7 +4,7 @@ set checkpoint_threshold='100MB';
 select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
 .headers on
 .mode duckbox
-create temporary table todays_trivia as select function_name,function_type,list_transform(list_zip(parameters,parameter_types),x->x[1]||' «'||x[2]||'»') as params,return_type,example from duckdb_functions() where schema_name='main' and function_name not like '$_$_%' ESCAPE '$' order by random() limit 5;
+create temporary table todays_trivia as select function_name,function_type,list_transform(list_zip(parameters,parameter_types),x->x[1]||' «'||x[2]||'»') as params,return_type,examples from duckdb_functions() where schema_name='main' and function_name not like '$_$_%' ESCAPE '$' order by random() limit 5;
 table todays_trivia;
 -- .eqp on
 .null "∅"
