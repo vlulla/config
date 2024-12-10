@@ -19,8 +19,8 @@ local({
 
 .First <- function() {
   if(interactive()) {
-    ## Sys.setenv(R_HISTSIZE=5000)
-    ## Sys.setenv("_R_CHECK_LENGTH_1_CONDITION_"=TRUE) # See cond: argument in ?`if`
+    Sys.setenv(R_HISTSIZE=5000)
+    ## Sys.setenv("_R_CHECK_LENGTH_1_CONDITION_"=TRUE) # See cond: argument in ?`if` ... no longer works 2024.12.10
     try(utils::loadhistory("~/.Rhistory"))
   }
 }
