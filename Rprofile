@@ -80,7 +80,7 @@ options(datatable.print.class=TRUE  ## causes problems with test.data.table()
       ## , lubridate.fasttime=TRUE
       , max.print=500
       , mc.cores = parallel::detectCores()
-      , Ncpus = parallel::detectCores() - 2
+      , Ncpus = max(parallel::detectCores() - 2L, 1L)
       # , prompt="R=> "  # Causes problems with ESS
       ## , repos=structure(c(CRAN="https://cloud.r-project.org/",
       ##                     INLA="https://inla.r-inla-download.org/R/stable"))
