@@ -131,7 +131,9 @@ if( .Platform$OS.type == "unix" & !Sys.getenv("USER") == "root") {
   }
 }
 attach(.vl_env)
-Sys.setenv(MAKEFLAGS = "-j4")
+Sys.setenv(MAKEFLAGS=paste0(Sys.getenv("MAKEFLAGS"),sprintf("-j%d",  parallel::detectCores()-2L), collapse=" "))
+## Easier than trying to setenv during bash invocation...
+## bash $ MAKEFLAGS="${MAKELFAGS:-} -j$(( $(nproc) - 2))" R
 
 if (interactive()) {
     ## if (ispkginstalled("fortunes")) print(fortunes::fortune())  ## Slows down R!
