@@ -319,6 +319,7 @@ alias Less='less'
 alias cd.='cd .'
 alias cd..='cd ..'
 [[ "$(uname -s)" == "Linux" && $(command -v xsel) ]] && alias pbcopy='xsel --clipboard --input' pbpaste='xsel --clipboard --output'
+[[ -d "${HOME}/code/k/ngn-k.git" && -x "${HOME}/.local/bin/k" ]] && alias k='k "${HOME}/code/k/ngn-k.git/repl.k"'
 
 # Make piping easier...
 # $ ls -la LL
