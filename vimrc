@@ -315,6 +315,7 @@ iabbrev exprot export
 iabbrev fe for example
 iabbrev fo of
 iabbrev fucntion function
+iabbrev HOw How
 iabbrev htat that
 iabbrev hte the
 iabbrev ie i.e.,
