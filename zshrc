@@ -264,7 +264,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #  Below is my setup
 
 [[ -d "${HOME}/VROOT" ]] && export VIRTUALROOT="${HOME}/VROOT" VROOT="${HOME}/VROOT" && prepath "${VROOT}/bin"
-[[ -d "${HOME}/code/J/j9.5" ]] && export JHOME="${HOME}/code/J/j9.5"
+[[ -d "${HOME}/code/J/j9.6" ]] && export JHOME="${HOME}/code/J/j9.6"
 postpath  "${HOME}/.cargo/bin" /usr/local/go/bin "${JHOME:-}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 prepath "${HOME}/bin"
 
