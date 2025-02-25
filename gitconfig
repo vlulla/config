@@ -26,6 +26,7 @@
 	helper = cache --timeout=18000
 [commit]
 	gpgSign = true
+	verbose = true
 [color]
 	ui = auto
 [format]
@@ -44,3 +45,18 @@
 	algorithm = histogram
 [difftool]
 	tool = vimdiff
+[branch]
+	sort = -committerdate
+[grep]
+	patternType = perl
+[rebase]
+	autosquash = true
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[rerere]
+	enabled = true
+	autoupdate = true
