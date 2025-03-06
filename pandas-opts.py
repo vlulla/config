@@ -3,7 +3,7 @@
 ## Also try `pd.describe_option()` in your repl
 
 import pandas as pd, numpy as np, subprocess
-twidth = int(subprocess.check_output("tput cols", shell=TRUE))-20
+twidth = int(subprocess.check_output("tput cols", shell=True))-20
 
 ## pd.set_option("display.width",120) ## set this from what is reported by `tput cols`
 pd.set_option("display.max_rows",6)
