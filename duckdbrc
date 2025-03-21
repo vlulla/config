@@ -17,3 +17,6 @@ table todays_trivia;
 
 -- .echo on
 -- .show
+
+set autoinstall_known_extensions=1;
+set autoload_known_extensions=1;
