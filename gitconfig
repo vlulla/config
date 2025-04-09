@@ -51,6 +51,8 @@
 	patternType = perl
 [rebase]
 	autosquash = true
+	autoStash = true
+	updateRefs = true
 [tag]
 	sort = version:refname
 [fetch]
@@ -60,3 +62,8 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[column]
+	ui = auto
+[push]
+	autoSetupRemote = true
+	followTags = true
