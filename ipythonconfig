@@ -12,6 +12,7 @@ c.InteractiveShellApp.exec_lines = ['import numpy as np,hypothesis as hy',
 c.InteractiveShell.autoindent = True
 c.InteractiveShell.automagic = False
 c.InteractiveShell.confirm_exit = False
+c.InteractiveShell.pdb = True
 
 c.PlainTextFormatter.max_seq_length = 30
 c.PlainTextFormatter.pprint = False
