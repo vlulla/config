@@ -394,6 +394,8 @@ export PGDATESTYLE="ISO,MDY"
 export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
+## ensure that OMP_NUM_THREADS is set to the #Pysical CPU cores!
+export OMP_NUM_THREADS=$(nproc --all)
 
 # bash $ hadolint <Dockerfile
 # bash $ hadolint hadolint ./Dockerfile
