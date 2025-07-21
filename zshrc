@@ -395,7 +395,11 @@ export PSQL_PAGER="less"
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 [[ -f "${HOME}/.ripgreprc" ]] && export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 ## ensure that OMP_NUM_THREADS is set to the #Pysical CPU cores!
-export OMP_NUM_THREADS=$(nproc --all)
+case "$(uname)" in
+  "Linux")  export OMP_NUM_THREADS=$(( $(nproc --all) - 2));;
+  "Darwin") export OMP_NUM_THREADS=$(( $(sysctl -n hw.physicalcpu) -  2));;
+  "*")      export OMP_NUM_THREADS=2
+esac
 
 # bash $ hadolint <Dockerfile
 # bash $ hadolint hadolint ./Dockerfile
