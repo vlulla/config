@@ -319,7 +319,7 @@ alias Less='less'
 alias cd.='cd .'
 alias cd..='cd ..'
 [[ "$(uname -s)" == "Linux" && $(command -v xsel) ]] && alias pbcopy='xsel --clipboard --input' pbpaste='xsel --clipboard --output'
-[[ -d "${HOME}/code/k/ngn-k.git" && -x "${HOME}/.local/bin/k" ]] && alias k='k "${HOME}/code/k/ngn-k.git/repl.k"'
+[[ -d "${HOME}/code/k/ngn-k.git" && -x "${HOME}/.local/bin/k" ]] && alias k='rlwrap --histsize 500 --history-no-dupes 2 -r k "${HOME}/code/k/ngn-k.git/repl.k"'
 
 # Make piping easier...
 # $ ls -la LL
@@ -341,6 +341,7 @@ export PAGER=less
 export LESS='-eiMFXR'
 export LESSSECURE=1
 export EDITOR='vim'
+export RLWRAP_EDITOR="vi +%L"
 export VISUAL="${EDITOR}"
 ## export MANPAGER="vim -M +MANPAGER -" # breaks the info command!
 # man ls ... then /(TIME|QUOTING)_STYLE
