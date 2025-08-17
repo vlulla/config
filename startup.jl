@@ -19,4 +19,8 @@ function repl_customize(repl)
   ## dump(repl)
 end
 
+if isfile(expanduser("~/code/vl-utils/julia-utils.jl"))
+  include(expanduser("~/code/vl-utils/julia-utils.jl"))
+end
+
 atreplinit(repl_customize)
