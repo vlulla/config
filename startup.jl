@@ -23,4 +23,6 @@ if isfile(expanduser("~/code/vl-utils/julia-utils.jl"))
   include(expanduser("~/code/vl-utils/julia-utils.jl"))
 end
 
+PLOTS_DEFAULTS = Dict(:markersize=>10, :markeralpha=>0.6, :legend=>false)
+
 atreplinit(repl_customize)
