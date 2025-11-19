@@ -59,7 +59,7 @@ set splitbelow
 " set textwidth=141
 set textwidth=0
 " set timeoutlen=1000 ttimeoutlen=10 " Comment these two lines to make leaders and mappings work!
-set timeoutlen=150
+set timeoutlen=300
 set nowrapscan
 " set whichwrap=b,s,l,h
 set whichwrap=b,s,l,h,<,>,[,]
@@ -238,10 +238,7 @@ imap <C-e> <C-o>$
 
 " Excellent ew/es/ev/et mappings from http://vimcasts.org/episodes/the-edit-command/
 cnoremap %% <C-R>=fnameescape(expand('%:p:h')).'/'<cr>
-map <leader>ew :edit %%
-map <leader>es :split %%
-map <leader>ev :vsplit %%
-map <leader>et :tabedit %%
+map <leader>et :tabedit %<CR>
 
 " Great idea from http://howivim.com/2016/damian-conway/
 nnoremap <expr> M ':%s@' . @/ . '@@gc<LEFT><LEFT><LEFT>'
