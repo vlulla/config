@@ -8,7 +8,7 @@ create temporary table todays_trivia as select function_name,function_type,list_
 table todays_trivia;
 -- .eqp on
 .null "∅"
-.maxrows 12
+.maxrows 35
 -- .stats on
 -- .timer on
 
