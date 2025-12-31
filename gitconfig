@@ -16,9 +16,9 @@
 	di = diff
 	f = !git ls-files | grep -i
 	gr = grep -Ii
-	graph = log --all --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%as%Creset %s\" --graph --date=short
+	graph = log --all --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%ad%Creset %s\" --graph --date=short
 	grep = grep -Ii
-	hist = log --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%as%Creset %s\" --graph --date=short
+	hist = log --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%ad%Creset %s\" --graph --date=short
 	la = !git config --list | grep alias
 	rl = reflog
 	st = status -sb
