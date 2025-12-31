@@ -8,10 +8,12 @@
 	signingkey = A64CB348F0B6836F
 [alias]
 	ap = add --patch
-	br = branch -a
+	br = branch -vv
+	brr = branch -vva
 	ci = commit
 	co = checkout
 	conf = config --show-origin --list
+	di = diff
 	f = !git ls-files | grep -i
 	gr = grep -Ii
 	graph = log --all --pretty=format:\"%C(yellow bold)%h%Creset | %C(green bold)%as%Creset %s\" --graph --date=short
