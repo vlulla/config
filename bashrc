@@ -211,4 +211,4 @@ postpath "${VROOT}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
 hadolint() { docker run --rm -i --mount type=bind,src="$(pwd)",dst=/app --workdir /app hadolint/hadolint "$@" ; }
 ocaml() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app ocaml/opam ocaml "$@" ; }
 node() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app node "$@" ; }
-
+julia() { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir /app julia "$@" ; }
