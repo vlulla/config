@@ -400,7 +400,7 @@ esac
 
 # bash $ hadolint <Dockerfile
 # bash $ hadolint hadolint ./Dockerfile
-hadolint() { docker run --rm -i  --mount type=bind,src="$(pwd)",dst=/app --workdir=/app hadolint/hadolint "$@" ; }
-ocaml()    { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app ocaml/opam ocaml  "$@" ; }
-node()     { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app node              "$@" ; }
-julia()    { docker run --rm -it --mount type=bind,src="$(pwd)",dst=/app,ro --workdir=/app julia             "$@" ; }
+hadolint() { docker run --rm --platform=linux/amd64 -i  --mount type=bind,src="$(pwd)",dst=/app --workdir=/app hadolint/hadolint "$@" ; }
+ocaml()    { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app ocaml/opam ocaml  "$@" ; }
+node()     { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app node              "$@" ; }
+julia()    { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app,ro --workdir=/app julia             "$@" ; }
