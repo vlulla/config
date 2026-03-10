@@ -1,5 +1,6 @@
 set TimeZone='UTC';
 set checkpoint_threshold='100MB';
+set geometry_always_xy = true; -- Will become the default in v2.1!
 .mode line
 select 'Date: '||current_date()||': Do you know these functions?' as "Trivia";
 .headers on
