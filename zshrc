@@ -295,7 +295,7 @@ else
 fi
 alias mv='mv -iv'
 alias rm='rm -I'
-[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='rlwrap -D 2 sqlite3 -init ${HOME}/.sqliterc '
+[[ -f "${HOME}/.sqliterc" ]] && alias sqlite3='sqlite3 -init ${HOME}/.sqliterc '
 alias tree="tree --gitignore -I '*.pyc' -I '__init__.py*' -I '__pycache__' "
 ## alias sudo='sudo -v; sudo '
 alias v="view -c 'map <SPACE> <C-F>zz' -c 'map b <C-B>zz' -c 'map q :q<CR>' "
