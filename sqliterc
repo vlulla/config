@@ -16,6 +16,7 @@ PRAGMA analysis_limit = 100000; -- ANALYZE only these many rows
 PRAGMA auto_vacuum = full;
 PRAGMA cache_size = -100000; -- 100 Mb
 PRAGMA journal_mode = WAL;
+PRAGMA synchronous=NORMAL;
 PRAGMA locking_mode = exclusive;
 PRAGMA busy_timeout = 5000;
 PRAGMA foreign_keys = ON;
