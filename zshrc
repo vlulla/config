@@ -403,4 +403,5 @@ esac
 hadolint() { docker run --rm --platform=linux/amd64 -i  --mount type=bind,src="$(pwd)",dst=/app --workdir=/app hadolint/hadolint "$@" ; }
 ocaml()    { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app ocaml/opam ocaml  "$@" ; }
 node()     { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app --workdir=/app node              "$@" ; }
-julia()    { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app,ro --workdir=/app julia             "$@" ; }
+julia()    { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app,ro --workdir=/app julia          "$@" ; }
+fsi()      { docker run --rm --platform=linux/amd64 -it --mount type=bind,src="$(pwd)",dst=/app,ro --workdir=/app mcr.microsoft.com/dotnet/sdk dotnet fsi "${@}" ; }
