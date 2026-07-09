@@ -63,6 +63,19 @@ updatecondaenvs() {
   done
 }
 
+updatemambaenv() {
+  ## Use this to see if updating the mamba environment will *actually* update the package that you want.
+  ##
+  ## $ micromamaba create --name tst --yes --dry-run $(micromamba env export --name "${1}" --from-history --json | jq -r -c '.dependencies[]')
+  ##
+  ## NOTE (vijay): breaks when environment has packages installed using pip! :-(
+  local envname="${1}"
+  local pkgs=( $(micromamba env export --name "${envname}" --from-history --json | jq -r -c '.dependencies[]') )
+  micromamba env remove --name "${envname}" --yes
+  micromamba create --name "${envname}" --yes "${pkgs[@]}"
+  echo "Updated ${envname}"
+}
+
 removeduplicates() {
     ## Use this to remove duplicates from PATH and MANPATH
     ## Call it like:
