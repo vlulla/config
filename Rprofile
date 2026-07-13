@@ -25,7 +25,7 @@ local({
   }
 }
 
-qn <- function() quit('no')
+exit <- qn <- function() quit('no')
 cd <- function(dir="~") setwd(dir)
 ## print.data.frame <- data.table:::print.data.table ## data.table *is* data.frame so we use its print method which, IMO, is much more useful for printing data.frame too!!
 
