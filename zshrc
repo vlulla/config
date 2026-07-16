@@ -76,6 +76,23 @@ updatemambaenv() {
   echo "Updated ${envname}"
 }
 
+if command -v uv >/dev/null 2>&1; then
+  uv self update >/dev/null 2>&1
+  uv tool update --all >/dev/null 2>&1
+  py() {
+    uv run --isolated -p ">3.14" --with numpy --with scipy --with pyarrow --with pandas --with polars --with duckdb --with matplotlib --with seaborn --with hypothesis python -I "${@}"
+  }
+  ipy() {
+    uv run --isolated -p ">3.14" --with numpy --with scipy --with pyarrow --with pandas --with polars --with duckdb --with matplotlib --with seaborn --with hypothesis --with ipython ipython "${@}"
+  }
+  pycmd() {
+    ## Surprisingly useful on the shell
+    ## $ pycmd "import uuid;print(uuid.uuid7())"
+    ## $ pycmd "import datetime as dt;print(dt.date.today() - dt.date(2025,12,25))"
+    uv run --isolated -p ">3.14" --with numpy --with scipy --with pyarrow --with pandas --with polars --with duckdb --with matplotlib --with seaborn --with hypothesis python -I -c "${@}"
+  }
+fi
+
 removeduplicates() {
     ## Use this to remove duplicates from PATH and MANPATH
     ## Call it like:
