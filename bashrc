@@ -105,6 +105,8 @@ removeduplicates() {
     echo -n "$1" | awk -v RS="$2" -v ORS="$2" '{if (!arr[$0]++) {print $0}}' | sed -e "s@$2\$@@"
 }
 
+export NO_COLOR=1 ## https://no-color.org/
+
 export PROMPT_DIRTRIM=7
 export PS1='\u@\h [SHLVL: ${SHLVL}]: \w\n[jobs: \j] $(git-branch-info) \$ '
 export EDITOR="vim"

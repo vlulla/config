@@ -208,6 +208,8 @@ if [[ ! -x $(command -v pandoc) ]]; then
   }
 fi
 
+export NO_COLOR=1  ## https://no-color.org/
+
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export HISTFILE=~/.zsh_history
