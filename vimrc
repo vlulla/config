@@ -121,16 +121,14 @@ runtime! ftplugin/man.vim
 
 autocmd BufWinLeave *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs mkview
 autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent loadview
-" autocmd BufWinEnter,BufRead *.r,*.R,.Rprofile set filetype=r sw=2 cindent
+" autocmd BufWinEnter,BufRead *.r,*.R,.Rprofile set filetype=r shiftwidth=2 cindent
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
 autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 autocmd BufRead,BufWinEnter,BufNewFile *.sed set filetype=sed
 autocmd BufRead,BufWinEnter,BufNewFile *.awk set filetype=awk
 
-autocmd BufRead,BufNewFile *.txt setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.md,*.Rmd setlocal noet ts=4 sw=4 sts=4
-autocmd BufRead,BufNewFile *.py setlocal ts=4 sw=4 sts=4
+autocmd BufRead,BufNewFile *.txt,*.md,*.Rmd,*.py setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " https://unix.stackexchange.com/a/383044
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
@@ -164,12 +162,12 @@ augroup Skeleton
 augroup END
 
 
-autocmd FileType c,cs,cpp,java set cindent et fo=tcrq tw=78 ts=4 cinoptions=(0
-autocmd FileType gitcommit setlocal spell tw=72
-autocmd FileType j set tw=0
+autocmd FileType c,cs,cpp,java set cindent expandtab fo=tcrq textwidth=78 tabstop=4 cinoptions=(0
+autocmd FileType gitcommit setlocal spell textwidth=72
+autocmd FileType j set textwidth=0
 autocmd FileType java set makeprg=javac\ \"%\"
 autocmd FileType lilypond nnoremap <leader>; :!open "%:p:r.pdf"<CR><CR>
-autocmd FileType make set noet sw=8 ts=8 sts=8
+autocmd FileType make set noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
 autocmd FileType perl set smartindent
 autocmd FileType python set makeprg=python\ \"%\"
 autocmd FileType r set makeprg=R\ CMD\ BATCH\ -q\ --no-save\ --no-restore\ \"%\"
@@ -199,7 +197,7 @@ nnoremap <leader>h :split<CR>
 
 nnoremap <leader>z ^i/* A */
 " imap <leader>z <Esc>,z i
-nnoremap <leader>// ^i//
+nnoremap <leader>// ^i//<Esc>
 " imap <leader>// <Esc>,// <Esc>
 
 " Some more useful ideas from Markus Motl's vimrc
