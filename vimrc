@@ -119,8 +119,8 @@ runtime! ftplugin/man.vim
 " autocmd BufWritePost * mkview
 " autocmd BufRead * silent loadview
 
-autocmd BufWinLeave *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs mkview
-autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent loadview
+" autocmd BufWinLeave *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs mkview
+" autocmd BufWinEnter *.c,*.cc,*.cpp,*.c++,*.java,*.R,*.r,*.Rmd,*.py,*.ijs silent loadview
 " autocmd BufWinEnter,BufRead *.r,*.R,.Rprofile set filetype=r shiftwidth=2 cindent
 autocmd BufRead,BufNewFile *.ijs,*.ijt,*.ijp,*.ijx setfiletype j
 autocmd BufRead,BufWinEnter,BufNewFile *.ly set filetype=lilypond
