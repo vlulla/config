@@ -128,7 +128,7 @@ autocmd BufRead,BufWinEnter,BufNewFile *.r,*.R set filetype=r
 autocmd BufRead,BufWinEnter,BufNewFile *.sed set filetype=sed
 autocmd BufRead,BufWinEnter,BufNewFile *.awk set filetype=awk
 
-autocmd BufRead,BufNewFile *.txt,*.md,*.Rmd,*.py setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+" autocmd BufRead,BufNewFile *.txt,*.md,*.Rmd,*.py setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " https://unix.stackexchange.com/a/383044
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
