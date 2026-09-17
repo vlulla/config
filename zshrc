@@ -112,9 +112,9 @@ vf() {
   if /usr/bin/which fzf 2>/dev/null 1>&2 ; then
     ## vim -o $(fzf --preview='cat {}')
     export FZF_DEFAULT_OPTS='--height 40% --border'
-    vim --ttyfail -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
+    view -c "nmap q :q<CR>" -c "nmap f <C-F>" -c "nmap <Space> <C-F>" -c "nmap b <C-B>" --ttyfail -o "$(fzf --reverse --preview='head -n 10 {}' --preview-window=up:10)"
   else
-    vim --ttyfail
+    view -c "nmap q :q<CR>" -c "nmap f <C-F>" -c "nmap <Space> <C-F>" -c "nmap b <C-B>" --ttyfail
   fi
 }
 ## following from https://www.datafix.com.au/cookbook/functions.html
