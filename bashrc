@@ -79,7 +79,7 @@ updatecondaenvs() {
   ## for env in $(conda env list | awk '!/^#/{print $1}'); do
   envs=( $(micromamba env list --quiet | awk 'NR>2{print $1}') )
   for env in "${envs[@]}"; do
-    micromamba update --all --yes --quiet --name "${env}"
+    micromamba update --all --yes --no-allow-downgrade --quiet --name "${env}"
     printf "%b\n" "Updated micromamba environment:   ${bold}${green}${env}${reset}"
   done
 }
