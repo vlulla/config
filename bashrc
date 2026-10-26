@@ -6,7 +6,10 @@ alias bc='bc -l'
 alias cp='cp -iv'
 ( command -v duckdb >/dev/null 2>&1 ) && alias ddb='duckdb '
 alias e='vim --ttyfail'
-[[ "$(uname -s)" = 'Linux' ]] && alias ls='ls --quoting-style=shell-always --time-style="long-iso" '
+case "$(uname -s)" in
+  ("Linux")  alias ls='ls --quoting-style=shell-always --time-style="long-iso" ' ;;
+  ("Darwin") alias ls='ls -D "%Y-%m-%d %H:%M" ' ;;
+esac
 alias l='ls '
 alias la='ls -a'
 if [[ "$(uname -s)" = "Darwin" ]]; then
