@@ -9,7 +9,7 @@ set autowrite
 " set background=light
 
 set backspace=eol,start,indent
-set cinoptions=(0
+"set cinoptions=(0
 set cmdheight=2
 " set colorcolumn=+1,+2,+3
 set colorcolumn=121,122,123,124,125

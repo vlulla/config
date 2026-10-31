@@ -15,5 +15,4 @@ pd.set_option("display.memory_usage","deep")
 pd.set_option("display.precision",3)
 pd.set_option("display.float_format",lambda x: f"{x:_}") ## aids me with larger numbers
 pd.set_option("display.show_dimensions",True)
-pd.set_option("future.infer_string",True)
 np.set_printoptions(linewidth=twidth)
